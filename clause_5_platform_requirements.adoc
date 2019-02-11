@@ -1,0 +1,51 @@
+== Platform Recommendations
+
+This section provides recommendations for platform minimum capabilities to implement a CDB Data Store. The platform constraints imposed by the CDB standard are minimal and are designed to allow implementation in many of the widely available computer hardware platforms, operating systems, file systems and transport protocols. Below are the suggested Platform requirements.
+
+=== File System
+
+A CDB data store instance is file system independent, (i.e., the use of a specific file system is not specified). However, implementation of the CDB standard does require that the file system be able to support a minimal set of capabilities as listed below:
+
+1.  File name/Directory name structure:
+a.  Character set: in accordance to with Decimal, Hexadecimal, and Character codes as given in http://www.utf8-chartable.de/
+b.  Length of filename (including path to file): 256 characters or more.
+c.  Length of filename extension: “dot” followed by three characters or more
+2.  Minimum Directory structure:
+a.  Number of files or directories in root directory: 256 entries or more.
+b.  Number of files or directories per directory (except root): 2048 entries or more
+c.  Depth of directory hierarchy: 9 or more (assuming at least 256 entries per directory level).
+d.  Directory size: 128 KB or more (assuming 64 bytes per directory entry).
+3.  File Size: 64 MB or more.
+4.  Number of files per volume: 41,600 files or more (assuming 650 MB CD with 16 KB files.
+5.  Support for removable media.
+6.  Support for bootable/non-bootable volume.
+
+=== Operating System
+
+The CDB standard is Operating System (OS) independent; it does not mandate the use of a specific OS. However, compliance to this standard does require that the operating system be able to support a minimal set of capabilities.
+
+Any operating system implementing the CDB standard _should_ support at a minimum the following basic OS properties:
+
+* Byte-stream random file access
+* 32-bit integers, natively
+* A 32-bit address space
+* Floating point support (per IEEE-754), natively
+* 2GB virtual address space per process
+* Memory paging
+* Network communication
+
+=== System Hardware Independence
+
+Implementation of the CDB standard is hardware independent. The CDB standard does not mandate the use of particular hardware platforms. Furthermore, any general-purpose hardware compatible with modern Operating Systems (OS) can be used for a CDB implementation.
+
+Implementation of the CDB standard assumes that the system hardware shall support, as a minimum, the subsystems described in the following requirement.
+
+Hardware memory for systems implementing the CDB standard _should_ support:
+
+* 8-bit, 16-bit, and 32-bit signed and unsigned integers, natively
+* A 32-bit address space
+* 32-bit and 64-bit double precision floating point values (IEEE-754), natively
+* 2 GB virtual address space
+* Virtual memory space
+
+Immediate and indirect memory addressing modes

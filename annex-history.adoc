@@ -1,0 +1,13 @@
+[appendix]
+:appendix-caption: Annex
+== Revision History
+
+[width="90%",options="header"]
+|===
+|Date |Release |Editor | Primary clauses modified |Description
+|2016-04-04 |1.0 |C. Reed | |OAB review version
+|2016-06-25 |R2 |C. Reed |Various |Prepare for adoption vote. Incorporate changes based on public comment period.
+|2016-10-05 |R3 |C. Reed |Various |Preparation for publication
+|2016-11-22 |1.0 |C. Reed | |Ready for publication
+|2017-12-28 |1.1 |C. Reed |Various |Minor edits for version 1.1.
+|===

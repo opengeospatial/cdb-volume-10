@@ -1,0 +1,3 @@
+== ShapeFile dBASE III guidance
+
+Was B.1.3 Annex B Volume 2 of the OGC CDB Best Practice. Now in Volume 4: OGC CDB Use of Shapefiles for Vector Data Storage (Best Practice).

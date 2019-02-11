@@ -1,0 +1,6 @@
+== Scope
+
+
+This document provides detailed implementation guidance for developing and maintaining a CDB compliant data store.
+
+

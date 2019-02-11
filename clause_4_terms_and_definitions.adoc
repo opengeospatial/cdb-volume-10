@@ -1,0 +1,6 @@
+== Terms and Definitions
+
+For the purposes of this document, the following abbreviations apply. All other terms and definitions are contained in Volume 3: OGC CDB Terms and Definitions (http://www.opengeospatial.org/standards/cdb).
+
+*RTP:* Run-Time Publishers
+*SE:* Synthetic Environment
