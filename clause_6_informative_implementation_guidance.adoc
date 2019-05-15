@@ -698,7 +698,6 @@ Chromaticity is an objective measurement of the color of an object, leaving asid
 a|
 
 
-
 ifndef::backend-pdf[]
 \[x = X / (X + Y + Z) \]
 
