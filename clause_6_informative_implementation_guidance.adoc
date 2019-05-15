@@ -558,16 +558,20 @@ If we consider a pipeline that involves capturing (or calculating) an image, sto
 
 
 
-1.  Camera_gamma (latexmath:[\gamma _c]): The characteristic of the image sensor.
-2.  Encoding_gamma (latexmath:[\gamma _e]): The gamma of any transformation performed by the software writing the image file.
-3.  Decoding_gamma (latexmath:[\gamma _d]): The gamma of any transformation performed by any software reading the image file.
-4.  LUT_gamma (latexmath:[\gamma _{lut}]): The gamma of the frame buffer LUT, if present.
+1.  Camera_gamma (γ~_c_~ ):The characteristic of the image sensor.
+2.  Encoding_gamma (γ~_e_~ ): The gamma of any transformation performed by the software writing the image file.
+3.  Decoding_gamma (γ~_d_~ ): The gamma of any transformation performed by any software reading the image file.
+4.  LUT_gamma (γ~_lut_~ ): The gamma of the frame buffer LUT, if present.
 
  In addition, let's add a few other names:
 
-1.  File_gamma (latexmath:[\gamma _f]): The gamma of the image in the file, relative to the original scene, i.e. latexmath:[\gamma _f = \gamma _c \gamma _e]
-2.  DS_gamma (latexmath:[\gamma _{DS}]): The gamma of the “display system” downstream of the frame buffer. In this context, the term display system encompasses everything after the frame buffer, that is latexmath:[\gamma _{DS} = \gamma _{lut} \gamma _{crt}]
-3.  Viewing_gamma (latexmath:[\gamma _v]): The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
+1.  File_gamma (γ~_f_~): The gamma of the image in the file, relative to the original scene, i.e.
++
+γ~_f_~ = γ~_c_~ γ~_e_~
+2.  DS_gamma (γ~_DS_~): The gamma of the “display system” downstream of the frame buffer. In this context, the term display system encompasses everything after the frame buffer, that is
++
+γ~_DS_~ = γ~_lut_~ γ~_crt_~
+3.  Viewing_gamma (γ~_v_~): The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
 
 When the file_gamma is not 1.0, we know that some form of gamma correction has been done on the sample values in the file, and we call them “gamma corrected” samples. However, since there can be so many different values of gamma in the image display chain, and some of them are not known at the time the image is written, the samples are not really being “corrected” for a specific display condition. We are really using a power function in the process of encoding an intensity range into a small integer field, and so it is more correct to say “gamma encoded” samples instead of “gamma corrected” samples. The CDB standard does not rely on such gamma encoding in order to achieve smaller integer number representations. Instead, the CDB standard relies on standard compression algorithms to achieve an efficient representation of color imagery. footnote:[The JPEG-2000 standard is based on the _sRGB_ default color space per the IEC 61966-2-1 Standard which calls for a gamma 2.2 under the specified viewing conditions]
 
@@ -581,11 +585,18 @@ a|
 
 
 
+
+
+ifndef::backend-pdf[]
 \[\gamma _c \gamma _d \gamma _{DS} = \gamma _v \]
 
 \[\gamma _c \gamma _d \gamma _{lut} \gamma _{crt} = \gamma _v \]
 
 \[0.511 * 1.0 * 1.0 * 2.2 = 1.125 = \gamma _v \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/g1.png[]
+endif::[]
 
 |(eq. G-1)
 |==========
@@ -597,11 +608,11 @@ Given the above assumptions, and our objective of ensuring that the product of a
 
 The bottom portion of the illustration show the path taken by the CDB imagery as it is ingested first by the real-time publisher, then by the IG, the IG color look-up tables and finally through to the visual display system. In this example, we will assume the following:
 
-1.  The imagery file in the CDB is unmodified (i.e. those produced by the Adobe Photoshop at the DBGF). Note that as a result of viewing gamma of latexmath:[\gamma _v = 1.25], the file gamma ended up at latexmath:[\gamma _f = 1.25] at the DBGF. As a result, the CDB also has a file gamma of latexmath:[\gamma _f = 1.25]
-2.  The IG performs all of its internal operations in a linear color space (i.e. the IG_gamma is latexmath:[\gamma _{IG} = 1.00])
-3.  The simulator visual system produces an average scene brightness of approximately 6 ft-lamberts: under these viewing conditions, the viewing gamma is latexmath:[\gamma _v = 1.125].
-4.  The measured gamma of the visual display system is latexmath:[\gamma _{crt} = 2.025]
-5.  The content of the IG’s color look-up tables is adjusted to compensate for the gamma of the visual display system, i.e. it is loaded with latexmath:[\gamma _{lut} = \frac{1}{2.025}]
+1.  The imagery file in the CDB is unmodified (i.e. those produced by the Adobe Photoshop at the DBGF). Note that as a result of viewing gamma of γ~_v_~  = 1.25, the file gamma ended up at γ~_f_~  = 1.25 at the DBGF. As a result, the CDB also has a file gamma of γ~_f_~  = 1.25
+2.  The IG performs all of its internal operations in a linear color space (i.e. the IG_gamma is γ~_IG_~ = 1.00)
+3.  The simulator visual system produces an average scene brightness of approximately 6 ft-lamberts: under these viewing conditions, the viewing gamma is γ~_v_~ = 1.125.
+4.  The measured gamma of the visual display system is γ~_crt_~ = 2.025
+5.  The content of the IG’s color look-up tables is adjusted to compensate for the gamma of the visual display system, i.e. it is loaded with γ~_lut_~ = (1/2.025)
 
 Given the above assumptions, and our objective of ensuring that the product of all gammas in the chain equals the viewing gamma of 1.125, the required visual run-time publisher gamma must account for the difference in viewing gamma at the DBGF and at the simulator. As a result, the publisher gamma must be (1.125/1.25).
 
@@ -611,10 +622,10 @@ Both the modelers and the visual system architects should be keenly aware of the
 
 The top portion of the illustration shows the path taken by source data as a modeler is viewing it at this workstation via the application software. In this example, we will assume the following:
 
-1.  The DBGF imagery application is Adobe Photoshop. The default color space profile used by Adobe Photoshop (i.e. the *.icm file) is the sRGB Color Space Profile which is defined by the sRGB standard to be a gamma of 2.2, therefore the Photoshop uses a latexmath:[\gamma _{lut} = \frac{1}{2.2}]
-2.  The DBGF workstation is running Windows (therefore the O/S does not gammatize the imagery before sending it to the display, latexmath:[\gamma _{lut} = 1.25])
-3.  The measure gamma of the DBGF workstation monitor is latexmath:[\gamma _{crt} = 2.2]
-4.  The DBGF workstation is located in a dimly lit room, so the viewing gamma is in effect latexmath:[\gamma _v = 1.25]
+1.  The DBGF imagery application is Adobe Photoshop. The default color space profile used by Adobe Photoshop (i.e. the *.icm file) is the sRGB Color Space Profile which is defined by the sRGB standard to be a gamma of 2.2, therefore the Photoshop uses a  γ~_lut_~ = (1/2.2)
+2.  The DBGF workstation is running Windows (therefore the O/S does not gammatize the imagery before sending it to the display, γ~_lut_~ = 1.25)
+3.  The measure gamma of the DBGF workstation monitor is γ~_crt_~ = 2.2
+4.  The DBGF workstation is located in a dimly lit room, so the viewing gamma is in effect γ~_v_~ = 1.25
 
 
 image::images/image36.jpeg[untitled1,width=544,height=364]
@@ -686,9 +697,16 @@ Chromaticity is an objective measurement of the color of an object, leaving asid
 |==========
 a|
 
+
+
+ifndef::backend-pdf[]
 \[x = X / (X + Y + Z) \]
 
 \[y = Y / (X + Y + Z) \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/g3.png[]
+endif::[]
 
 |(eq. G-3)
 |==========
@@ -714,6 +732,9 @@ CIE XYZ values for each of red, green, and blue for a particular monitor, you pu
 [cols="4,1",]
 |===========
 a|
+
+
+ifndef::backend-pdf[]
 \[ M =
  \begin{bmatrix}
   X_r & X_g & X_b \\
@@ -721,6 +742,11 @@ a|
   Z_r & Z_g & Z_b
  \end{bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/g4.png[]
+endif::[]
+
 |(eq. G-4)
 |===========
 
@@ -734,6 +760,9 @@ NOTE: If you the RGB samples are gamma-encoded, the gamma encoding must be un-do
 [cols="4,1",]
 |===========
 a|
+
+
+ifndef::backend-pdf[]
 \[
 \begin{bmatrix}
  X \\
@@ -747,6 +776,11 @@ a|
   B
  \end{bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/g5.png[]
+endif::[]
+
 |(eq. G-5)
 |===========
 
@@ -756,6 +790,9 @@ In other words, X = Xr*R + Xg*G + Xb*B, and similarly for Y and Z. You can
 [cols="4,1",]
 |===========
 a|
+
+
+ifndef::backend-pdf[]
 \[
 \begin{bmatrix}
  R \\
@@ -780,6 +817,11 @@ a|
  Z
 \end{bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/g6.png[]
+endif::[]
+
 |(eq. G-6)
 |===========
 
