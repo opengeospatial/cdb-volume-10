@@ -27,9 +27,6 @@ ogcdoc, OGC document,  ogcdoc,  cdb, implementation guidance, simulation, synthe
 
 [big]*iii.   Preface*
 
-
-
-
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
 
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
@@ -50,10 +47,7 @@ Organization name(s)
 * University of Calgary
 * UK Met Office
 
-
 The OGC CDB standard is based on and derived from an industry developed and maintained specification, which has been approved and published as OGC Document 15-003: OGC Common DataBase Volume 1 Main Body. An extensive listing of contributors to the legacy industry-led CDB specification is at Chapter 11, pp 475-476 in that OGC Best Practices Document (https://portal.opengeospatial.org/files/?artifact_id=61935) .
-
-
 
 [big]*v.     Submitters*
 
@@ -69,21 +63,7 @@ All questions regarding this submission should be directed to the editor or the 
 
 [big]*vi.  Document Organization*
 
-For ease of editing and review, the standard has been separated into 12 Volumes and a schema repository.
-
-* Volume 0: OGC CDB Companion Primer for the CDB standard. (Best Practice)
-* Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure. The main body (core) of the CDB standard (Normative).
-* Volume 2: OGC CDB Core Model and Physical Structure Annexes (Best Practice).
-* Volume 3: OGC CDB Terms and Definitions (Normative).
-* Volume 4: OGC CDB Use of Shapefiles for Vector Data Storage (Best Practice).
-* Volume 5: OGC CDB Radar Cross Section (RCS) Models (Best Practice).
-* Volume 6: OGC CDB Rules for Encoding Data using OpenFlight (Best Practice).
-* Volume 7: OGC CDB Data Model Guidance (Best Practice).
-* Volume 8: OGC CDB Spatial Reference System Guidance (Best Practice).
-* Volume 9: OGC CDB Schema Package: provides the normative schemas for key features types required in the synthetic modelling environment. Essentially, these schemas are designed to enable semantic interoperability within the simulation context. (Normative)
-* Volume 10: OGC CDB Implementation Guidance (Best Practice).
-* Volume 11: OGC CDB Core Standard Conceptual Model (Normative)
-* Volume 12: OGC CDB Navaids Attribution and Navaids Attribution Enumeration Values (Best Practice)
+include::https://github.com/opengeospatial/cdb-volume-1/blob/master/list_of_volumes.adoc[]
 
 [big]*vii.  Future Work*
 
