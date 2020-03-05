@@ -1,0 +1,12 @@
+{
+        "1": {
+                "OGC_doc_number": "16-006r5",
+                "urn":"http://www.opengis.net/doc/BP/cdb-implementation-guidance/1.2",
+                "title":"Volume 10: OGC CDB Implementation Guidance (Best Practice)",
+                "path":"standard_document.adoc",
+                "options": ["--trace"],
+                "a":[
+                        "data-uri"
+                ]
+        }
+}
