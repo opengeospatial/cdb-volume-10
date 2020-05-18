@@ -5,7 +5,7 @@ This document provides detailed implementation guidance for developing and maint
 
 The CDB standard defines a standardized model and structure for a single, versionable, virtual representation of the earth. A CDB structured data store provides for a geospatial content and model definition repository that is plug-and-play interoperable between database authoring workstations. Moreover, a CDB structured data store can be used as a common online (or runtime) repository from which various simulator client-devices can simultaneously retrieve and modify, in real-time, relevant information to perform their respective runtime simulation tasks. In this case, a CDB is plug-and-play interoperable between CDB-compliant simulators. A CDB can be readily used by existing simulation client-devices (legacy Image Generators, Radar simulator, Computer Generated Forces, etc.) through a data publishing process that is performed on-demand in real-time.
 
-The application of CDB to future simulation architectures will significantly reduce runtime-source level and algorithmic correlation errors, while reducing development, update and configuration management timelines. With the addition of the High Level Architecture - -Federation Object Model (HLA/FOM) footnote:[https://en.wikipedia.org/wiki/High-level_architecture] and DIS protocols, the application of the CDB standard provides a Common Environment to which inter-connected simulators share a common view of the simulated environment.
+The application of CDB to future simulation architectures will significantly reduce runtime-source level and algorithmic correlation errors, while reducing development, update and configuration management timelines. With the addition of the https://en.wikipedia.org/wiki/High-level_architecture[High Level Architecture] - Federation Object Model (HLA/FOM) and https://en.wikipedia.org/wiki/Distributed_Interactive_Simulation[Distributed Interactive Simulation] (DIS) protocols, the application of the CDB standard provides a Common Environment to which inter-connected simulators share a common view of the simulated environment.
 
 The CDB standard defines an open format for the storage, access and modification of a synthetic environment database. A *synthetic environment* is a https://en.wikipedia.org/wiki/Computer_simulation[computer simulation] that represents activities at a high level of realism, from simulation of theaters of war to factories and manufacturing processes. These environments may be created within a single computer or a vast distributed network connected by local and wide area networks and augmented by super-realistic special effects and accurate behavioral models. SE allows visualization of and immersion into the environment being simulated footnote:["Department of Defense Modeling and Simulation (M&S) Glossary", DoD 5000.59-M,].
 
@@ -16,8 +16,6 @@ The CDB synthetic environment is a representation of the natural environment inc
 The associated CDB Standard Best Practice documents provide a description of a data schema for Synthetic Environmental information (i.e., it merely describes data) for use in simulation. The CDB Standard provides a rigorous definition of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats.
 
 A CDB conformant data store contains datasets organized in layers, tiles and levels-of-detail. Together, these datasets represent the features of a synthetic environment for the purposes of distributed simulation applications. The organization of the synthetic environmental data in a CDB compliant data store is specifically tailored for real-time applications.
-
-
 
 [big]*ii.    Keywords*
 
@@ -49,7 +47,7 @@ Organization name(s)
 
 The OGC CDB standard is based on and derived from an industry developed and maintained specification, which has been approved and published as OGC Document 15-003: OGC Common DataBase Volume 1 Main Body. An extensive listing of contributors to the legacy industry-led CDB specification is at Chapter 11, pp 475-476 in that OGC Best Practices Document (https://portal.opengeospatial.org/files/?artifact_id=61935) .
 
-[big]*v.     Submitters*
+[big]*v.  Comment Submission*
 
 All questions regarding this submission should be directed to the editor or the submitters:
 
