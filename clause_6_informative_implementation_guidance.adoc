@@ -14,7 +14,7 @@ Note that there are many alternatives open to a vendor when considering the leve
 
 Nonetheless, this section highlights aspects of the CDB that are particularly significant when considering such implementations. These aspects dominate the level-of-effort required to achieve ideal CDB compliancy.
 
-The CDB Standard limits itself to a description of a data schema for Synthetic Environmental information (i.e. it merely describes data) for use in simulation. The CDB Best Practices provide rigorous guidance of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats. This ensures that the all CDB data is understood, interpreted and efficiently accessed in the same way by each client-device. The CDB standard does not include detailed guidelines regarding off-line database compliers or runtime publisher implementations, since this would be tantamount to dictating internal vendor formats which are by their very nature proprietary.
+The CDB Standard limits itself to a description of a data schema for Synthetic Environmental information (i.e., it merely describes data) for use in simulation. The CDB Best Practices provide rigorous guidance of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats. This ensures that the all CDB data is understood, interpreted and efficiently accessed in the same way by each client-device. The CDB standard does not include detailed guidelines regarding off-line database compliers or runtime publisher implementations, since this would be tantamount to dictating internal vendor formats which are by their very nature proprietary.
 
 The CDB Standard DOES NOT specify:
 
@@ -41,7 +41,7 @@ In the case where a client-device already supports most of data schema and seman
 NOTE: The level-of-effort in adopting the CDB model is proportional to the difference between the CDB data schema and client-device’s internal proprietary data schema.
 
 
-Clearly, the algorithmic complexity of an RTP and the computational load imposed on the RTP is directly proportional to the above-mentioned “gap”. The larger the “gap”, the more expensive a RTP is to develop and the more computational resources need to be allocated to implement it. Conversely, with a smaller “gap”, the RTP development is straightforward and relatively few computational resources need to be allocated to this function.
+Clearly, the algorithmic complexity of an RTP and the computational load imposed on the RTP is directly proportional to the above-mentioned “gap.” The larger the “gap,” the more expensive a RTP is to develop and the more computational resources need to be allocated to implement it. Conversely, with a smaller “gap,” the RTP development is straightforward and relatively few computational resources need to be allocated to this function.
 
 In order to assess the level-of-effort to adopt the CDB model, the vendor must first evaluate the similarity of data schemas between the CDB and his client-device, in particular, the vendor must assess whether they espouse the following fundamental CDB concepts:
 
@@ -82,7 +82,7 @@ Since it is the client-devices that initiate access to the CDB conformant data s
 
 The following discussion provides a typical list of software functions that must be developed in order to achieve CDB compliancy. The discussion applies equally to both paradigms, i.e. the CDB Runtime Publishing paradigm and the CDB import-then-compile paradigm.
 
-Virtually all simulation client-devices in existence today natively ingest their own proprietary native runtime formats. In order to ingest CDB structured data directly, vendors must adapt the device’s software to natively ingest the currently defined CDB formats footnote:[The number of specified formats will be expanded in future versions of the CDB standard.] (e.g. TIFF, Shape, OpenFlight, etc.) or alternately, they can insert a runtime publisher function that transforms the CDB data formats into legacy client device’s native runtime format. The runtime publishing process is performed when the CDB is paged-in from the CDB storage device.
+Virtually all simulation client-devices in existence today natively ingest their own proprietary native runtime formats. In order to ingest CDB structured data directly, vendors must adapt the device’s software to natively ingest the currently defined CDB formats footnote:[The number of specified formats will be expanded in future versions of the CDB standard.] (e.g., TIFF, Shape, OpenFlight, etc.) or alternately, they can insert a runtime publisher function that transforms the CDB data formats into legacy client device’s native runtime format. The runtime publishing process is performed when the CDB is paged-in from the CDB storage device.
 
 The runtime publishers are nothing more than well-optimized offline publishers capable of responding to the on-demand compilation of datasets as they are being paged-in by the respective client devices. The function of a runtime publisher is no different than that of a conventional offline database publisher, i.e., it…
 
@@ -108,7 +108,7 @@ e. Reduced SE storage infrastructure cost
 f. Platform independence and scalability
 g. SE scalability and adaptability
 
-In the case where a client-device does not adhere to one or more of the above-mentioned “fundamental CDB concepts”, fewer of the CDB benefits will be realizable.
+In the case where a client-device does not adhere to one or more of the above-mentioned “fundamental CDB concepts,” fewer of the CDB benefits will be realizable.
 
 For instance, a client-device incapable of dealing with levels-of-detail will not have the same level SE scalability (a benefit explained in section 1.4.7 of the CDB Standard) as one that fully espouses that concept. While the latter may be acceptable, it is clearly a less-compliant and an inferior implementation of the CDB than the former.
 
@@ -126,10 +126,10 @@ Figure 1-1: Use of a CDB conformant data store as an Off-line Repository, illust
 * SE Plug-and-Play Portability and Interoperability across various vendor SE authoring toolsets
 * SE Correlation through the elimination of source correlation errors through normalization of all data sets (a single representation for each dataset)
 * SE Re-use by eliminating dependencies that are specific to the simulation application, the Data store Generation tool suite, the simulation program, the technology
-* SE Scalability which results in near-infinite SE addressability, spatial resolution and content density in each of the SE datasets.
+* SE Scalability which results in near-infinite SE addressability, spatial resolution and content density in each of the SE datasets
 * 3D Model Library Management through built-in provisions for the cataloging of models
 * SE Versioning Mechanism allowing instant access to prior versions and simplified configuration management
-* Cooperative SE Workflow through an internal SE structure which favors teamwork. The SE workflow can be allocated by specialty (e.g., altimetry, satellite imagery, vector data) or by geographic footprint.
+* Cooperative SE Workflow through an internal SE structure which favors teamwork. The SE workflow can be allocated by specialty (e.g., altimetry, satellite imagery, vector data) or by geographic footprint
 * Straightforward SE Archival and Recovery
 
 Note that the use of the use of CDB conformant data store as an offline repository does not impose any change to the simulation training equipment (i.e., no modifications to client-devices are required footnote:[Or alternately, runtime publishers need not be developed for client-devices]). However, the deployment of the synthetic environment is similar to the conventional approaches used in industry requiring the time-consuming, storage-intensive, off-line compilation of proprietary runtime databases to each client-device. Furthermore, the computing demands on the data store generation facility are significantly greater because the entire data store must be published off-line for each client-device before it can be deployed. These costs rapidly escalate with the complexity and size of the synthetic environment, the number of supported client-devices and the number of supported training facilities. For complex data stores, these costs can far outweigh the costs of the runtime publishers attached to each simulator client-device.
@@ -138,7 +138,6 @@ image::images/image1.png[image,width=644,height=334]
 
 [#img_UseofCDBConformantDatabaseasanofflineDatabaseRepository,reftext='Figure 1-1']
 *Figure 1-1. Use of CDB Conformant Database as an off-line Database Repository*
-
 
 In most modern SE tool suites in-use today, the Data Preparation step shown in Figure 1-2: SE Workflow with a CDB structured data store as an Off-line Repository consists of many sub-steps usually applied in sequence to each of the datasets (aka layers) of the SE. In effect, this aspect of the modeler’s responsibilities is virtually identical to that of a GIS footnote:[__G__eographic __I__nformation __S__ystems] specialist. As a result, many of the simulation equipment vendors offer SE authoring tools that integrate best-of-breed COTS footnote:[__C__ommercial-__O__ff-__T__he-__S__helf] GIS tools into their respective tool suites. The steps include the following.
 
@@ -160,7 +159,7 @@ The standardization of simulation data stores can greatly enhance their portabil
 
 While standardization of format/structure is essential to achieve high portability, interoperability and reuse, the SE content must be ideally developed so that its content is truly independent of the training application. Therefore, we strongly recommend that the SE content of the CDB structured repository be developed to be independent of the training application.
 
-Historically, SEs were developed for a single, targeted simulation application (e.g., tactical fighter, civil and air transport, rotary wing, or ground/urban warfare). In effect, the intended training application played an important role in determining the RSDB content because SE developers were constrained by the capabilities of the authoring tools and of the targeted simulation device. Unfortunately, this tailoring of SE was performed too early during the SE workflow and severely limited the applicability and re-use of the SE. Application tailoring can require either data intensification footnote:[Data Intensification is the process of augmenting or deriving added detail from the information found in the raw data. For instance, intensification can be used to augment flattened terrain imagery with 3D cultural detail relief. A typical example of this consisting in populating forested areas found in the terrain imagery with individual three-dimensional trees.] or data decimation footnote:[Data Decimation is the process of removing or simplifying the informational content found in the raw data. For instance, decimation can be used to transform individually modeled buildings into simplified city blocks or to reduce the resolution of terrain imagery. Data decimation is usually undertaken to ensure that the SE falls within the capabilities of the targeted simulator system.] .
+Historically, SEs were developed for a single, targeted simulation application (e.g., tactical fighter, civil and air transport, rotary wing, or ground/urban warfare). In effect, the intended training application played an important role in determining the RSDB content because SE developers were constrained by the capabilities of the authoring tools and of the targeted simulation device. Unfortunately, this tailoring of SE was performed too early during the SE workflow and severely limited the applicability and re-use of the SE. Application tailoring can require either data intensification footnote:[Data Intensification is the process of augmenting or deriving added detail from the information found in the raw data. For instance, intensification can be used to augment flattened terrain imagery with 3D cultural detail relief. A typical example of this consisting in populating forested areas found in the terrain imagery with individual three-dimensional trees.] or data decimation footnote:[Data Decimation is the process of removing or simplifying the informational content found in the raw data. For instance, decimation can be used to transform individually modeled buildings into simplified city blocks or to reduce the resolution of terrain imagery. Data decimation is usually undertaken to ensure that the SE falls within the capabilities of the targeted simulator system.].
 
 Once the SE developer has completed his work in creating the various data layers of the RFDS, he must offline publish (aka “compile”) the SE into one or more device-specific data publishing steps. As we will discuss in section 6.4, Use of CDB structured data store as a Combined Off-line and run-time data store Repository, the device-specific off-line compilation step can be entirely omitted if the targeted training equipment is CDB-compliant.
 
@@ -173,9 +172,9 @@ A data store conforming to this CDB standard can be both used an offline reposit
 In addition to the benefits outlined in section link:#h.44sinio[6.3], the use of the CDB conformant data store as a combined off-line and run-time repository offers many additional benefits.
 
 * SE Plug-and-Play Portability and Interoperability across CDB-compliant simulators and simulator confederacies (be it tactical air, rotary, urban/ground, sea).
-* Reduced Mission Rehearsal Timeline by eliminating SE generation steps (off-line publishing, database assembly and data automation
+* Reduced Mission Rehearsal Timeline by eliminating SE generation steps (off-line publishing, database assembly and data automation.
 * Simplified Deployment, Configuration Control and Management of Training Facility SE Assets by eliminating the duplication of SE runtime DBs for each simulator and each client-device of each simulator.
-* Single, centralized storage system for the SE runtime repository (can be extended to a web-enabled CDB)
+* Single, centralized storage system for the SE runtime repository (can be extended to a web-enabled CDB).
 * Seamless integration of 3D models to the simulator.
 * Fair Fight/Runtime Content Correlation through the adjustment of runtime level-of-detail control limits at each client-device.
 
@@ -187,8 +186,6 @@ image::images/image3.png[image,width=634,height=396]
 [#img_UseofCDBasanOfflineandOnlineDataStoreRepository,reftext='Figure 1-3']
 *Figure 1-3. Use of CDB as an Off-line and On-line Data Store Repository*
 
-
-
 The CDB standard associated Best Practices specify formats and conventions related to synthetic environments for use in simulation. However, many additional benefits can be garnered if a CDB structured data store is also used as an online data store repository. This is particularly true when one considers the effort expended in the deployment of the synthetic environment to the training and/or mission rehearsal facilities.
 
 When used as an online data store repository, there is no need to store and maintain off-line published versions of the data store for each client-device (as illustrated in Figure 1-3). As a result, the storage and computing demands on the data store generation facility are significantly lowered. This is especially true of data store generation facilities whose mandate involves the generation of complex synthetic environments for use by several training facilities.
@@ -199,7 +196,6 @@ image::images/image4.jpeg[untitled1,width=663,height=437]
 
 [#img_SEWorkflowwithCDBasCombinedOfflineRuntimeDataStoreRepository,reftext='Figure 1-4']
 *Figure 1-4. SE Workflow with CDB as Combined Off-line/Runtime Data Store Repository*
-
 
 This approach permits the CDB representation of the synthetic environment to be “dissociated” from the resolution, fidelity, precision, structure and format imposed by the internals of client-devices. Compliancy to the CDB standard can be achieved either by modification of the client-device internal software to make it CDB-native or by inserting a runtime publishing process that transforms the CDB structured data into the client-device’s legacy native runtime format. In the later case, this process is done in real-time, on a demand-basis, as the simulator “flies” within the synthetic environment. Note that since the simulated own ship footnote:[Own ship is the object you are on. Target ship is the object you are watching.] moves at speeds that are bounded by the capabilities of the simulated vehicle, it is not necessary to instantly publish the entire synthetic environment before undertaking a training exercise; the runtime publishers need only respond to the demands of the client-devices. When the simulated own-ship’s position is static, runtime publishers go idle. As the own ship starts advancing, client-devices start demanding for new regions, and runtime publishers resume the publishing process. Publishing workload peaks at high-speed over highly resolved areas of the synthetic environment.
 
@@ -238,7 +234,6 @@ image::images/image6.png[image,width=614,height=371]
 [#img_TypicalDBGenerationCDBUsedasaDBRepository,reftext='Figure 1-6']
 *Figure 1-6. Typical DB Generation - CDB Used as a DB Repository*
 
-
 Figure 1-6: _Typical DB Generation - CDB Used as DB Repository_ and Figure 1-7: _Typical DB Generation Flow - CDB Used as DB & Sim Repository_ illustrate a typical database generation workflow with the database used as a DB workstation repository and the database used as a Repository for the DB workstation and the simulator. Both approaches share the same steps, namely…
 
 1.  _Source data collection and preparation:_ This step usually involves the loading of raw (usually) uncorrected data and the conversion to formats native to the data store toolset.
@@ -250,7 +245,6 @@ image::images/image7.png[image,width=636,height=503]
 
 [#img_TypicalDBGenerationFlowCDBUsedasDBandSimRepository,reftext='Figure 1-7']
 *Figure 1-7. Typical DB Generation Flow - CDB Used as DB and Sim Repository*
-
 
 The result of the above steps yields a group of independent, layered and correlated datasets, (i.e., datasets that are geographically aligned in latitude/longitude (but not always elevation)), all sharing compatible projections, with all of the necessary attribution.
 
@@ -418,10 +412,6 @@ image::images/image9.png[Core Figure 2.11.png,width=528,height=216]
 [#img_SEMBaseMaterialPropertiesTable,reftext='Figure 1-8']
 *Figure 1-8. SEM Base Material Properties Table*
 
-
-
-
-
 ==== SEM – Materials example
 
 We have a Composite Material consisting of four Base Materials.  For the purpose of this example, we will associate hypothetical keys to these materials:
@@ -556,8 +546,6 @@ Thus, for the same apparent image quality, images using gamma-encoded sample val
 
 If we consider a pipeline that involves capturing (or calculating) an image, storing it in an image file, reading the file, and displaying the image on some sort of display screen, there are at least 5 places in the pipeline that could have nonlinear transfer functions.  Let's give each a specific name for their characteristic gamma:
 
-
-
 1.  Camera_gamma (γ~_c_~ ):The characteristic of the image sensor.
 2.  Encoding_gamma (γ~_e_~ ): The gamma of any transformation performed by the software writing the image file.
 3.  Decoding_gamma (γ~_d_~ ): The gamma of any transformation performed by any software reading the image file.
@@ -602,7 +590,7 @@ endif::[]
 |==========
 
 
-In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g. camera or satellite) right through to the simulator’s display device. His objective is to ensure that product of all gammas match the viewing gamma of the simulator.
+In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g., camera or satellite) right through to the simulator’s display device. His objective is to ensure that product of all gammas match the viewing gamma of the simulator.
 
 Given the above assumptions, and our objective of ensuring that the product of all gammas in the viewing chain equals the viewing gamma, the modeler will end up (subjectively) adjusting images to an equivalent file gamma of 1.25.
 
@@ -646,8 +634,6 @@ The CDB standard encoded RGB color tri-stimulus values assume the following:
 3.  Display model Offset (R, G and B): 0.055
 4.  Display Gun/Phosphor Gamma (R, G, and B): 2.2
 
-
-
 [#table_cie,reftext='Table G-1']
 *Table G-1. CIE Chromaticity for CDB Reference Primaries & CIE Standard Illuminant*
 
@@ -663,7 +649,7 @@ According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Reco
 
 (http://www.w3.org/TR/PNG-GammaAppendix):
 
-“The color of an object depends not only on the precise spectrum of light emitted or reflected from it, but also on the observer, their species, what else they can see at the same time, even what they have recently looked at. Furthermore, two very different spectra can produce exactly the same color sensation. Color is not an objective property of real-world objects; it is a subjective, biological sensation. However, by making some simplifying assumptions (such as: we are talking about _human_ vision) it is possible to produce a mathematical model of color and thereby obtain good color accuracy.
+“The color of an object depends not only on the precise spectrum of light emitted or reflected from it, but also on the observer, their species, what else they can see at the same time, even what they have recently looked at. Furthermore, two very different spectra can produce exactly the same color sensation. Color is not an objective property of real-world objects; it is a subjective, biological sensation. However, by making some simplifying assumptions (such as: we are talking about _human_ vision) it is possible to produce a mathematical model of color and thereby obtain good color accuracy."
 
 ==== Device-dependent Color
 
