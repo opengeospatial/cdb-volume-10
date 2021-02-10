@@ -1,4 +1,4 @@
-# Standard template
+# OGC CDB Volume 10 Implementation Guidance
 
 ## Content
 
