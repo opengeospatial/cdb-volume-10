@@ -1,0 +1,269 @@
+[appendix]
+:appendix-caption: Annex
+ 
+=== SOFWERX Sprint ER Attributions sub-group Recommendations
+
+=== A-1- Recommendation 1: NAS Compatible Metamodel
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Recommendation 1: The subgroup recommends extending the current CDB XML metadata to add the NAS metamodel capabilities that are currently not supported.
+|===
+
+CR ‘reduction’ actions not specific to any document
+
+|===
+|This particular recommendation is more of a high-level goal and other recommendations carry out more specific steps to accomplish this.
+
+|===
+=== A-2- Recommendation 2: Core Specification Data Model Agnostic
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Recommendation 2 and design goal: The CDB core conceptual model should not mandate any particular data dictionary or content, but rather provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum extent practical. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109.
+|===
+
+==== CR DM-1: Create Separate Volume for Traditional CDB 1.0 Attribution
+
+* Dependencies: None
+* References: None
+* Summary: Currently CDB V1.2 specifies the list of valid attributes and enumerations in Volume 1 Section 10.7.1.3 which makes the use of the traditional FACC-based data model mandatory at the core level. There seems to be no comparable specification for valid feature types and how they are bound to datasets. To make CDB V1.3 data model agnostic, this entire section should be split into a separate normative volume - possibly as an extension - defining how to apply the CDB 1.0 Traditional Attribution to the feature and attribute metamodel defined in Volume 1 and Volume 11. This will also enable creating different normative volumes for the proposed CDB V1.3 GGDM and NAS Attribution and a Building Information Model extension. The existing content in Volume 1 Section 10.7.1 should be updated, where possible, to remove any specific references to FACC codes and to express requirements more generally based on feature semantics rather than encoding specifics where possible.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the CDB database structure and do not come from an external standard, particularly those related to class name, feature type, feature subcode, model instancing, bounding boxes, and other similar capabilities. It may make sense to keep these in Volume 1 but define them semantically without specific feature codes, and then to have the new Volume for Traditional CDB attributes specifically document the codes used for built-in CDB types when using the CDB 1.0 Traditional feature attribute model and similarly for future NAS-based models which may provide some or all of the necessary definitions in the existing standard (or not).
+
+|===
+==== CR DM-2: Add Origin to All Controlled Vocabulary Definitions
+
+* Dependencies: None
+* References: DIGEST FACC 2.1, ISO EDCS, NAS, GGDM
+* Summary: Currently CDB V1.2 specifies the <Origin> property on feature types that documents the originating standard of the definition. When working with NAS-based schemas such as GGDM, this will be increasingly important for configuration management of the specification. This <Origin> property should be added in the XML schemas and all relevant conceptual models and requirements for every controlled vocabulary definition, specifically attributes, enumerates (as defined in CR E-1), datasets, and so on. A list of standardized origins should be included in the specification for each Attribute volume, starting with the CDB 1.0 Traditional Attribute volume defined in CR DM-1.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|If mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
+
+|===
+==== CR DM-3: Create Separate Volume for CDB V1.3 NAS Topographic Attribution
+
+* Dependencies: DM-1, DM-2
+* References: GGDM 3.0, NSG Application Schema 7.0
+* Summary: Create a Volume for defining the normative way of applying NAS-compliant topographic feature types and attributes to valid CDB V1.3 databases. Ideally this should use definitions from GGDM 3.0 where possible for broadest compatibility, but NAS definitions outside of the GGDM are also in scope.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|Originally this was specified as “GGDM Attributes” but after quick consideration organizing a CDB by functional themes such as topography, hydrography, maritime, aeronautics, etc. makes more sense. Definitions can be organized by use case and pulled from multiple standards rather than being tied to a specified standard.
+
+|===
+==== CR DM-3: Create Separate Volume for CDB V1.3 NAS Maritime Attribution
+
+* Dependencies: DM-1, DM-2
+* References: NSG Application Schema 7.0, 8.0, and X-3
+* Summary: Create a Volume for defining the normative way of applying NAS-compatible maritime feature types and attribution to a valid CDB V1.3 database.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset, however NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> metahistory is implemented.
+
+|===
+==== CR DM-4: Create Separate Volume for CDB V1.3 NAS Aeronautics Attribution
+
+* Dependencies: DM-1, DM-2
+* References: NSG Application Schema 7.0, 8.0, and X-3
+* Summary: Create a Volume for defining the normative way of applying NAS-compatible aeronautics feature types and attribution to a valid CDB V1.3 database.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|This volume can be created the same as CR DM-3.
+
+|===
+==== CR DM-5: Create Separate Volume for CDB V1.3 BIM Attribution
+
+* Dependencies: DM-1, DM-2
+* References: OGC CityGML, OGC IndoorGML, Apple IMDF
+* Summary: Create a Volume for defining the normative way of applying building information modeling (interior and exterior) feature types and attribution to a valid CDB V1.3 database. This should supersede the traditional “UHRB” definitions and, to the maximum extent possible, cite OGC standards such as CityGML, IndoorGML, and IMDF.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|The NAS does not provide useful definitions for building modeling (with a few limited exceptions of structural components such as walls and stairs that can also be outdoor standalone objects) cross-referencing to other standards is required. Given the existence of OGC CityGML, this should, where possible, be the primary source of definitions.
+
+|===
+=== A-3- Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
+|Implications:
+|===
+=== A-4- Recommendation 4: Delegate entity and attribute physical encoding choices to vector and 3D model containers instead of specifying globally.
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Recommendation 4: Delegate entity and attribute physical encoding choices to vector and 3D model containers instead of specifying globally.
+|Implications:
+|===
+=== A-5- Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
+|Implications:
+|===
+=== A-6- Recommendation 6: Extended Attributes
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Version 1.3 Recommendation - Extended Attributes The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/25[Should Extended Attributes be preserved at the logical data model level?] The suggestion is that the CDB SWG discuss this issue and possible solution as a possible change for CDB version V1.3. Some additional testing may be required to determine if this capability can be added to version V1.3 or not.
+|===
+==== CR A-1: Deprecate Extended Attributes
+
+* References
+* Dependencies: None
+* External References: None
+* Summary of Changes: Deprecate the specifications, schemas, and usage of Extended Attributes to be removed in CDB X as a (theoretically) breaking change. Based on discussion during the CDB Tech Sprint, it appears these were not widely used and encountered substantial efficiency issues while introducing additional complexity into the standard for all conformant readers. Newer, more flexible, encodings such as GeoPackage should remove the primary motivation for extended attributes since they can easily store any attributes, and other recommendations should address multi-valued attributes and other complications.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9:Schemas and Vol 11: Conceptual Model.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|We would need to do a follow up survey to determine if Extended Attributes are in fact used in any substantive way and define a migration path if so.
+
+|===
+=== A-7- Recommendation 7: Attribute default values
+
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Version 1.3 Recommendation - Attribute default values: The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/32[Attribute Default Values #32]. The recommendation is that Defaults.xml can be used to define global attribute defaults as well as per-dataset defaults. Doing per-entity defaults would be a straightforward extension that could be proposed for CDB V1.3 as a transition path. The subgroup suggests that the CDB SWG discuss this for possible inclusion in version 1.3. A change request for this approach to specifying default values is also suggested.
+|===
+
+=== A-8- Recommendation 8: Enumerated / Listed Values
+
+|===
+|SOFWERX Sprint ER Attributions sub-group
+
+|Version 1.3 Recommendation - Attribute Terms The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/31[Capture Attribute Terms (Enumerates) in Metadata #31]. Attributes describing qualitative values are present in CDB V1.2 and the list of valid values for each attribute are documented in the human-readable specification with both the vocabulary term name and its integer numeric value (index). However, the machine-readable XML metadata does not contain any of this information and treats these attribute types as raw integers with only a minimum and maximum value constraint. It may make sense as a transition path to update CDB V1.3 to define additional XML elements in a backward compatible way to capture these definitions from the existing specification into the machine-readable XML metadata. The conceptual model in the CDB V1.2 specification does align with how GGDM treats such attributes, so there is no fundamental incompatibility, and the proposed CDB X dictionary design accounts for properly tracking the terms for qualitative attributes in a machine-readable way in SQLite.
+|===
+
+==== CR E-1: Create CDB V1.x XML schema for Enumerations
+
+* References
+* Dependencies: None
+* External References: NSG Core Vocabulary 2.0
+* Summary of Changes: Capture the definitions of controlled vocabularies for qualitative attribute values, also known as enumerations, into the XML metadata schema and in all relevant places in the standard specification such as terms and definitions and conceptual model. This should include defining two levels of hierarchy for describing enumerations: the higher level enumeration group which defines a collection of controlled vocabulary terms, and its contained listed values (also known as enumerates) describing the valid vocabulary terms for the enumeration. Both enumerations and listed values should define properties for name and description. Listed values should also define an integer code value. The definitions should be consistent with the NSG Core Vocabulary 2.0 conceptual model. Enumerations should be standalone definitions and not tied to any specific feature type or attribute.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 3: Terms and Definitions, Vol 9: Schemas and Vol 11: Conceptual Model.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|The easiest approach to this would be to add a new top-level element <Enumerations> to the Vector_Attributes.xsd. However, for both the current CDB data dictionary and the proposed NAS-based dictionary, the enumerations dictionary is quite large so it may make sense to instead create a new Enumerations.xsd and associated Enumerations.xml file so existing CDB clients do not have to parse through thousands of enumerations definitions to use the attribute definitions if they don’t need it.
+
+|===
+
+==== CR E-2: Create CDB V1.x XML Schema for Associating Enumerations to Attributes
+
+* References
+* Dependencies: CR E-1
+* External References: None
+* Summary of Changes: Augment the CDB Feature Attribute schema and all descriptions, specifications, and references such as in the conceptual model to allow attaching an enumeration definition by name from the Enumerations dictionary defined by CR E-1 to a particular attribute <Value>. For backwards compatibility this should be a new element inside the <Value> element and the existing <Value> description should retain <Format> of Integer and the range should specify the valid range of listed value codes as currently done.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|This will add a new requirement in Volume 1 Section 10.1.8.
+
+|===
+
+==== CR E-3: Capture CDB V1.2 Enumerations into XML Metadata and Specification
+
+* References
+* Dependencies: CR E-2
+* External References: None
+* Summary of Changes: Capture the enumeration definitions and attribute associations currently present in CDB V1.2 Volume 1 Section 10.7.1.3 as human readable text into sample XML Metadata in accordance with the XML schema. Update Volume 1 to specify the valid set of Enumerations for traditional (FACC) CDB V1.2 attribution in accordance with the conceptual model updates in CR E-1. Update Volume 1 to hyperlink enumerated attributes to the enumeration definitions in accordance with the conceptual model defined in CR E-2.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|Volume 1 Section 10.7.1.3 should have a separate section definition enumerations, and then the enumerations should be referenced (either as hyperlinks or embedded inline) in a consistent and standard way  for each attribute. Currently attributes in this specification section use a very freeform approach to documenting enumerations and other constraints.
+
+|===
+
+==== CR E-4: Provide Mechanism for Externally-Specified Codelists
+
+* References
+* Dependencies: CR E-1
+* External References: None
+* Summary of Changes: Augment the definition of Enumerations as created by CR E-1 to add to the XML schema and associated requirements the ability to define “codelists” which are enumerations that reference existing external standards for the allowable controlled vocabulary definitions. This is primarily useful for using items such as security classifications, ISO country codes, DIS codes, and other types of vocabularies that are primarily maintained by external standards that may be updated more frequently than CDB itself.
+* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
+* CR ‘reduction’ actions not specific to any document
+
+|===
+|One open question for this improvement is whether the list of known values should be captured into CDB XML metadata and Volume 1 specification, or whether the enumeration should merely reference an external standard by URI since the list of values may change more frequently than CDB itself. Some external codelists may only define text values and not integer codes.
+
+|===
+
+
+=== Appendix B: Traditional CDB 1.0 Attribution
+
+This table outlines the CDB vector attributes that are exclusively designed for the OGC CDB Standard and cannot be mapped to other schemas, such as NAS.
+
+*Table B-1: Traditional OGC CDB V1.3 attributes extracted from **CDB_Attributes.xml** file*** **
+
+|===
+|*CDB Attribute Name*|*Semantic Definition*
+
+|*Category I) CDB indexes that affect database structure and attribute layout:*|
+|Feature Attribute Classification Code (FACC)|This feature code identifies and categorizes feature types. The enumerated codes are listed in ‘/CDB/Metadata/Feature_Data_Dictionary.xml’.
+|Feature Sub Code (FSC)|In conjunction with the feature code, this code is used to distinguish and categorize features within a dataset. The enumerated codes are listed in ‘/CDB/Metadata/Feature_Data_Dictionary.xml’.
+|Class Name (CNAM)|CNAM is a unique name that represents the Attribution Class schema in a database file. Attributes are referenced via this class name. The class name is used as the primary key to perform searches within the Dataset Class Attribute file. Each row of an instance-level *.dbf can optionally use the CNAM to refer to class attributes; blank indicates “no class attribute”.
+|CDB Composite Material Index (CMIX)|CMIX is used to determine the base material composition of the associated features. Refer to the Material Naming Conventions section for a description of material naming conventions. CMIX reference into Composite Material Table, therefore, affects cross-reference structure.
+|Light Type (LTYP)|LTYP special instructions are specific to CDB light hierarchy. LTYP is a unique code corresponding to a Light Type. Annex J of this standard provides the supported light types. The light types follow a hierarchical organization provided by the light type naming conventions described in Section 2.3, Light Naming. The Lights.xml file establishes the correspondence between the LTYP code and the Light Type name.
+|Moving Model DIS Code (MMDC)|A character string composed of the 7 fields of the DIS Entity Type. The first four fields (kind, domain, country and category) are used to create four subdirectories in the moving model datasets hierarchy. This attribute is mandatory for Moving Model Location features.
+|Model Level of Detail (MLOD), Model Name (MODL) and Model Type (MODT)|MLOD is the level of detail of the 3D model that is associated with the point feature, and this attribute affects model instantiation interpretation and thus CDB structure.
+|CDB Extended Attribute Index (CEAI), Geomatics Extended Attribute Index (GEAI), or Vendor Extended Attribute Index (VEAI)|An index that points to a row entry of a CDB, Geomatics or Vendor Extended Attribution file for the current dataset. This entry permits users to store an index to a link list set of extra attributes. CDB-compliant devices are not mandated to read and interpret this field. Usage of this attribution is not portable to other simulators because it falls outside of the documented CDB attribution scheme. These Extended Attribution files should be located in the same directory as the instance-level attribution.
+|*Other attributes in this group:*|
+|*Category II) CDB model placement and client rendering attributes:*|
+|Bounding Boxes Height (BBH), Width (BBW) and Length (BBL)|These attributes define the dimension of the box centered at the model origin and inbound the portion of the model above its XY plane, including the envelopes of all articulated parts. BBH refers to the height of the box above the XY plane of the model, BBW refers to the box's width along the X-axis, and BBL refers to the length of the box along the Y-axis. Note that for 3D models used as cultural features, the XY plane of the model corresponds to its ground reference plane. The value of BBH, BBW and BBL should be accounted for by client devices to determine the appropriate distance at which the model should be paged-in, rendered or processed. BBH, BBW and BBL are usually generated through database authoring tool automation.
+|Bounding Sphere Radius (BSR)|In the case where a feature references an associated 3D model, it is the radius of the hemisphere centered at the model origin, and that bounds the portion of the model above its XY plane, including the envelopes of all articulated parts. Note that for 3D models used as cultural features, the XY plane of the model corresponds to its ground reference plane. The value of BSR should be accounted for by client devices (in combination with other information) to determine the appropriate distance the model should be paged-in, rendered or processed. When the feature does not reference a 3D model, BSR is the radius of the abstract point representing the feature (e.g., a city). The dimension of the bounding sphere is intrinsic to the model and identical for all LOD representations.
+|Absolute Height Flag (AHGT), and Z Attributes.|Indicates how to interpret the Z component of a feature. If AHGT is true, the feature is positioned to the value specified by the Z component (Absolute Terrain Altitude), irrelevant to the terrain elevation dataset. If AHGT is false or not present, the feature is positioned to the value specified by the underlying terrain offset by the Z component value. When the Z coordinate (altitude) of a feature is relative to the ground, the terrain elevation dataset can be updated without the need to recompute the altitude of the feature.
+|Scaling X-Axis (SCALx), Scaling Y-Axis (SCALy), Scaling Z-Axis (SCALz) |These attributes are a set of scaling factors, to be applied to the rendering of model geometry by the client-device. The scaling value should also be accounted for by client devices (in combination with other information) to determine the appropriate distance at which the model should be paged-in, rendered or processed. All three scaling factors are optional, and values of zero and negative values are not permitted.
+|Layer Priority Number (LPN)|LPN affects feature depth ordering. LPN describes a priority number that establishes the relative priority of overlapping features. LPN establishes the order (starting from 0 for lowest priority) by which client-devices process overlapping features.
+|Relative Tactical Importance (RTAI)|RTAI provides the relative tactical importance of cultural features relative to other features for client-device scene/load management. A value of 100% corresponds to the highest importance; 0% corresponds to the lowest importance. Note that the importance of the model can be further modified at run-time in the simulator console through the scenario importance value assigned to the model.
+|*Category III) Cross-referencing between feature geometries, topology, navigation data and CDB datasets:*|
+|Junction ID (JID), Start Junction ID (SJID), End Junction ID (EJID) |Junction Identification Number virtually connects a point or a polygon feature to another point, linear or polygon feature. Features stored in the same vector file having the same JID are connected. The linear features stored in the same vector file having the same SJID or EJID as the JID are connected. JID, SJID, and EJID affect cross-references between feature geometries and between datasets via relationship file, affecting database structure.
+|Network Dataset Code (NDSC), Network Component Selector 1 (NCS1), Network Component Selector 2 (NCS2)|NDSC Code is used to identify the dataset code file which contains the point, lineal, or polygon feature that is virtually connected. NCS1 Code defines the component selector 1  and the component selector 2 file, respectively. These codes are mandatory for network datasets and affect cross-referencing between datasets
+|Taxiway ID (TXID)  |A unique alphanumeric identifier (for the airport in question) that affects cross-references to NavData datasets.
+|Airport ID (APID) |APID is a unique alphanumeric identifier that points to a record in the NavData Airport or Heliport dataset (i.e., a link to the airport or the Heliport description in the NavData dataset). This ID is the value of the field Ident of the Airport or Heliport dataset. Note that all of the lights located in vector datasets associated with the operation of an airport (including runway lights and lighting systems) are required to reference an airport or heliport in the NavData dataset. All man-made features associated with an airport or heliport must be assigned an APID attribute; the APID attribute is not required for features unrelated to airports or heliports.
+|Runway ID (RWID) |An alphanumeric identifier that uniquely identifies a runway for a given airport; this ID must match the value of the field Ident of the Runway or Helipad dataset. RWID is a cross-reference to NavData datasets.
+|Gate ID (GAID)|GAID is a unique alphanumeric identifier (for the airport in question) that is consistent with the IDENT attribute name within the NavData Gate dataset. This ID is the value of the Gate Identifier of the Gate dataset and can be used to extract additional information such as the gate position and bearing.
+|Length of Lineal (LENL)|The length of a lineal. If the feature has been clipped to a tile boundary, the length still gives the initial full length of the object prior to the clipping operation, and if it belonged to a topological network, LENL will represent the distance between the two closest junction points encompassing this lineal segment.
+|*Other attributes in this group:*|
+|===
+
+*Note:*  +
+Some geometry attributes in the CDB attribution list (e.g.,  WGP, HGT, DEP) are used by almost all CDB clients. However, some clients might not use them for rendering. The concept of those attributes are mentioned in the following table.
+
+
+|===
+|*Application Schema Geometry Attributes*|
+
+|OGC CDB relies on standard geometry attribution provided by the feature attribute application schema for describing orientation, size, and placement of point, linear, and polygon features and associated models. The specific names and codes of these attributes vary depending on which feature attribute schema standard is in use but must always be present. Description of the feature attribute application schema should indicate which particular role any standard geometry attributes provide. CDB V1.3 and earlier traditionally used DIGEST FACC 2.1 real-valued attributes to model these properties.|
+|Angle of Orientation (AO1)|The angular distance measured from the true north (0 deg) clockwise to the feature's major (Y) axis - also known as azimuth or heading. This represents the rotation of a point feature relative to its local Z axis with a range from 0.0 (inclusive) to 360.0 (exclusive) degrees. If not present or specified, a default value of 0.0 degrees should be assumed.
+|Width (WGP)|For linear features (such as roads, railways, runways, taxiways), the width is a positive distance measurement of the axis perpendicular to the linear segments.
+|Depth below Surface Level (DEP)|The depth of a feature relative to its surface location. If the feature has no modeled representation, its depth is measured as the distance from the surface level to the lowest point of the feature below the surface. If the feature has an associated 3D model, the depth is measured as the distance from the XY plane of the model to the lowest point of the model below that plane. Depth values are measured with increasing positive values downward. For hydrographic features, the depth is also a measure of the water level relative to the deepest bottom surface.
+|Height above Surface Level (HGT)|The height of a feature relative to its surface location. If the feature has no modeled representation, its height is measured as the distance from the surface level (ground or water) to the tallest point of the feature above the surface. If the feature has an associated 3D model, the height is measured as the distance from the XY plane of the model to the highest point of the model above that plane. Height values are measured with increasing positive values upward.
+|===
+
+In the current and previous versions of the OGC CDB standard (V1.0, V1.1, V1.2 and V1.3), these attributes come from FACC; however, based on the application schema profile these concepts can be defined accordingly by considering the general content requirements.
