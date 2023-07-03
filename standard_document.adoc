@@ -99,11 +99,14 @@ include::clause_7_shapefile_dbase_iii_guidance.adoc[]
 
 include::clause_8_tiff_implementation_guidance.adoc[]
 
+include::clause_9_cdb_nas_attribute_mapping.adoc[]
+
 <<<
 ////
 add or remove annexes after "A" as necessary
 ////
 
+include::annex-A_SOFWERX_attributions_subgroup.adoc[]
 
 <<<
 
