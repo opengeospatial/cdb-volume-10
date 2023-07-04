@@ -1,13 +1,15 @@
 == CDB (V1.3) to NAS (V8.0) Attribute Mapping
 
-The Open Geospatial Consortium (OGC) CDB Standard released in 2017 defines a standard way of organizing and encoding geospatial data, including textured terrain, imagery, multiple levels of detail, and the ability to store and display 2D and 3D features such as roads, buildings, and other infrastructure along with their attributes. CDB is designed for use in the creation and management of 3D geospatial datasets, particularly for 3D modeling and simulation across different systems and applications.The OGC CDB Standard has been published in three versions, namely V1.0, V1.1, and V1.2, with the current work being a part of the V1.3 version. +
-One of the persistent and important concerns with the OGC CDB V1.x standard is how to evolve beyond the current use of CDB attributes and feature codes. OGC CDB Standard Working Group (SWG) members and users have expressed an interest in broader attributes and feature codes which embodies most (if not all) of the attributes encountered in the commonly used OGC standards. Specifically, a requirement to the National System for Geospatial Intelligence (NSG) Application Schema (NAS) was expressed. In the https://docs.ogc.org/per/17-042.html[OGC Testbed-13: CDB Engineering Report], participants evaluated how  feature codes and attribution schema are used in the CDB standard and  investigated how a specific profile ("Urban Military Profile") called NAS Profile can be developed and used in CDB. The results of that effort along with the SOFWERX Sprint ER Attributions sub-group Recommendations (Appendix A) // ?? provide that basis for the content in this document. The objective of this document is to expand CDB attributes for supporting interoperability of existing CDB with the NAS-based feature codes and schemas.  +
+The Open Geospatial Consortium (OGC) CDB Standard released in 2017 defines a standard way of organizing and encoding geospatial data, including textured terrain, imagery, multiple levels of detail, and the ability to store and display 2D and 3D features such as roads, buildings, and other infrastructure along with their attributes. CDB is designed for use in the creation and management of 3D geospatial datasets, particularly for 3D modeling and simulation across different systems and applications.The OGC CDB Standard has been published in three versions, namely V1.0, V1.1, and V1.2, with the current work being a part of the V1.3 version.
+
+One of the persistent and important concerns with the OGC CDB V1.x standard is how to evolve beyond the current use of CDB attributes and feature codes. OGC CDB Standard Working Group (SWG) members and users have expressed an interest in broader attributes and feature codes which embodies most (if not all) of the attributes encountered in the commonly used OGC standards. Specifically, a requirement to the National System for Geospatial Intelligence (NSG) Application Schema (NAS) was expressed. In the https://docs.ogc.org/per/17-042.html[OGC Testbed-13: CDB Engineering Report], participants evaluated how  feature codes and attribution schema are used in the CDB standard and  investigated how a specific profile ("Urban Military Profile") called NAS Profile can be developed and used in CDB. The results of that effort along with the SOFWERX Sprint ER Attributions sub-group Recommendations (Appendix A) // ?? provide that basis for the content in this document. The objective of this document is to expand CDB attributes for supporting interoperability of existing CDB with the NAS-based feature codes and schemas.
+
 A SOFWERX Sprint ER Attributions sub-group (Appendix A) // ?? recommended that the CDB core conceptual model should not be limited to any specific data dictionary or content. Instead, it should provide a metamodel that can describe any ISO 19109 compliant application schema as comprehensively as possible. The goal of Attributions sub-group document (Appendix A) // ?? is to support the development of an extension profile for CDB V1.3 that can work with any data dictionary that complies with ISO 19109. To achieve this goal, a roadmap was presented in the CDB SWG, which involves mapping the CDB 1.3 to NAS 8.0. The first step in this process was to upgrade the CDB V1.3 Attribute schema by adding extra attributes to enable the mapping. These upgrades are described in Section 6.1 // ?? of this document. The second step was a manual mapping of the CDB attributes to NAS attributes and entities (Section 6.2). The final  step involved implementing the mapping in XML to make the mapping between schemas machine-readable and easier to automate (Section 6.3). This work provides insights into:
 
 * Introduction of the OGC CDB V1.3 conceptual data model, and attribution schema;
 * How OGC CDB V1.x supports organizing features and attributes;
 * Evaluates the current solutions for mapping CDB V1.3 to NAS V8.0;
-The interoperability issues related to the mapping of multiple attribute/application schemas.
+* The interoperability issues related to the mapping of multiple attribute/application schemas.
 
 For example, if an analyst finds a CDB datastore with urban data and wants to use the data along with other data for simulation and visualization (e.g., NSG urban data), the analyst should be able to map the CDB attribute schema to NAS and vice versa. As the OGC CDB V1.x standards and NSG use different schemas to represent data, schema mapping can be used to map the data elements from one schema to the other, allowing the two datasets to exchange data seamlessly.
 
@@ -17,12 +19,15 @@ image::images/image91.png[image,width=634,height=396]
 
 
 Schema mapping involves defining mappings between data elements in two different schemas. These mappings can be defined manually or by using automated tools. Manual mapping involves visually analyzing the data structures of the two schemas and manually mapping corresponding data elements. Automated mapping involves using software tools that can automatically identify common data elements in the two schemas and map them. Once the schema mappings are defined, data can be transformed from one schema to another using a data integration tool or middleware. This enables data to be exchanged and used seamlessly between systems, enabling for better collaboration and decision-making.
+
 This document summarizes the steps to make the CDB V1.3 attribute schema as adaptable as possible to support a range of data dictionaries, specifically NAS V8.0 that comply with ISO 19109. Modernization of attributes is important because it enables CDB to keep up with the ever-evolving technological, and community changes and enhance customer experience.
 
 === CDB Attribution Schema for Vector Features
-In the OGC CDB V1.x standards, each vector feature is characterized by a set of attributes. Attribution schemas are the method to handle these different types of attributes. The vector attributes schema can be found in the Vector_Attributes.xsd file stored in the schema folder of a CDB datastore (\CDB\Metadata\Schema\Vector_Attributes.xsd) and accessible from the +++<u>+++o+++</u>+++http://schemas.opengis.net/cdb/1.1/Vector_Attributes.xsd[fficial schema]. // ?? +
-The list of CDB attributes is described in the CDB_Attributes.xml file stored in the metadata folder of a CDB datastore (\CDB\Metadata\CDB_Attributes.xml) and accessible from thishttps://schemas.opengis.net/cdb/1.2/Metadata/CDB_Attributes.xml[ official link]. // ?? +
-The CDB_Attributes.xml file is coded  using the Extensible Markup Language (XML) format. The XML stylesheet for visualization of CDB attributes is provided with the official OTGC CDB Standard documents and is accessible here https://schemas.opengis.net/cdb/1.2/Metadata/Stylesheet/[official link]. // ??
+In the OGC CDB V1.x standards, each vector feature is characterized by a set of attributes. Attribution schemas are the method to handle these different types of attributes. The vector attributes schema can be found in the Vector_Attributes.xsd file stored in the schema folder of a CDB datastore (\CDB\Metadata\Schema\Vector_Attributes.xsd) and accessible from the http://schemas.opengis.net/cdb/1.1/Vector_Attributes.xsd[official schema]. // ??
+
+The list of CDB attributes is described in the CDB_Attributes.xml file stored in the metadata folder of a CDB datastore (\CDB\Metadata\CDB_Attributes.xml) and accessible from this https://schemas.opengis.net/cdb/1.2/Metadata/CDB_Attributes.xml[official link]. // ??
+
+The CDB_Attributes.xml file is coded using the Extensible Markup Language (XML) format. The XML stylesheet for visualization of CDB attributes is provided with the official OTGC CDB Standard documents and is accessible here https://schemas.opengis.net/cdb/1.2/Metadata/Stylesheet/[official link]. // ??
 
 ==== CDB Vector Data Model
 
@@ -32,29 +37,38 @@ image::images/image92.png[image,width=634,height=396]
 [#img_2,reftext='Figure ?-2']
 *Figure ?-2. The UML diagram of the CDB V1.3 vector attribute schema*
 
+The UML diagram was generated based on the Vector_Attributes.xsd file and consists of three elements: Attribute, Unit, and Scaler. The Attribute element is the focus of this document. The following table defines the major components of CDB attributes for vector data. In CDB V1.3, please refer to Section 10.1.8 of Volume 1: CDB Attributes Metadata // ?? for a detailed definition of the UML model components.
 
-The UML diagram was generated based on the Vector_Attributes.xsd file and consists of three elements: Attribute, Unit, and Scaler. The Attribute element is the focus of this document. The following table defines the major components of CDB attributes for vector data. In CDB V1.3, please refer to Section 10.1.8 of Volume 1: CDB Attributes Metadata // ?? for a detailed definition of the UML model components. +
 *Table 1: The major components of UML model definition*
 |===
 |Name|Definition
 
-|Attribute|Attributes are used to describe one or more real or virtual characteristics of a feature. Attributes have three characteristics:
-|Compatibility|It provides compatibility and origin of attributes specified in the OGC CDB V1.x standard. The current values are OGC CDB 1.0, DIGEST 2.1, DIGEST, and SEDRIS (EA = 562).
-|Allocation|This element shows allocation of CDB attributes to each of the Vector datasets. The CDB standard limits the applicability of each of the CDB attributes to certain vector datasets.
-|Level|Provides the schema level of the attribute such as class-level, instance-level and extended-level.
-|Value|Attribute values give quantitative/qualitative meaning to the attribute. This property includes data type, enumeration, length, format, range, precision, unit, and scaler of each attribute.
+|Attribute| Attributes are used to describe one or more real or virtual characteristics of a feature. Attributes have three characteristics: +
+- Code: A unique four-digit numeric code associated with each attribute. +
+- Symbol (Identifier): A unique three-character or four-character alphanumeric identifier associated with the attributes that are governed by this standard. +
+- Deprecated: States if the attribute is deprecated or not.
+
+
+|Compatibility| It provides compatibility and origin of attributes specified in the OGC CDB V1.x standard. The current values are OGC CDB 1.0, DIGEST 2.1, DIGEST, and SEDRIS (EA = 562).
+
+|Allocation| This element shows allocation of CDB attributes to each of the Vector datasets. The CDB standard limits the applicability of each of the CDB attributes to certain vector datasets.
+
+|Level| Provides the schema level of the attribute such as class-level, instance-level and extended-level.
+
+|Value| Attribute values give quantitative/qualitative meaning to the attribute. This property includes data type, enumeration, length, format, range, precision, unit, and scaler of each attribute.
 |===
 
-The OGC CDB V1.x standards provide three levels to represent the attributes of a feature: Instance-level attribution schema, Class-level attribution schema, and Extended-level attribution schema. Each of the schemas offers different trade-offs in how the attribution data is accessed and stored. Each of these schemas is largely motivated by storage size considerations, and flexibility of the attributes which are assigned to individual features or to a group of features.  +
-Although class attributes are common to several instances of a feature, optimization is not worth the cost of another read file I/O and the additional complexity to processing code. However, for compatibility, class-level attributes are still supported. The same for extended attributes. The intention and preference as specified in the CDB V1.0 Standard were to promote storing all CDB attributes with the instance-level and avoid writing the class-level attributes. The same logic applies to Geomatics and Extended Attributes. The CDB Feature Data Dictionary (FDD) can be extended by using the extension capabilities and adding the new feature codes into the FDD XML or adding a new attribute into the Vector Attribute schema file to access additional feature codes/attributes. However, this mechanism is so slow and is not used widely. The SOFWERX Sprint ER Attributions sub-group Recommendations (Appendix A) // ?? recommended avoiding extended-level attributes in the CDB.  +
-For example, a CDB datastore instance can use Esri Shapefiles to represent vector data and attributes. As per the Esri Shapefile Technical Description, the set of attributes of vector features are stored in dBase III+ files. Attributes are either Mandatory, Optional, not permitted, or not used (Figure ?-3).
+The OGC CDB V1.x standards provide three levels to represent the attributes of a feature: Instance-level attribution schema, Class-level attribution schema, and Extended-level attribution schema. Each of the schemas offers different trade-offs in how the attribution data is accessed and stored. Each of these schemas is largely motivated by storage size considerations, and flexibility of the attributes which are assigned to individual features or to a group of features.
+
+Although class attributes are common to several instances of a feature, optimization is not worth the cost of another read file I/O and the additional complexity to processing code. However, for compatibility, class-level attributes are still supported. The same for extended attributes. The intention and preference as specified in the CDB V1.0 Standard were to promote storing all CDB attributes with the instance-level and avoid writing the class-level attributes. The same logic applies to Geomatics and Extended Attributes. The CDB Feature Data Dictionary (FDD) can be extended by using the extension capabilities and adding the new feature codes into the FDD XML or adding a new attribute into the Vector Attribute schema file to access additional feature codes/attributes. However, this mechanism is so slow and is not used widely. The SOFWERX Sprint ER Attributions sub-group Recommendations (Appendix A) // ?? recommended avoiding extended-level attributes in the CDB.
+
+For example, a CDB datastore instance can use Esri Shapefiles to represent vector data and attributes. As per the Esri Shapefile Technical Description, the set of attributes of vector features are stored in dBase III+ files. Attributes are either Mandatory, Optional, not permitted, or not used (<<#img_3>>).
 
 image::images/image93.png[image,width=634,height=396]
 [#img_3,reftext='Figure ?-3']
 *Figure ?-3. An example of Instance-level and Class-level attribution schema in vector shapefiles*
 
-Allocation of CDB attributes to datasets is shown in the following figure that can be used as a schema for the attribute allocation (Figure 4).
-
+Allocation of CDB attributes to datasets is shown in the following figure that can be used as a schema for the attribute allocation (<<#img_4>>).
 
 image::images/image94.png[image,width=634,height=396]
 [#img_4,reftext='Figure ?-4']
@@ -62,15 +76,20 @@ image::images/image94.png[image,width=634,height=396]
 
 === NAS
 
-The https://nsgreg.nga.mil/nas/[National System for Geospatial Intelligence (NSG) Application Schema (NAS]https://nsgreg.nga.mil/nas/[https://nsgreg.nga.mil/nas/[)]] specifies a platform independent model for geospatial data. The geospatial semantics are specified in the NSG Entity Catalog (NEC) and NSG Feature Data Dictionary (NFDD). The NAS conforms to ISO 19109:2005 Rules for Application Schema as well as conceptual schemas specified by other ISO 19100-series standards. The NAS includes entity modeling for modeling features, events, names and coverages (e.g., grids, rasters, and TINs). +
-NAS is an example of recent modern feature data models that include geospatial data semantics, supports net-centric geospatial services, and is capable of achieving geospatial data interoperability. +
+The https://nsgreg.nga.mil/nas/[National System for Geospatial Intelligence (NSG) Application Schema (NAS)] specifies a platform independent model for geospatial data. The geospatial semantics are specified in the NSG Entity Catalog (NEC) and NSG Feature Data Dictionary (NFDD). The NAS conforms to ISO 19109:2005 Rules for Application Schema as well as conceptual schemas specified by other ISO 19100-series standards. The NAS includes entity modeling for modeling features, events, names and coverages (e.g., grids, rasters, and TINs).
+
+NAS is an example of recent modern feature data models that include geospatial data semantics, supports net-centric geospatial services, and is capable of achieving geospatial data interoperability.
+
 As the NAS specifies an NSG-wide model for geospatial data that supports a wide variety of domains and applications, defining subsets of the NAS that meet specific requirements for specific domains is advantageous. In these cases mapping between a specific profile of the NAS with other schemas is possible.
 
 ==== NAS Data Model
 
-The NSG Application Schema (NAS) - Part 1 - specifies an NSG-wide logical model for geospatial data that is technology neutral. The NAS - Part 1 conforms to ISO 19109, Geographic information - Rules for application schema, and its conceptual schema. The NAS - Part 1 integrates conceptual schemas from multiple ISO 19100-series standards for geospatial information modeling, such as those for features, events, names and coverages (e.g., grids, rasters, and TINs). +
-The NAS - Part 1 ensures that there is a clear, complete, and internally-consistent NSG logical geospatial data model that may be used to derive system-specific implementation models/schemas in a rigorous manner - NAS data model ensures that data integrity is preserved when geospatial data is exchanged between different system implementations within the NSG. It also reduces the cost of evolving system-specific implementations to meet evolving system, mission and customer requirements while promoting data agility. +
-The NAS - Part 1 leverages and integrates geospatial information modeling practices from multiple community models (e.g., MGCP, AIXM, MIDB, ENC, AML, and others) whose data are used and exchanged by NSG component systems. The NAS entities are organized into logical subject matter https://nsgreg.nga.mil/as/view?i=132013[Views and View Groups] for better searching and discovery capabilities by subject matter experts. +
+The NSG Application Schema (NAS) - Part 1 - specifies an NSG-wide logical model for geospatial data that is technology neutral. The NAS - Part 1 conforms to ISO 19109, Geographic information - Rules for application schema, and its conceptual schema. The NAS - Part 1 integrates conceptual schemas from multiple ISO 19100-series standards for geospatial information modeling, such as those for features, events, names and coverages (e.g., grids, rasters, and TINs).
+
+The NAS - Part 1 ensures that there is a clear, complete, and internally-consistent NSG logical geospatial data model that may be used to derive system-specific implementation models/schemas in a rigorous manner - NAS data model ensures that data integrity is preserved when geospatial data is exchanged between different system implementations within the NSG. It also reduces the cost of evolving system-specific implementations to meet evolving system, mission and customer requirements while promoting data agility.
+
+The NAS - Part 1 leverages and integrates geospatial information modeling practices from multiple community models (e.g., MGCP, AIXM, MIDB, ENC, AML, and others) whose data are used and exchanged by NSG component systems. The NAS entities are organized into logical subject matter https://nsgreg.nga.mil/as/view?i=132013[Views and View Groups] for better searching and discovery capabilities by subject matter experts.
+
 NAS data model register provides the following services:
 
 * https://nsgreg.nga.mil/registries/browse/index.jsp?registryType=as&register=NAS[Browse] or https://nsgreg.nga.mil/registries/search/index.jsp?registryType=as&register=NAS[Search] an entire list or subset of:
@@ -82,22 +101,27 @@ NAS data model register provides the following services:
 ** Entity Associations [with Association Roles] (_e.g._, bridge country [bridge-located country, location country of bridge])
 ** Constraints (_e.g._, runways may be represented only as curves or surfaces)
 * Model review – a Model consists of a set of UML Schemas and Packages that organize the Entity Types and Datatypes of the register in accordance with a logical data model perspective and for the purpose of software development and reuse.
-* Information Context review – an Information Context consists of a set of View Groups and a set of Thematic Groups.
+* Information Context review – an Information Context consists of a set of View Groups and a set of Thematic Groups. 
 ** View Groups organize the contents of the register in accordance with appropriate subject matter perspectives for the purpose of information content discovery and inspection.
 ** Thematic Groups organize the contents of the register in accordance with common functional purposes in specific contexts (for example: air operations, ground warfighting, safety of navigation).
-Both types of groups collect sets of *Information Views* that have associated Entity Types and Datatypes.  +
+Both types of groups collect sets of *Information Views* that have associated Entity Types and Datatypes.
+
 For more information on NAS you can check the https://nsgreg.nga.mil/nas/[NAS link].
 
 === Comparison of the CDB and NAS Schemas
 
-When comparing two schemas, it is important to consider their underlying structures and how they organize and store data. One application schema may be more complex than the other, with multiple tables and relationships between them, while the other may have a simple flat structure. The choice of schema design will depend on the specific needs of the application and the types of data being stored. Additionally, it is important to consider the performance and scalability of the schema, as a poorly designed schema can lead to slow queries and inefficiencies as the volume of data grows. Ultimately, a well-designed schema should provide efficient data storage, easy data retrieval, and allow for flexibility in future modifications to the application. The following table compares the OGC CDB V1.3 with NAS V8.0 schemas.   +
-*Table 1: OGC CDB V1.3 with NAS V8.0 schema comparison *
+When comparing two schemas, it is important to consider their underlying structures and how they organize and store data. One application schema may be more complex than the other, with multiple tables and relationships between them, while the other may have a simple flat structure. The choice of schema design will depend on the specific needs of the application and the types of data being stored. Additionally, it is important to consider the performance and scalability of the schema, as a poorly designed schema can lead to slow queries and inefficiencies as the volume of data grows. Ultimately, a well-designed schema should provide efficient data storage, easy data retrieval, and allow for flexibility in future modifications to the application. The following table compares the OGC CDB V1.3 with NAS V8.0 schemas.
+
+*Table 1: OGC CDB V1.3 with NAS V8.0 schema comparison*
 |===
-|*CDB Feature Codes and Attributes*|*NAS Application Schema*
+|*CDB Feature Codes and Attributes*| *NAS Application Schema*
 
 |One simple feature with attributes (which are single data items, e.g., text, number, etc.)|Multiple different types of complex features.
+
 |Schema can be automatically generated based on a relational database (i.e., it is straightforward).|Schema agreed by community and richly featured data standards.
-|CdB has a “Simple Feature Schema” with association and reusability.|NAS is an “Application Schema” with formal description of the data structure and content required by one or more applications. It contains the descriptions of both geographic data and other related data.
+
+|CDB has a “Simple Feature Schema” with association and reusability.|NAS is an “Application Schema” with formal description of the data structure and content required by one or more applications. It contains the descriptions of both geographic data and other related data.
+
 |Interoperability relies on simplicity and customization.|Interoperability through standardization e.g., ISO 19109.
 |===
 
@@ -105,7 +129,7 @@ This document exclusively covers the mapping from CDB to NAS, while the reverse 
 
 === CDB Attribution Roadmap (SOFWERX Sprint)
 
-As described in Appendix A, there are seven recommendations generated by the SOFWERX Sprint ER Attributions sub-group. Although certain recommendations pertain to CDB V2.x and are beyond the scope of this document, the majority center on updating the attributes requirements in OGC CDB V1.3 to align with modernization efforts. The SOFWERX Attributions sub-group proposes enhancing the existing CDB V1.3 XML metadata by integrating the NAS metamodel capabilities, which are currently not supported in the OGC CDB V1.x standard. The present document includes only those recommendations that are relevant to this undertaking and are itemized below.
+As described in Appendix A // ??, there are seven recommendations generated by the SOFWERX Sprint ER Attributions sub-group. Although certain recommendations pertain to CDB V2.x and are beyond the scope of this document, the majority center on updating the attributes requirements in OGC CDB V1.3 to align with modernization efforts. The SOFWERX Attributions sub-group proposes enhancing the existing CDB V1.3 XML metadata by integrating the NAS metamodel capabilities, which are currently not supported in the OGC CDB V1.x standard. The present document includes only those recommendations that are relevant to this undertaking and are itemized below.
 
 . Create an OGC CDB V1.3 schema includes _Compatibility_ (Origin), _Definition, Usage Note, Default, Enumerations and Allocation in the __Vector_Attributes.xsd_ file
 . Add _Compatibility_ (Origin) property to all attributes in the _CDB_Attributes.xml_ file
@@ -119,7 +143,6 @@ As described in Appendix A, there are seven recommendations generated by the SOF
 
 The first step for updating CDB vector attributes is to add modifications to the schema.
 
-
 image::images/image95.png[image,width=634,height=396]
 [#img_5,reftext='Figure ?-5']
 *Figure ?-5 Comparison of Vector_Attributes.xsd in the OGC CBD V1.2 with the OGC CDB V1.3: Green boxes/Bold text added to the vector attribute schema as a new element, property or enumeration.*
@@ -132,7 +155,8 @@ image::images/image96.png[image,width=634,height=396]
 
 ==== Add Compatibility (Origin) to the CDB_Attributes.xml file
 
-When working with NAS-based schemas such as GGDM, this will be increasingly important for configuration management of the specification. Also, if mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself. +
+When working with NAS-based schemas such as GGDM, this will be increasingly important for configuration management of the specification. Also, if mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
+
 Currently CDB V1.2 specifies the “Origin” of attributes in the CDB V1.2 - Vol 1 that documents the originating standard of the definition. This “Origin” property is added in the XML schemas as <Compatibility> tag to the__ ___Vector_Attributes.xsd_ file and all relevant attributes are updated in _CDB_Attributes.xml file_. <Compatibility> tag is implemented as a sequence to describe the full history since a particular term may have originated in an older standard but included in newer standards or possibly amended.
 
 A list of standardized origins are OGC CDB 1.0, DIGEST 2.1, DIGEST, and SEDRIS (EA = 562) along with the CDB 1.0 Traditional Attribute.
@@ -151,23 +175,46 @@ One ongoing challenge is how to handle missing attribute values that are needed 
 
 ==== Add Enumeration to the CDB_Attributes.xml file
 
-Attributes describing qualitative values are present in CDB V1.2- Vol 1. This volume list all valid values for each attribute are documented in the human-readable specification with both the vocabulary term name and its integer numeric value (index). However, the machine-readable XML metadata does not contain any of this information and treats these attribute types as raw integers with only a minimum and maximum value constraint.  +
+Attributes describing qualitative values are present in CDB V1.2- Vol 1. This volume list all valid values for each attribute are documented in the human-readable specification with both the vocabulary term name and its integer numeric value (index). However, the machine-readable XML metadata does not contain any of this information and treats these attribute types as raw integers with only a minimum and maximum value constraint.
+
 One of the changes in the CDB V1.3 is to update the schema  (Vector_Attributes.xsd file) with <Enumeration> element  in a backward compatible way to capture these definitions from the existing specification into the machine-readable XML metadata. Also the qualitative values of each attribute, known as enumerations, are added into the XML metadata (CDB_Attributes.xml file) and in all relevant places in the standard specification. The <Enumeration> element includes code-lists to define listed values (also known as enumerates) describing the valid vocabulary terms for the enumeration. Each code-list value defines two properties, code and description. It is worth mentioning here that when we need to have an enumeration element, the type element value would be set to Enum in advance. The following figure illustrates an example of an enumeration element in XML format. As it is shown, type element value sets to Enum in relation to the enumeration element.
 
-
-*image::images/image97.png[image,width=634,height=396]
-[#img_7,reftext='Figure ?-7']
-*Figure ?-7. The sample XML  description of Type and Enumeration elements. *
+*The sample XML description of Type and Enumeration elements.*
+[source,xml]
+----
+<Type>Enum</Type>
+<Enumeration>
+  <CodeList>
+     <Code>0</Code>
+     <Description>Unknown</Description>
+  </CodeList>
+  <CodeList>
+   	<Code>1</Code>
+     <Description>Better or equal to 10 m.</Description>
+  </CodeList>
+     .
+     .
+     .
+  <CodeList>
+     <Code>998</Code>
+     <Description>Not Applicable</Description>
+  </CodeList>
+  <CodeList>
+     <Code>999</Code>
+     <Description>Other</Description>
+  </CodeList>
+</Enumeration>
+----
 
 ==== Add Allocation property to  to all attributes in the CDB_Attributes.xml
 
-The above allocation table (Figure 4) is currently converted to an XML file in the OGC CDB V1.3 Standard . The table is included in the CDB_Attributes.xml file (\CDB\Metadata\CDB_Attributes.xml). A new property called “Allocation '' was added to the attribute element. In order to adopt this change, the Vector_Attributes.xsd file (\CDB\Metadata\Schema\Vector_Attributes.xsd) is updated. These changes are provided in the OGC CDB V1.3 revision.  Attributes are either mandatory, optional, not permitted, or not used (Figure 9).
+The above allocation table (<<#img_4>>) is currently converted to an XML file in the OGC CDB V1.3 Standard . The table is included in the CDB_Attributes.xml file (\CDB\Metadata\CDB_Attributes.xml). A new property called “Allocation '' was added to the attribute element. In order to adopt this change, the Vector_Attributes.xsd file (\CDB\Metadata\Schema\Vector_Attributes.xsd) is updated. These changes are provided in the OGC CDB V1.3 revision.  Attributes are either mandatory, optional, not permitted, or not used (<<#img_9>>).
 
 
-image::images/image98.png[image,width=634,height=396]
-[#img_8,reftext='Figure ?-8']
-*Figure ?-8. Allocation element added to the OGC CDB V1.3 vector attribute schema* +
-As can be seen in the following figure (Figure 4), feature codes (FACC and FSC) are two mandatory attributes for CDB vector features. The CDB attribution schema limits the applicability of each of the CDB attributes to certain vector datasets, value ranges, and units. This approach helps to reduce the size of the dataset instance and class-level attribution files. This CDB data model is used for the representation of many features using the modeler in real-time simulation.
+image::images/image97.png[image,width=634,height=396]
+[#img_7,reftext='Figure ?-7']
+*Figure ?-7. Allocation element added to the OGC CDB V1.3 vector attribute schema* +
+As can be seen in the following figure (<<#img_4>>), feature codes (FACC and FSC) are two mandatory attributes for CDB vector features. The CDB attribution schema limits the applicability of each of the CDB attributes to certain vector datasets, value ranges, and units. This approach helps to reduce the size of the dataset instance and class-level attribution files. This CDB data model is used for the representation of many features using the modeler in real-time simulation.
 
 === Mapping CDB vector attributes to NAS
 
@@ -178,163 +225,38 @@ The process of mapping CDB vector attributes to NAS involves identifying the sim
 Schema mapping process involves analyzing the attributes of both systems, identifying any overlaps or discrepancies, and establishing a set of rules to translate the data from CDB to the NAS. By mapping CDB vector attributes to NAS, it becomes possible to ensure compatibility between different data models and facilitate the exchange of data between systems that use different formats.
 
 
-image::images/image99.png[image,width=634,height=396]
-[#img_9,reftext='Figure ?-9']
+image::images/image98.png[image,width=634,height=396]
+[#img_8,reftext='Figure ?-8']
 *Figure ?-9. CDB V1.3 updated schema*
 
 ==== Manual Attribute Mapping from CDB to NAS
 
-This step involves the crosswalk, matching, and mapping of every attribute of two schemas, namely CDB and NAS. To map CDB attributes, the target version of NAS  is the latest normative NAS version (NAS V 8.0). NAS V8.0 adds substantial definitions in the maritime and aeronautics domains that may be necessary for CDB.  +
-In the manual mapping process from OGC CDB V1.x to NAS V8.0, all the CDB vector attributes are taken into account. Nevertheless, certain vector attributes are inherent to the OGC CDB Standard (Appendix B) and cannot be translated to other schemas such as NAS. The remaining attributes are used for the mapping between OGC CDB V1.3 and NAS V8.0. +
-In this step, all attributes with the similar characteristics in both CDB and NAS are extracted. As you can see in Table 3, from the CDB, name, code, symbol and definition of each attribute is exported. The name, code, definition, digest attribute and type of similar attribute on NAS was extracted to match the CDB attributes. Attribute mapping can be done manually using the following table to list the corresponding data elements in CDB and NAS schemas. Table 3 shows an example of how to create a schema mapping table manually. +
+This step involves the crosswalk, matching, and mapping of every attribute of two schemas, namely CDB and NAS. To map CDB attributes, the target version of NAS  is the latest normative NAS version (NAS V 8.0). NAS V8.0 adds substantial definitions in the maritime and aeronautics domains that may be necessary for CDB.
 
+In the manual mapping process from OGC CDB V1.x to NAS V8.0, all the CDB vector attributes are taken into account. Nevertheless, certain vector attributes are inherent to the OGC CDB Standard (Appendix B) and cannot be translated to other schemas such as NAS. The remaining attributes are used for the mapping between OGC CDB V1.3 and NAS V8.0.
+
+In this step, all attributes with the similar characteristics in both CDB and NAS are extracted. As you can see in Table 3, from the CDB, name, code, symbol and definition of each attribute is exported. The name, code, definition, digest attribute and type of similar attribute on NAS was extracted to match the CDB attributes. Attribute mapping can be done manually using the following table to list the corresponding data elements in CDB and NAS schemas. Table 3 shows an example of how to create a schema mapping table manually.
 
 *Table 3: **Manual** Mapping Table from CDB V1.3 attributes to NAS V8.0*
-OGC CDB V1.3
-NAS V8.0
-Name
-code
-symbol
-Definition
-Name
-code
-DIGEST Attribute/Feature Code
-Definition
-Source Item Identifier
-Type
-Directivity
-17
-DIR
-The side or sides of a feature that has the greatest reflectivity potential.
-Feature Directivity
-directivity
-DIR
-The sides of a feature that produce the greatest visual significance and/or reflectivity potential.
-801704
-Attribute
-Density Measure (% roof cover)
-19
-DMR
-Percentage of roof coverage within the area delimited by a polygon feature.
-Roof Cover
-roofCover
-DMR
-The portion of an area that contains structures having roofs or tops (for example: buildings and storage tanks).
-802834
-Attribute
-Density Measure (structure count)
-20
-DMS
-Number of man-made structures per square kilometer of polygon features.
-Structure Density
-structureDensity
-DMS
-The density of structures in an area.
-803030
-Attribute
-Location Name
-32
-LNAM
-A name that corresponds to a GeoPolitical Location.
-Administrative Name
-adminName
-ANM
-A name of a geopolitical entity or
-administrative division that may not have a formally standardized name
-(for example: in accordance with US Federal Information Processing
-Standards (FIPS) or the International Organization for Standards (ISO)).
-801228
-Attribute
-Location Type
-33
-LOTY
-A value that uniquely attributes the location type of point, line or polygon features.
-Geopolitical Entity Type
-geopoliticalEntityType
-GEC
-The type of a legally recognized geopolitical entity (for example: a State or a zone).
-801941
-Attribute
-Lane/Track Number
-36
-LTN
-The number of lanes on a road, tracks on railroad, or conductors on powerlines, including both directions.
-Track or Lane Count
-trackOrLaneCount
-LTN
-The total number of independent, parallel paths (for example: a railway track and/or a road lane) in both directions within a route.
-803139
-Attribute
-Surface Roughness Description
-59
-SRD
-Describes the condition of the surface materials that may be used for mobility prediction, construction material, and landing sites.
-Terrain Morphology
-terrainMorphology
-SRD
-The type of terrain morphology based on composition and/or configuration.
-803081
-Attribute
-Structure Shape Category
-60
-SSC
-Describes the Geometric form, appearance, or configuration of the feature.
-Structure Shape
-structureShape
-SSC
-The geometric form, appearance, and/or configuration of the feature as a whole.
-803031
-Attribute
-Structure Shape of Roof
-61
-SSR
-Describes the roof shape.
-Roof Shape
-roofShape
-SSR
-A configuration and/or appearance of a roof.
-802836
-Attribute
-Traffic Flow
-62
-TRF
-Encodes the general destination of traffic.
-Traffic Flow
-trafficFlow
-TRF
-The type of traffic flow on a maritime route based on direction, origin, and/or destination.
-803145
-Attribute
-Urban Street Pattern
-64
-USP
-Describes the predominant geometric configuration of streets found within the delineated area of the feature.
-Settlement Pattern
-settlementPattern
-USP
-The pattern of settlement of an urban area based on the most frequently occurring geometric configuration (pattern) of streets and/or canals.
-802923
-Attribute
-Density Measure (% tree/canopy cover)
-21
-DMT
-Percentage of canopy coverage within the area delimited by a polygon feature during the summer season.
-Canopy Cover
-canopyCover
-DMT
-The fraction of canopy cover within a defined area during the season of maximum foliage.
-801515
-Attribute
-Location Accuracy
-29
-LACC
-A precision value used to quantify the relative precision of the Location point representing the specific GeoPolitical Location.
-Data Positional Accuracy (ISO TC211)
-DQ_PositionalAccuracy
-ZR971
-An assessment of the quality of a resource based on the accuracy of the position of its spatial content (for example: features), as determined by ISO 19157:2013.
-800321
-Entity
+|===
+|*OGC CDB V1.3*||||*NAS V8.0*|||||
+
+||||||||||
+|*Name*|*code*|*symbol*|*Definition*|*Name*|*code*|*DIGEST Attribute/Feature Code*|*Definition*|*Source Item Identifier*|*Type*
+|Directivity|17|DIR|The side or sides of a feature that has the greatest reflectivity potential.|https://nsgreg.nga.mil/as/view?i=101989[Feature Directivity]|directivity|DIR|The sides of a feature that produce the greatest visual significance and/or reflectivity potential.|https://nsgreg.nga.mil/voc/view?i=801704[801704]|Attribute
+|Density Measure (% roof cover)|19|DMR|Percentage of roof coverage within the area delimited by a polygon feature.|https://nsgreg.nga.mil/as/view?i=101991[Roof Cover]|roofCover|DMR|The portion of an area that contains structures having roofs or tops (for example: buildings and storage tanks).|https://nsgreg.nga.mil/voc/view?i=802834[802834]|Attribute
+|Density Measure (structure count)|20|DMS|Number of man-made structures per square kilometer of polygon features.|https://nsgreg.nga.mil/as/view?i=101992[Structure Density]|structureDensity|DMS|The density of structures in an area.|https://nsgreg.nga.mil/voc/view?i=803030[803030]|Attribute
+|Location Name|32|LNAM|A name that corresponds to a GeoPolitical Location.|https://nsgreg.nga.mil/as/view?i=106883[Administrative Name]|adminName|ANM|A name of a geopolitical entity or|https://nsgreg.nga.mil/voc/view?i=801228[801228]|Attribute
+|Location Type|33|LOTY|A value that uniquely attributes the location type of point, line or polygon features.|https://nsgreg.nga.mil/as/view?i=106130[Geopolitical Entity Type]|geopoliticalEntityType|GEC|The type of a legally recognized geopolitical entity (for example: a State or a zone).|https://nsgreg.nga.mil/voc/view?i=801941[801941]|Attribute
+|Lane/Track Number|36|LTN|The number of lanes on a road, tracks on railroad, or conductors on powerlines, including both directions.|https://nsgreg.nga.mil/as/view?i=103057[Track or Lane Count]|trackOrLaneCount|LTN|The total number of independent, parallel paths (for example: a railway track and/or a road lane) in both directions within a route.|https://nsgreg.nga.mil/voc/view?i=803139[803139]|Attribute
+|Surface Roughness Description|59|SRD|Describes the condition of the surface materials that may be used for mobility prediction, construction material, and landing sites.|https://nsgreg.nga.mil/as/view?i=105636[Terrain Morphology]|terrainMorphology|SRD|The type of terrain morphology based on composition and/or configuration.|https://nsgreg.nga.mil/voc/view?i=803081[803081]|Attribute
+|Structure Shape Category|60|SSC|Describes the Geometric form, appearance, or configuration of the feature.|https://nsgreg.nga.mil/as/view?i=101834[Structure Shape]|structureShape|SSC|The geometric form, appearance, and/or configuration of the feature as a whole.|https://nsgreg.nga.mil/voc/view?i=803031[803031]|Attribute
+|Structure Shape of Roof|61|SSR|Describes the roof shape.|https://nsgreg.nga.mil/as/view?i=154732[Roof Shape]|roofShape|SSR|A configuration and/or appearance of a roof.|https://nsgreg.nga.mil/voc/view?i=802836[802836]|Attribute
+|Traffic Flow|62|TRF|Encodes the general destination of traffic.|https://nsgreg.nga.mil/as/view?i=105331[Traffic Flow]|trafficFlow|TRF|The type of traffic flow on a maritime route based on direction, origin, and/or destination.|https://nsgreg.nga.mil/voc/view?i=803145[803145]|Attribute
+|Urban Street Pattern|64|USP|Describes the predominant geometric configuration of streets found within the delineated area of the feature.|https://nsgreg.nga.mil/as/view?i=130474[Settlement Pattern]|settlementPattern|USP|The pattern of settlement of an urban area based on the most frequently occurring geometric configuration (pattern) of streets and/or canals.|https://nsgreg.nga.mil/voc/view?i=802923[802923]|Attribute
+|Density Measure (% tree/canopy cover)|21|DMT|Percentage of canopy coverage within the area delimited by a polygon feature during the summer season.|https://nsgreg.nga.mil/as/view?i=130443[Canopy Cover]|canopyCover|DMT|The fraction of canopy cover within a defined area during the season of maximum foliage.|https://nsgreg.nga.mil/voc/view?i=801515[801515]|Attribute
+|Location Accuracy|29|LACC|A precision value used to quantify the relative precision of the Location point representing the specific GeoPolitical Location.|https://nsgreg.nga.mil/as/view?i=194840[Data Positional Accuracy] (ISO TC211)|DQ_PositionalAccuracy|ZR971|An assessment of the quality of a resource based on the accuracy of the position of its spatial content (for example: features), as determined by ISO 19157:2013.|https://nsgreg.nga.mil/voc/view?i=800321&month=7&day=13&year=2020[800321]|Entity
+|===
 
 
 ==== Machine Readable Attribute Mapping
@@ -342,24 +264,27 @@ Entity
 To convert the above table into a machine readable format, a “SchemaMapping” subfolder was added to the Schema folder (\CDB\Metadata\Schema\) of the OGC CDB V1.3 Standard. This folder includes two files: 1) “Schema_Mapping.xsd” file (Figure // ??) is a schema to map CDB Vector Attributes to other application schemas such as NAS V8.0. This file (“Schema_Mapping.xsd”) can be extended in future to include other schema mappings for the CDB V1.x;  2) “NAS_Mapping.xml” which captures the mapping from CDB V1.3 attributes to NAS V8.0 attributes or entities derived from table 3. If other schema mappings are available for the CDB, their implementation as an .xml files (e.g., “DGIF_Mapping.xml”, “CityGML_Mapping.xml”, and etc.) can also be added to the “SchemaMapping” subfolder. This method can be easily parsed by users who need it, but  does not affect any users who want to implement the CDB Standard without mapping.
 
 
-image::images/image910.png[image,width=634,height=396]
-[#img_10,reftext='Figure ?-10']
-*Figure ?-10. “Schema_Mapping.xsd” file which shows mapping from the OGC CDB V1.3 Attributes to the “Target” which is NAS V8.0 Attributes/Entities*
+image::images/image99.png[image,width=634,height=396]
+[#img_9,reftext='Figure ?-9']
+*Figure ?-9. “Schema_Mapping.xsd” file which shows mapping from the OGC CDB V1.3 Attributes to the “Target” which is NAS V8.0 Attributes/Entities*
 
 The following figure shows two different attribute examples from CDB that are mapped to a NAS attribute and a NAS entity as provided in the “NAS_Mapping.xml” file. This “NAS_Mapping.xml” file is captured from manual attribute mapping provided in table 3. On the left (Figure -a), the mapping is between CDB attribute to NAS attribute and on the right (Figure -b) the mapping is from CDB attribute to NAS entity.
 
 
-image::images/image911.png[image,width=634,height=396]
-[#img_11,reftext='Figure ?-11']
-*Figure ?-11. The xml **description** for two attributes of NAS mapping.*
+image::images/image910.png[image,width=634,height=396]
+[#img_10,reftext='Figure ?-10']
+*Figure ?-10. The xml **description** for two attributes of NAS mapping.*
 
 === Conclusion and Future Work
 
-As recommended by the SOFWERX Sprint ER Attributions sub-group, the CDB core conceptual model should not mandate any particular data dictionary or content. Instead, the CDB Standard should provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum practical extent. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109. To achieve this goal for the CDB V1.3, a roadmap was presented in the CDB SWG to map the CDB V1.3 to NAS 8.0 in an effort to evaluate the possibilities of the current CDB application schema.  +
-The CDB V1.x series of  standards specify a file-based datastore. As such schemas are necessary to view data at different levels of abstraction. CDB therefore has an internal/physical schema for indexing folders, and file names for random access disk systems. This system is useful for fast access , but not semantics. Rapid implementation of new features and changing the indexing structures is difficult to make. However, useful routines can be hardcoded or represented in an xml file to deal with the physical representation. +
+As recommended by the SOFWERX Sprint ER Attributions sub-group, the CDB core conceptual model should not mandate any particular data dictionary or content. Instead, the CDB Standard should provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum practical extent. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109. To achieve this goal for the CDB V1.3, a roadmap was presented in the CDB SWG to map the CDB V1.3 to NAS 8.0 in an effort to evaluate the possibilities of the current CDB application schema.
+
+The CDB V1.x series of  standards specify a file-based datastore. As such schemas are necessary to view data at different levels of abstraction. CDB therefore has an internal/physical schema for indexing folders, and file names for random access disk systems. This system is useful for fast access , but not semantics. Rapid implementation of new features and changing the indexing structures is difficult to make. However, useful routines can be hardcoded or represented in an xml file to deal with the physical representation.
+
 Designing a method for having a mapping between the two application schema or adding additional feature codes should maintain the compatibility. Data does nothing in the absence of an interpreter (such as a database generation tool or a client device). As a result, the notion of compatibility does not apply to the CDB itself, it also applies to software that reads or writes the CDB. There are two types of compatibility that should be considered:
 
 * Backward compatibility: Refers to the ability of an interpreter implemented to version n of the standard to accept a CDB compliant to version (n-1) of the standard. Logically, if version (n-1) is also backward compatible with version (n-2), which in turn is backward compatible with version (n-3), then version n is backward compatible with the oldest version that is not backward compatible with its predecessor.
 * Forward compatibility: Refers to the ability of a software program to accept input intended for a later version of itself and pick out the "known" part of the data. Forward compatibility is harder to achieve than backward compatibility because a software program needs to cope smoothly with an unknown future data format or requests for unknown future features.
-The other important factor in the OGC CDB standard is the performance issue associated with the mapping and  extended attributes. Since all the data sources in CDB need to use extended feature attributes, there will be a performance bottleneck in run-time implementations. Therefore, addressing a method for extended feature attributes should address these issues. +
+The other important factor in the OGC CDB standard is the performance issue associated with the mapping and  extended attributes. Since all the data sources in CDB need to use extended feature attributes, there will be a performance bottleneck in run-time implementations. Therefore, addressing a method for extended feature attributes should address these issues.
+
 This document exclusively covers the mapping from CDB to NAS, while the reverse mapping is not included. Nonetheless, it is possible that in the future, the reverse mapping between various NAS and CDB profiles may be examined.
