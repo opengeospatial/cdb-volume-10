@@ -1,10 +1,9 @@
 == CDB (V1.3) to NAS (V8.0) Attribute Mapping
 
 The Open Geospatial Consortium (OGC) CDB Standard released in 2017 defines a standard way of organizing and encoding geospatial data, including textured terrain, imagery, multiple levels of detail, and the ability to store and display 2D and 3D features such as roads, buildings, and other infrastructure along with their attributes. CDB is designed for use in the creation and management of 3D geospatial datasets, particularly for 3D modeling and simulation across different systems and applications.The OGC CDB Standard has been published in three versions, namely V1.0, V1.1, and V1.2, with the current work being a part of the V1.3 version.
-
 One of the persistent and important concerns with the OGC CDB V1.x standard is how to evolve beyond the current use of CDB attributes and feature codes. OGC CDB Standard Working Group (SWG) members and users have expressed an interest in broader attributes and feature codes which embodies most (if not all) of the attributes encountered in the commonly used OGC standards. Specifically, a requirement to the National System for Geospatial Intelligence (NSG) Application Schema (NAS) was expressed. In the https://docs.ogc.org/per/17-042.html[OGC Testbed-13: CDB Engineering Report], participants evaluated how  feature codes and attribution schema are used in the CDB standard and  investigated how a specific profile ("Urban Military Profile") called NAS Profile can be developed and used in CDB. The results of that effort along with the SOFWERX Sprint ER Attributions sub-group Recommendations (Appendix A) // ?? provide that basis for the content in this document. The objective of this document is to expand CDB attributes for supporting interoperability of existing CDB with the NAS-based feature codes and schemas.
 
-A SOFWERX Sprint ER Attributions sub-group (Appendix A) // ?? recommended that the CDB core conceptual model should not be limited to any specific data dictionary or content. Instead, it should provide a metamodel that can describe any ISO 19109 compliant application schema as comprehensively as possible. The goal of Attributions sub-group document (Appendix A) // ?? is to support the development of an extension profile for CDB V1.3 that can work with any data dictionary that complies with ISO 19109. To achieve this goal, a roadmap was presented in the CDB SWG, which involves mapping the CDB 1.3 to NAS 8.0. The first step in this process was to upgrade the CDB V1.3 Attribute schema by adding extra attributes to enable the mapping. These upgrades are described in Section 6.1 // ?? of this document. The second step was a manual mapping of the CDB attributes to NAS attributes and entities (Section 6.2). The final  step involved implementing the mapping in XML to make the mapping between schemas machine-readable and easier to automate (Section 6.3). This work provides insights into:
+A SOFWERX Sprint ER Attributions sub-group (Appendix A) recommended that the CDB core conceptual model should not be limited to any specific data dictionary or content. Instead, it should provide a metamodel that can describe any ISO 19109 compliant application schema as comprehensively as possible. The goal of Attributions sub-group document (Appendix A) // ?? is to support the development of an extension profile for CDB V1.3 that can work with any data dictionary that complies with ISO 19109. To achieve this goal, a roadmap was presented in the CDB SWG, which involves mapping the CDB 1.3 to NAS 8.0. The first step in this process was to upgrade the CDB V1.3 Attribute schema by adding extra attributes to enable the mapping. These upgrades are described in Section 6.1 // ?? of this document. The second step was a manual mapping of the CDB attributes to NAS attributes and entities (Section 6.2). The final  step involved implementing the mapping in XML to make the mapping between schemas machine-readable and easier to automate (Section 6.3). This work provides insights into:
 
 * Introduction of the OGC CDB V1.3 conceptual data model, and attribution schema;
 * How OGC CDB V1.x supports organizing features and attributes;
@@ -147,7 +146,7 @@ image::images/image95.png[image,width=634,height=396]
 [#img_5,reftext='Figure ?-5']
 *Figure ?-5 Comparison of Vector_Attributes.xsd in the OGC CBD V1.2 with the OGC CDB V1.3: Green boxes/Bold text added to the vector attribute schema as a new element, property or enumeration.*
 
-In the above figure, the green boxes were added to the CDB schema to capture all the details in the OGC CDB V1.x standard and make it more compatible with the NAS. For example, Definition and Compatibility (Origin) are two tags that are included in the NAS schema as well.
+In the above figure (<<#img_5>>), the green boxes were added to the CDB schema to capture all the details in the OGC CDB V1.x standard and make it more compatible with the NAS. For example, Definition and Compatibility (Origin) are two tags that are included in the NAS schema as well.
 
 image::images/image96.png[image,width=634,height=396]
 [#img_6,reftext='Figure ?-6']
@@ -208,7 +207,7 @@ One of the changes in the CDB V1.3 is to update the schema  (Vector_Attributes.x
 
 ==== Add Allocation property to  to all attributes in the CDB_Attributes.xml
 
-The above allocation table (<<#img_4>>) is currently converted to an XML file in the OGC CDB V1.3 Standard . The table is included in the CDB_Attributes.xml file (\CDB\Metadata\CDB_Attributes.xml). A new property called “Allocation '' was added to the attribute element. In order to adopt this change, the Vector_Attributes.xsd file (\CDB\Metadata\Schema\Vector_Attributes.xsd) is updated. These changes are provided in the OGC CDB V1.3 revision.  Attributes are either mandatory, optional, not permitted, or not used (<<#img_9>>).
+The above allocation table (<<#img_4>>) is currently converted to an XML file in the OGC CDB V1.3 Standard . The table is included in the CDB_Attributes.xml file (\CDB\Metadata\CDB_Attributes.xml). A new property called “Allocation '' was added to the attribute element. In order to adopt this change, the Vector_Attributes.xsd file (\CDB\Metadata\Schema\Vector_Attributes.xsd) is updated. These changes are provided in the OGC CDB V1.3 revision.  Attributes are either mandatory, optional, not permitted, or not used (<<#img_8>>).
 
 
 image::images/image97.png[image,width=634,height=396]
@@ -227,7 +226,7 @@ Schema mapping process involves analyzing the attributes of both systems, identi
 
 image::images/image98.png[image,width=634,height=396]
 [#img_8,reftext='Figure ?-8']
-*Figure ?-9. CDB V1.3 updated schema*
+*Figure ?-8. CDB V1.3 updated schema*
 
 ==== Manual Attribute Mapping from CDB to NAS
 
