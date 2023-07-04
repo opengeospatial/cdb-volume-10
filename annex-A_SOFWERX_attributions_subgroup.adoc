@@ -1,9 +1,9 @@
-[appendix]
-:appendix-caption: Annex
- 
-=== SOFWERX Sprint ER Attributions sub-group Recommendations
+[appendixA]
+:appendix-caption: AnnexA
 
-=== A-1- Recommendation 1: NAS Compatible Metamodel
+= SOFWERX Sprint ER Attributions Sub-group Recommendations
+
+== A-1- Recommendation 1: NAS Compatible Metamodel
 
 |===
 |SOFWERX Sprint ER Attributions sub-group
@@ -17,7 +17,8 @@ CR ‘reduction’ actions not specific to any document
 |This particular recommendation is more of a high-level goal and other recommendations carry out more specific steps to accomplish this.
 
 |===
-=== A-2- Recommendation 2: Core Specification Data Model Agnostic
+
+== A-2- Recommendation 2: Core Specification Data Model Agnostic
 
 |===
 |SOFWERX Sprint ER Attributions sub-group
@@ -25,7 +26,7 @@ CR ‘reduction’ actions not specific to any document
 |Recommendation 2 and design goal: The CDB core conceptual model should not mandate any particular data dictionary or content, but rather provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum extent practical. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109.
 |===
 
-==== CR DM-1: Create Separate Volume for Traditional CDB 1.0 Attribution
+=== CR DM-1: Create Separate Volume for Traditional CDB 1.0 Attribution
 
 * Dependencies: None
 * References: None
@@ -34,10 +35,11 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-|Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the CDB database structure and do not come from an external standard, particularly those related to class name, feature type, feature subcode, model instancing, bounding boxes, and other similar capabilities. It may make sense to keep these in Volume 1 but define them semantically without specific feature codes, and then to have the new Volume for Traditional CDB attributes specifically document the codes used for built-in CDB types when using the CDB 1.0 Traditional feature attribute model and similarly for future NAS-based models which may provide some or all of the necessary definitions in the existing standard (or not).
+
+Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the CDB database structure and do not come from an external standard, particularly those related to class name, feature type, feature subcode, model instancing, bounding boxes, and other similar capabilities. It may make sense to keep these in Volume 1 but define them semantically without specific feature codes, and then to have the new Volume for Traditional CDB attributes specifically document the codes used for built-in CDB types when using the CDB 1.0 Traditional feature attribute model and similarly for future NAS-based models which may provide some or all of the necessary definitions in the existing standard (or not).
 
 |===
-==== CR DM-2: Add Origin to All Controlled Vocabulary Definitions
+=== CR DM-2: Add Origin to All Controlled Vocabulary Definitions
 
 * Dependencies: None
 * References: DIGEST FACC 2.1, ISO EDCS, NAS, GGDM
@@ -46,10 +48,11 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-|If mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
+
+If mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
 
 |===
-==== CR DM-3: Create Separate Volume for CDB V1.3 NAS Topographic Attribution
+=== CR DM-3: Create Separate Volume for CDB V1.3 NAS Topographic Attribution
 
 * Dependencies: DM-1, DM-2
 * References: GGDM 3.0, NSG Application Schema 7.0
@@ -58,10 +61,11 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-|Originally this was specified as “GGDM Attributes” but after quick consideration organizing a CDB by functional themes such as topography, hydrography, maritime, aeronautics, etc. makes more sense. Definitions can be organized by use case and pulled from multiple standards rather than being tied to a specified standard.
+
+Originally this was specified as “GGDM Attributes” but after quick consideration organizing a CDB by functional themes such as topography, hydrography, maritime, aeronautics, etc. makes more sense. Definitions can be organized by use case and pulled from multiple standards rather than being tied to a specified standard.
 
 |===
-==== CR DM-3: Create Separate Volume for CDB V1.3 NAS Maritime Attribution
+=== CR DM-3: Create Separate Volume for CDB V1.3 NAS Maritime Attribution
 
 * Dependencies: DM-1, DM-2
 * References: NSG Application Schema 7.0, 8.0, and X-3
@@ -70,10 +74,11 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-|One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset, however NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> metahistory is implemented.
+
+One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset, however NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> metahistory is implemented.
 
 |===
-==== CR DM-4: Create Separate Volume for CDB V1.3 NAS Aeronautics Attribution
+=== CR DM-4: Create Separate Volume for CDB V1.3 NAS Aeronautics Attribution
 
 * Dependencies: DM-1, DM-2
 * References: NSG Application Schema 7.0, 8.0, and X-3
@@ -82,10 +87,11 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-|This volume can be created the same as CR DM-3.
+
+This volume can be created the same as CR DM-3.
 
 |===
-==== CR DM-5: Create Separate Volume for CDB V1.3 BIM Attribution
+=== CR DM-5: Create Separate Volume for CDB V1.3 BIM Attribution
 
 * Dependencies: DM-1, DM-2
 * References: OGC CityGML, OGC IndoorGML, Apple IMDF
@@ -94,10 +100,12 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-|The NAS does not provide useful definitions for building modeling (with a few limited exceptions of structural components such as walls and stairs that can also be outdoor standalone objects) cross-referencing to other standards is required. Given the existence of OGC CityGML, this should, where possible, be the primary source of definitions.
+
+The NAS does not provide useful definitions for building modeling (with a few limited exceptions of structural components such as walls and stairs that can also be outdoor standalone objects) cross-referencing to other standards is required. Given the existence of OGC CityGML, this should, where possible, be the primary source of definitions.
 
 |===
-=== A-3- Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
+
+== A-3- Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
 
 |===
 |SOFWERX Sprint ER Attributions sub-group
