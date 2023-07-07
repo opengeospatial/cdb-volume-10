@@ -36,7 +36,7 @@ CR ‘reduction’ actions not specific to any document
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the CDB database structure and do not come from an external standard, particularly those related to class name, feature type, feature subcode, model instancing, bounding boxes, and other similar capabilities. It may make sense to keep these in Volume 1 but define them semantically without specific feature codes, and then to have the new Volume for Traditional CDB attributes specifically document the codes used for built-in CDB types when using the CDB 1.0 Traditional feature attribute model and similarly for future NAS-based models which may provide some or all of the necessary definitions in the existing standard (or not).
 
 |===
@@ -49,7 +49,7 @@ Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the 
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 If mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
 
 |===
@@ -62,7 +62,7 @@ If mixing and matching multiple attribution definitions - such as combining a NA
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 Originally this was specified as “GGDM Attributes” but after quick consideration organizing a CDB by functional themes such as topography, hydrography, maritime, aeronautics, etc. makes more sense. Definitions can be organized by use case and pulled from multiple standards rather than being tied to a specified standard.
 
 |===
@@ -75,7 +75,7 @@ Originally this was specified as “GGDM Attributes” but after quick considera
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset, however NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> metahistory is implemented.
 
 |===
@@ -88,7 +88,7 @@ One decision would be whether to target the version of NAS used in GGDM (NAS 7.0
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 This volume can be created the same as CR DM-3.
 
 |===
@@ -101,7 +101,7 @@ This volume can be created the same as CR DM-3.
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 The NAS does not provide useful definitions for building modeling (with a few limited exceptions of structural components such as walls and stairs that can also be outdoor standalone objects) cross-referencing to other standards is required. Given the existence of OGC CityGML, this should, where possible, be the primary source of definitions.
 
 |===
@@ -151,7 +151,7 @@ The NAS does not provide useful definitions for building modeling (with a few li
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 We would need to do a follow up survey to determine if Extended Attributes are in fact used in any substantive way and define a migration path if so.
 
 |===
@@ -183,7 +183,7 @@ We would need to do a follow up survey to determine if Extended Attributes are i
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 The easiest approach to this would be to add a new top-level element <Enumerations> to the Vector_Attributes.xsd. However, for both the current CDB data dictionary and the proposed NAS-based dictionary, the enumerations dictionary is quite large so it may make sense to instead create a new Enumerations.xsd and associated Enumerations.xml file so existing CDB clients do not have to parse through thousands of enumerations definitions to use the attribute definitions if they don’t need it.
 
 |===
@@ -198,7 +198,7 @@ The easiest approach to this would be to add a new top-level element <Enumeratio
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 This will add a new requirement in Volume 1 Section 10.1.8.
 
 |===
@@ -213,7 +213,7 @@ This will add a new requirement in Volume 1 Section 10.1.8.
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 Volume 1 Section 10.7.1.3 should have a separate section definition enumerations, and then the enumerations should be referenced (either as hyperlinks or embedded inline) in a consistent and standard way  for each attribute. Currently attributes in this specification section use a very freeform approach to documenting enumerations and other constraints.
 
 |===
@@ -228,7 +228,7 @@ Volume 1 Section 10.7.1.3 should have a separate section definition enumerations
 * CR ‘reduction’ actions not specific to any document
 
 |===
-
+|
 One open question for this improvement is whether the list of known values should be captured into CDB XML metadata and Volume 1 specification, or whether the enumeration should merely reference an external standard by URI since the list of values may change more frequently than CDB itself. Some external codelists may only define text values and not integer codes.
 
 |===
