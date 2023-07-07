@@ -38,7 +38,7 @@ image::images/image92.png[image]
 
 The UML diagram was generated based on the Vector_Attributes.xsd file and consists of three elements: Attribute, Unit, and Scaler. The Attribute element is the focus of this document. The following table defines the major components of CDB attributes for vector data. In CDB V1.3, please refer to Section 10.1.8 of Volume 1: CDB Attributes Metadata // ?? for a detailed definition of the UML model components.
 
-*Table 1: The major components of UML model definition*
+.The major components of UML model definition
 |===
 |Name|Definition
 
@@ -111,7 +111,7 @@ For more information on NAS you can check the https://nsgreg.nga.mil/nas/[NAS li
 
 When comparing two schemas, it is important to consider their underlying structures and how they organize and store data. One application schema may be more complex than the other, with multiple tables and relationships between them, while the other may have a simple flat structure. The choice of schema design will depend on the specific needs of the application and the types of data being stored. Additionally, it is important to consider the performance and scalability of the schema, as a poorly designed schema can lead to slow queries and inefficiencies as the volume of data grows. Ultimately, a well-designed schema should provide efficient data storage, easy data retrieval, and allow for flexibility in future modifications to the application. The following table compares the OGC CDB V1.3 with NAS V8.0 schemas.
 
-*Table 1: OGC CDB V1.3 with NAS V8.0 schema comparison*
+.OGC CDB V1.3 with NAS V8.0 schema comparison
 |===
 |*CDB Feature Codes and Attributes*| *NAS Application Schema*
 
@@ -211,7 +211,7 @@ One of the changes in the CDB V1.3 is to update the schema  (Vector_Attributes.x
 
 ==== Add Allocation
 
-The above allocation table (<<#img_4>>) is currently converted to an XML file in the OGC CDB V1.3 Standard . The table is included in the CDB_Attributes.xml file (\CDB\Metadata\CDB_Attributes.xml). A new property called “Allocation '' was added to the attribute element. In order to adopt this change, the Vector_Attributes.xsd file (\CDB\Metadata\Schema\Vector_Attributes.xsd) is updated. These changes are provided in the OGC CDB V1.3 revision.  Attributes are either mandatory, optional, not permitted, or not used (<<#img_8>>).
+The above allocation table (<<#img_4>>) is currently converted to an XML file in the OGC CDB V1.3 Standard. The table is included in the CDB_Attributes.xml file (\CDB\Metadata\CDB_Attributes.xml). A new property called “Allocation '' was added to the attribute element. In order to adopt this change, the Vector_Attributes.xsd file (\CDB\Metadata\Schema\Vector_Attributes.xsd) is updated. These changes are provided in the OGC CDB V1.3 revision.  Attributes are either mandatory, optional, not permitted, or not used (<<#img_8>>).
 
 
 image::images/image97.png[image]
@@ -243,7 +243,8 @@ In the manual mapping process from OGC CDB V1.x to NAS V8.0, all the CDB vector 
 
 In this step, all attributes with the similar characteristics in both CDB and NAS are extracted. As you can see in Table 3, from the CDB, name, code, symbol and definition of each attribute is exported. The name, code, definition, digest attribute and type of similar attribute on NAS was extracted to match the CDB attributes. Attribute mapping can be done manually using the following table to list the corresponding data elements in CDB and NAS schemas. Table 3 shows an example of how to create a schema mapping table manually.
 
-*Table 3. **Manual** Mapping Table from CDB V1.3 attributes to NAS V8.0*
+.Manual Mapping Table from CDB V1.3 attributes to NAS V8.0
+[#Manual_Mapping_Table]
 |===
 |*OGC CDB V1.3*||||*NAS V8.0*|||||
 |*Name*|*code*|*symbol*|*Definition*|*Name*|*code*|*DIGEST Attribute/Feature Code*|*Definition*|*Source Item Identifier*|*Type*
@@ -266,7 +267,7 @@ In this step, all attributes with the similar characteristics in both CDB and NA
 ==== Machine Readable Attribute Mapping
 [#Machine_Readable_Attribute_Mapping]
 
-To convert the above table into a machine readable format, a “SchemaMapping” subfolder was added to the Schema folder (\CDB\Metadata\Schema\) of the OGC CDB V1.3 Standard. This folder includes two files: 1) “Schema_Mapping.xsd” file (Figure // ??) is a schema to map CDB Vector Attributes to other application schemas such as NAS V8.0. This file (“Schema_Mapping.xsd”) can be extended in future to include other schema mappings for the CDB V1.x;  2) “NAS_Mapping.xml” which captures the mapping from CDB V1.3 attributes to NAS V8.0 attributes or entities derived from table 3. If other schema mappings are available for the CDB, their implementation as an .xml files (e.g., “DGIF_Mapping.xml”, “CityGML_Mapping.xml”, and etc.) can also be added to the “SchemaMapping” subfolder. This method can be easily parsed by users who need it, but  does not affect any users who want to implement the CDB Standard without mapping.
+To convert the above table (<<#Manual_Mapping_Table, Manual Mapping Table>>) into a machine readable format, a “SchemaMapping” subfolder was added to the Schema folder (\CDB\Metadata\Schema\) of the OGC CDB V1.3 Standard. This folder includes two files: 1) “Schema_Mapping.xsd” file (Figure // ??) is a schema to map CDB Vector Attributes to other application schemas such as NAS V8.0. This file (“Schema_Mapping.xsd”) can be extended in future to include other schema mappings for the CDB V1.x;  2) “NAS_Mapping.xml” which captures the mapping from CDB V1.3 attributes to NAS V8.0 attributes or entities derived from table 3. If other schema mappings are available for the CDB, their implementation as an .xml files (e.g., “DGIF_Mapping.xml”, “CityGML_Mapping.xml”, and etc.) can also be added to the “SchemaMapping” subfolder. This method can be easily parsed by users who need it, but  does not affect any users who want to implement the CDB Standard without mapping.
 
 
 image::images/image99.png[image]
