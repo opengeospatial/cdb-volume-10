@@ -22,11 +22,14 @@ Schema mapping involves defining mappings between data elements in two different
 This document summarizes the steps to make the CDB V1.3 attribute schema as adaptable as possible to support a range of data dictionaries, specifically NAS V8.0 that comply with https://www.iso.org/obp/ui/#iso:std:iso:19109:ed-2:v1:en[ISO 19109:2015]. Modernization of attributes is important because it enables CDB to keep up with the ever-evolving technological, and community changes and enhance customer experience.
 
 === CDB Attribution Schema for Vector Features
-In the OGC CDB V1.x standards, each vector feature is characterized by a set of attributes. Attribution schemas are the method to handle these different types of attributes. The vector attributes schema can be found in the Vector_Attributes.xsd file stored in the schema folder of a CDB datastore (\CDB\Metadata\Schema\Vector_Attributes.xsd) and accessible from the http://schemas.opengis.net/cdb/1.1/Vector_Attributes.xsd[official schema]. // ??
+In the OGC CDB V1.x standards, each vector feature is characterized by a set of attributes. Attribution schemas are the method to handle these different types of attributes. The vector attributes schema can be found in the Vector_Attributes.xsd file stored in the schema folder of a CDB datastore ('_\CDB\Metadata\Schema\Vector_Attributes.xsd_') and accessible from the http://schemas.opengis.net/cdb/1.3/Vector_Attributes.xsd[official schema].
+// ??
 
-The list of CDB attributes is described in the CDB_Attributes.xml file stored in the metadata folder of a CDB datastore (\CDB\Metadata\CDB_Attributes.xml) and accessible from this https://schemas.opengis.net/cdb/1.2/Metadata/CDB_Attributes.xml[official link]. // ??
+The list of CDB attributes is described in the CDB_Attributes.xml file stored in the metadata folder of a CDB datastore ('_\CDB\Metadata\CDB_Attributes.xml_') and accessible from this https://schemas.opengis.net/cdb/1.3/Metadata/CDB_Attributes.xml[official link].
+//??
 
-The CDB_Attributes.xml file is coded using the Extensible Markup Language (XML) format. The XML stylesheet for visualization of CDB attributes is provided with the official OTGC CDB Standard documents and is accessible here https://schemas.opengis.net/cdb/1.2/Metadata/Stylesheet/[official link]. // ??
+The CDB_Attributes.xml file is coded using the Extensible Markup Language (XML) format. The XML stylesheet for visualization of CDB attributes is provided with the official OTGC CDB Standard documents and is accessible here https://schemas.opengis.net/cdb/1.3/Metadata/Stylesheet/[official link].
+//??
 
 ==== CDB Vector Data Model
 
@@ -36,7 +39,9 @@ image::images/image92.png[image]
 [#img_2,reftext='Figure ?-2']
 *Figure ?-2. The UML diagram of the CDB V1.3 vector attribute schema*
 
-The UML diagram was generated based on the Vector_Attributes.xsd file and consists of three elements: Attribute, Unit, and Scaler. The Attribute element is the focus of this document. The following table defines the major components of CDB attributes for vector data. In CDB V1.3, please refer to Section 10.1.8 of Volume 1: CDB Attributes Metadata // ?? for a detailed definition of the UML model components.
+The UML diagram was generated based on the Vector_Attributes.xsd file and consists of three elements: Attribute, Unit, and Scaler. The Attribute element is the focus of this document. The following table defines the major components of CDB attributes for vector data. In CDB V1.3, please refer to Section 10.1.8 of Volume 1: CDB Attributes Metadata (OGC CDB V1.3: Volume 1 Standard)
+// ??
+for a detailed definition of the UML model components.
 
 .The major components of UML model definition
 |===
@@ -267,7 +272,7 @@ In this step, all attributes with the similar characteristics in both CDB and NA
 ==== Machine Readable Attribute Mapping
 [#Machine_Readable_Attribute_Mapping]
 
-To convert the above table (<<#Manual_Mapping_Table, Manual Mapping Table>>) into a machine readable format, a “SchemaMapping” subfolder was added to the Schema folder (\CDB\Metadata\Schema\) of the OGC CDB V1.3 Standard. This folder includes two files: 1) “Schema_Mapping.xsd” file (Figure // ??) is a schema to map CDB Vector Attributes to other application schemas such as NAS V8.0. This file (“Schema_Mapping.xsd”) can be extended in future to include other schema mappings for the CDB V1.x;  2) “NAS_Mapping.xml” which captures the mapping from CDB V1.3 attributes to NAS V8.0 attributes or entities derived from table 3. If other schema mappings are available for the CDB, their implementation as an .xml files (e.g., “DGIF_Mapping.xml”, “CityGML_Mapping.xml”, and etc.) can also be added to the “SchemaMapping” subfolder. This method can be easily parsed by users who need it, but  does not affect any users who want to implement the CDB Standard without mapping.
+To convert the above table (<<#Manual_Mapping_Table, Manual Mapping Table>>) into a machine readable format, a “SchemaMapping” subfolder was added to the Schema folder (\CDB\Metadata\Schema\) of the OGC CDB V1.3 Standard. This folder includes two files: 1) “Schema_Mapping.xsd” file is a schema to map CDB Vector Attributes to other application schemas such as NAS V8.0. This file (“Schema_Mapping.xsd”) can be extended in future to include other schema mappings for the CDB V1.x;  2) “NAS_Mapping.xml” which captures the mapping from CDB V1.3 attributes to NAS V8.0 attributes or entities derived from table 3. If other schema mappings are available for the CDB, their implementation as an .xml files (e.g., “DGIF_Mapping.xml”, “CityGML_Mapping.xml”, and etc.) can also be added to the “SchemaMapping” subfolder. This method can be easily parsed by users who need it, but  does not affect any users who want to implement the CDB Standard without mapping.
 
 
 image::images/image99.png[image]
