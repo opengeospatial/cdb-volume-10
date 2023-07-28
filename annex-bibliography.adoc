@@ -3,3 +3,8 @@
 [[Bibliography]]
 = Bibliography
 
+https://www.iso.org/obp/ui/#iso:std:iso:19109:ed-2:v1:en[ISO 19109:2015(en)- Geographic information-Rules for application schema]
+
+https://www.iso.org/committee/54904/x/catalogue/[ISO 19100-series standards (ISO TC211)]
+
+https://www.iso.org/obp/ui/#iso:std:iso:19157:ed-1:v1:en[ISO 19157:2013]
