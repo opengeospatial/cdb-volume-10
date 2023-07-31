@@ -5,7 +5,7 @@
 
 This table outlines the CDB vector attributes that are exclusively designed for the OGC CDB Standard and cannot be mapped to other schemas, such as NAS.
 
-*Table D-1: Traditional OGC CDB V1.3 attributes extracted from CDB_Attributes.xml file*
+*Table 1: Traditional OGC CDB V1.3 attributes extracted from CDB_Attributes.xml file*
 
 |===
 |*CDB Attribute Name*|*Semantic Definition*
