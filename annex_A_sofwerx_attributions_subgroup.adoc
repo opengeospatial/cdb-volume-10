@@ -1,33 +1,32 @@
-[appendixC]
-:appendix-caption: AnnexC
-[[appendixC]]
+[appendix]
+:appendix-caption: Annex
+[[appendixA]]
+= SOFWERX Sprint ER Attributions Sub-group Recommendations
 
-= Appendix C: SOFWERX Sprint ER Attributions Sub-group Recommendations
-
-== A-1- Recommendation 1: NAS Compatible Metamodel
+A-1- Recommendation 1: NAS Compatible Metamodel
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 1:
 
-|Recommendation 1: The subgroup recommends extending the current CDB XML metadata to add the NAS metamodel capabilities that are currently not supported.
+|The subgroup recommends extending the current CDB XML metadata to add the NAS metamodel capabilities that are currently not supported.
 |===
 
-CR ‘reduction’ actions not specific to any document
+CR (Change Request) ‘reduction’ actions not specific to any document
 
 |===
 |This particular recommendation is more of a high-level goal and other recommendations carry out more specific steps to accomplish this.
 
 |===
 
-== A-2- Recommendation 2: Core Specification Data Model Agnostic
+A-2- Recommendation 2: Core Specification Data Model (DM) Agnostic
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 2 and design goal:
 
-|Recommendation 2 and design goal: The CDB core conceptual model should not mandate any particular data dictionary or content, but rather provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum extent practical. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109.
+|The CDB core conceptual model should not mandate any particular data dictionary or content, but rather provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum extent practical. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109.
 |===
 
-=== CR DM-1: Create Separate Volume for Traditional CDB 1.0 Attribution
+A-2-1- CR DM-1: Create Separate Volume for Traditional CDB 1.0 Attribution
 
 * Dependencies: None
 * References: None
@@ -40,7 +39,8 @@ CR ‘reduction’ actions not specific to any document
 Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the CDB database structure and do not come from an external standard, particularly those related to class name, feature type, feature subcode, model instancing, bounding boxes, and other similar capabilities. It may make sense to keep these in Volume 1 but define them semantically without specific feature codes, and then to have the new Volume for Traditional CDB attributes specifically document the codes used for built-in CDB types when using the CDB 1.0 Traditional feature attribute model and similarly for future NAS-based models which may provide some or all of the necessary definitions in the existing standard (or not).
 
 |===
-=== CR DM-2: Add Origin to All Controlled Vocabulary Definitions
+
+A-2-2- CR DM-2: Add Origin to All Controlled Vocabulary Definitions
 
 * Dependencies: None
 * References: DIGEST FACC 2.1, ISO EDCS, NAS, GGDM
@@ -53,7 +53,8 @@ Some of the attributes defined in Volume 1 Section 10.7.1.3 are specific to the 
 If mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
 
 |===
-=== CR DM-3: Create Separate Volume for CDB V1.3 NAS Topographic Attribution
+
+A-2-3- CR DM-3: Create Separate Volume for CDB V1.3 NAS Topographic Attribution
 
 * Dependencies: DM-1, DM-2
 * References: GGDM 3.0, NSG Application Schema 7.0
@@ -66,7 +67,8 @@ If mixing and matching multiple attribution definitions - such as combining a NA
 Originally this was specified as “GGDM Attributes” but after quick consideration organizing a CDB by functional themes such as topography, hydrography, maritime, aeronautics, etc. makes more sense. Definitions can be organized by use case and pulled from multiple standards rather than being tied to a specified standard.
 
 |===
-=== CR DM-3: Create Separate Volume for CDB V1.3 NAS Maritime Attribution
+
+A-2-4- CR DM-4: Create Separate Volume for CDB V1.3 NAS Maritime Attribution
 
 * Dependencies: DM-1, DM-2
 * References: NSG Application Schema 7.0, 8.0, and X-3
@@ -79,7 +81,8 @@ Originally this was specified as “GGDM Attributes” but after quick considera
 One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset, however NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> metahistory is implemented.
 
 |===
-=== CR DM-4: Create Separate Volume for CDB V1.3 NAS Aeronautics Attribution
+
+A-2-5- CR DM-5: Create Separate Volume for CDB V1.3 NAS Aeronautics Attribution
 
 * Dependencies: DM-1, DM-2
 * References: NSG Application Schema 7.0, 8.0, and X-3
@@ -92,7 +95,8 @@ One decision would be whether to target the version of NAS used in GGDM (NAS 7.0
 This volume can be created the same as CR DM-3.
 
 |===
-=== CR DM-5: Create Separate Volume for CDB V1.3 BIM Attribution
+
+A-2-6- CR DM-6: Create Separate Volume for CDB V1.3 BIM Attribution
 
 * Dependencies: DM-1, DM-2
 * References: OGC CityGML, OGC IndoorGML, Apple IMDF
@@ -106,42 +110,42 @@ The NAS does not provide useful definitions for building modeling (with a few li
 
 |===
 
-== A-3- Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
+A-3- Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 3:
 
-|Recommendation 3: Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
+|Adopt NAS-compliant logical entity-attribute model for CDB X with extensions for CDB use cases.
 |Implications:
 |===
 
-== A-4- Recommendation 4: Delegate entity and attribute physical encoding choices to vector and 3D model containers instead of specifying globally.
+A-4- Recommendation 4: Delegate entity and attribute physical encoding choices to vector and 3D model containers instead of specifying globally.
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 4:
 
-|Recommendation 4: Delegate entity and attribute physical encoding choices to vector and 3D model containers instead of specifying globally.
+|Delegate entity and attribute physical encoding choices to vector and 3D model containers instead of specifying globally.
 |Implications:
 |===
 
-== A-5- Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
+A-5- Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 5:
 
-|Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
-|Implications:
-|===
-
-== A-6- Recommendation 6: Extended Attributes
+|Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+
+A-6- Recommendation 6: Extended Attributes (A)
+
+|===
+|Recommendation 6:
 
 |Version 1.3 Recommendation - Extended Attributes The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/25[Should Extended Attributes be preserved at the logical data model level?] The suggestion is that the CDB SWG discuss this issue and possible solution as a possible change for CDB version V1.3. Some additional testing may be required to determine if this capability can be added to version V1.3 or not.
 |===
 
-=== CR A-1: Deprecate Extended Attributes
+A-6-1- CR A-1: Deprecate Extended Attributes
 
 * References
 * Dependencies: None
@@ -156,24 +160,24 @@ We would need to do a follow up survey to determine if Extended Attributes are i
 
 |===
 
-== A-7- Recommendation 7: Attribute default values
+A-7- Recommendation 7: Attribute default values
 
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 7:
 
 |Version 1.3 Recommendation - Attribute default values: The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/32[Attribute Default Values #32]. The recommendation is that Defaults.xml can be used to define global attribute defaults as well as per-dataset defaults. Doing per-entity defaults would be a straightforward extension that could be proposed for CDB V1.3 as a transition path. The subgroup suggests that the CDB SWG discuss this for possible inclusion in version 1.3. A change request for this approach to specifying default values is also suggested.
 |===
 
-== A-8- Recommendation 8: Enumerated / Listed Values
+A-8- Recommendation 8: Enumerated (E) / Listed Values
 
 |===
-|SOFWERX Sprint ER Attributions sub-group
+|Recommendation 8:
 
 |Version 1.3 Recommendation - Attribute Terms The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/31[Capture Attribute Terms (Enumerates) in Metadata #31]. Attributes describing qualitative values are present in CDB V1.2 and the list of valid values for each attribute are documented in the human-readable specification with both the vocabulary term name and its integer numeric value (index). However, the machine-readable XML metadata does not contain any of this information and treats these attribute types as raw integers with only a minimum and maximum value constraint. It may make sense as a transition path to update CDB V1.3 to define additional XML elements in a backward compatible way to capture these definitions from the existing specification into the machine-readable XML metadata. The conceptual model in the CDB V1.2 specification does align with how GGDM treats such attributes, so there is no fundamental incompatibility, and the proposed CDB X dictionary design accounts for properly tracking the terms for qualitative attributes in a machine-readable way in SQLite.
 |===
 
-=== CR E-1: Create CDB V1.x XML schema for Enumerations
+A-8-1- CR E-1: Create CDB V1.x XML schema for Enumerations
 
 * References
 * Dependencies: None
@@ -188,7 +192,7 @@ The easiest approach to this would be to add a new top-level element <Enumeratio
 
 |===
 
-=== CR E-2: Create CDB V1.x XML Schema for Associating Enumerations to Attributes
+A-8-2- CR E-2: Create CDB V1.x XML Schema for Associating Enumerations to Attributes
 
 * References
 * Dependencies: CR E-1
@@ -203,7 +207,7 @@ This will add a new requirement in Volume 1 Section 10.1.8.
 
 |===
 
-=== CR E-3: Capture CDB V1.2 Enumerations into XML Metadata and Specification
+A-8-3- CR E-3: Capture CDB V1.2 Enumerations into XML Metadata and Specification
 
 * References
 * Dependencies: CR E-2
@@ -218,7 +222,7 @@ Volume 1 Section 10.7.1.3 should have a separate section definition enumerations
 
 |===
 
-=== CR E-4: Provide Mechanism for Externally-Specified Codelists
+A-8-4- CR E-4: Provide Mechanism for Externally-Specified Codelists
 
 * References
 * Dependencies: CR E-1

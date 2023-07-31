@@ -1,8 +1,7 @@
-[appendixD]
-:appendix-caption: AnnexD
-[[appendixD]]
-
-= Appendix D: Traditional CDB 1.0 Attribution
+[appendix]
+:appendix-caption: Annex
+[[appendixB]]
+= Traditional CDB 1.0 Attribution
 
 This table outlines the CDB vector attributes that are exclusively designed for the OGC CDB Standard and cannot be mapped to other schemas, such as NAS.
 
