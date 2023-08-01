@@ -1,6 +1,6 @@
 [appendix]
 :appendix-caption: Annex
-[[appendixA]]
+[[appendixSOFWERXSprint]]
 = SOFWERX Sprint ER Attributions Sub-group Recommendations
 
 A-1- Recommendation 1: NAS Compatible Metamodel
