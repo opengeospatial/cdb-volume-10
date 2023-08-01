@@ -1,5 +1,3 @@
-
-
 == Informative Implementation Guidance
 
 === Clarification: Publisher Considerations
@@ -39,7 +37,6 @@ The following discussion attempts to qualify the level-of-effort to achieve CDB 
 In the case where a client-device already supports most of data schema and semantics concepts of the CDB, then the RTP (or import-then-compile) software is proportionally less complex. For instance, if an IG already supports the concepts of tiles, of levels-of-detail, of layers and understands the concepts of datasets such as terrain texture, gridded terrain elevation, gridded terrain materials, etc. then there is a modest amount of work to be performed by an RTP.
 
 NOTE: The level-of-effort in adopting the CDB model is proportional to the difference between the CDB data schema and client-device’s internal proprietary data schema.
-
 
 Clearly, the algorithmic complexity of an RTP and the computational load imposed on the RTP is directly proportional to the above-mentioned “gap.” The larger the “gap,” the more expensive a RTP is to develop and the more computational resources need to be allocated to implement it. Conversely, with a smaller “gap,” the RTP development is straightforward and relatively few computational resources need to be allocated to this function.
 
@@ -89,7 +86,7 @@ The runtime publishers are nothing more than well-optimized offline publishers c
 a.  transforms the assembled data store so that it satisfies the client-device’s internal data structure and format
 b.  transforms the assembled data store so that it satisfies the client-device’s internal naming conventions
 c.  transforms the assembled data store so that it satisfies the client-device’s number precision and number representation
-d.  transforms the assembled data store into parameters compatible with the client device’s internal algorithms (typically light parameters, FLIR/NVG parameters, etc.
+d.  transforms the assembled data store into parameters compatible with the client device’s internal algorithms (typically light parameters, FLIR/NVG parameters, etc).
 e.  transforms the assembled data store so that it satisfies the client-device’s data fidelity requirements
 f.  transforms the assembled data store so that it satisfies the client-device’s performance and internal memory limitations
 g.  transforms the assembled data store so that it satisfies the client-device’s level of-detail representation requirements.
@@ -120,7 +117,7 @@ In the case of the CDB Runtime Publishing paradigm and the CDB import-then-compi
 
 === Use of a CDB conformant data store as an Off-line Repository
 
-Figure 1-1: Use of a CDB conformant data store as an Off-line Repository, illustrates the deployment process of a CDB conformant database when it is used solely as an off-line Master repository. This approach follows the SE deployment paradigm commonly used today within the simulation community. The use of a CDB conformant data store as an off-line environmental data repository offers immediate benefits, namely…
+<<#img_UseofCDBConformantDatabaseasanofflineDatabaseRepository>>: Use of a CDB conformant data store as an Off-line Repository, illustrates the deployment process of a CDB conformant database when it is used solely as an off-line Master repository. This approach follows the SE deployment paradigm commonly used today within the simulation community. The use of a CDB conformant data store as an off-line environmental data repository offers immediate benefits, namely…
 
 * SE Standardization through a public, open, fully-documented schema that is already supported by several SE authoring tools.
 * SE Plug-and-Play Portability and Interoperability across various vendor SE authoring toolsets
@@ -134,12 +131,12 @@ Figure 1-1: Use of a CDB conformant data store as an Off-line Repository, illust
 
 Note that the use of the use of CDB conformant data store as an offline repository does not impose any change to the simulation training equipment (i.e., no modifications to client-devices are required footnote:[Or alternately, runtime publishers need not be developed for client-devices]). However, the deployment of the synthetic environment is similar to the conventional approaches used in industry requiring the time-consuming, storage-intensive, off-line compilation of proprietary runtime databases to each client-device. Furthermore, the computing demands on the data store generation facility are significantly greater because the entire data store must be published off-line for each client-device before it can be deployed. These costs rapidly escalate with the complexity and size of the synthetic environment, the number of supported client-devices and the number of supported training facilities. For complex data stores, these costs can far outweigh the costs of the runtime publishers attached to each simulator client-device.
 
-image::images/image1.png[image,width=644,height=334]
+image::images/image61.png[image,width=644,height=334]
 
-[#img_UseofCDBConformantDatabaseasanofflineDatabaseRepository,reftext='Figure 1-1']
-*Figure 1-1. Use of CDB Conformant Database as an off-line Database Repository*
+[#img_UseofCDBConformantDatabaseasanofflineDatabaseRepository,reftext='Figure 6-1']
+*Figure 6-1. Use of CDB Conformant Database as an off-line Database Repository*
 
-In most modern SE tool suites in-use today, the Data Preparation step shown in Figure 1-2: SE Workflow with a CDB structured data store as an Off-line Repository consists of many sub-steps usually applied in sequence to each of the datasets (aka layers) of the SE. In effect, this aspect of the modeler’s responsibilities is virtually identical to that of a GIS footnote:[__G__eographic __I__nformation __S__ystems] specialist. As a result, many of the simulation equipment vendors offer SE authoring tools that integrate best-of-breed COTS footnote:[__C__ommercial-__O__ff-__T__he-__S__helf] GIS tools into their respective tool suites. The steps include the following.
+In most modern SE tool suites in-use today, the Data Preparation step shown in <<#img_SEWorkflowwithCDBasanoff-lineRepository>>: SE Workflow with a CDB structured data store as an Off-line Repository consists of many sub-steps usually applied in sequence to each of the datasets (aka layers) of the SE. In effect, this aspect of the modeler’s responsibilities is virtually identical to that of a GIS footnote:[__G__eographic __I__nformation __S__ystems] specialist. As a result, many of the simulation equipment vendors offer SE authoring tools that integrate best-of-breed COTS footnote:[__C__ommercial-__O__ff-__T__he-__S__helf] GIS tools into their respective tool suites. The steps include the following.
 
 * _Format conversion:_ raw source data is provided to modelers in literally hundreds of formats. Early on in the SE generation process, modelers typically settle on a single format per SE layer (e.g., terrain altimetry, imagery, attribution)
 * _Error handling:_ raw source often contains errors or anomalies that, if left undetected, corrupt and propagate through the entire SE data preparation pipeline. As a minimum, these errors must be detected early on in the process. More advanced tools can correct many of these automatically, particularly if there is some redundancy across the layers of data.
@@ -147,10 +144,10 @@ In most modern SE tool suites in-use today, the Data Preparation step shown in F
 * _Data Registration:_ each dataset is manipulated so that it coincides with information contained in the other datasets. These manipulations include projections, coordinate conversions, ortho-rectification, correction for lens distortions, etc. For images, this process is also known as rectification.
 * _Data Harmonization:_ the raw data of a dataset varies over a geographic extent if it was obtained under different conditions, such as from two or more sensors with differing spectral sensitivity characteristics, resolution, in different seasons, under different conditions of weather, illumination, vegetation and human activity. The modeler must factor for these variations when selecting and assembling the datasets into a self-coherent SE.
 
-image::images/image2.jpeg[untitled1,width=602,height=408]
+image::images/image62.jpeg[untitled1,width=602,height=408]
 
-[#img_SEWorkflowwithCDBasanoff-lineRepository,reftext='Figure 1-2']
-*Figure 1-2. SE Workflow with CDB as an off-line Repository*
+[#img_SEWorkflowwithCDBasanoff-lineRepository,reftext='Figure 6-2']
+*Figure 6-2. SE Workflow with CDB as an off-line Repository*
 
 
 The effort expended during the Data Preparation and Modeling step is mostly independent of the targeted simulation devices and the targeted applications. Consequently, the results of the data preparation step can be stored into a Refined Source Data Store (RSDS) and then re-targeted at modest cost to one or more simulation devices.
@@ -179,45 +176,45 @@ In addition to the benefits outlined in section link:#h.44sinio[6.3], the use of
 * Fair Fight/Runtime Content Correlation through the adjustment of runtime level-of-detail control limits at each client-device.
 
 
-Figure 1-3: Use of CDB Model as an Off-line and On-line Data Store Repository, illustrates the CDB structure as an off-line Master data store repository for the tools and as an online Master data store repository for the training facilities. Note that the deployment of the synthetic environment to the training facilities involves a simple copy operation. The deployment of a CDB conformant data store is further simplified through an incremental versioning scheme. Since only the differences need be stored within the data store, new versions can be generated and deployed efficiently.
+<<#img_UseofCDBasanOfflineandOnlineDataStoreRepository>>: Use of CDB Model as an Off-line and On-line Data Store Repository, illustrates the CDB structure as an off-line Master data store repository for the tools and as an online Master data store repository for the training facilities. Note that the deployment of the synthetic environment to the training facilities involves a simple copy operation. The deployment of a CDB conformant data store is further simplified through an incremental versioning scheme. Since only the differences need be stored within the data store, new versions can be generated and deployed efficiently.
 
-image::images/image3.png[image,width=634,height=396]
+image::images/image63.png[image,width=634,height=396]
 
-[#img_UseofCDBasanOfflineandOnlineDataStoreRepository,reftext='Figure 1-3']
-*Figure 1-3. Use of CDB as an Off-line and On-line Data Store Repository*
+[#img_UseofCDBasanOfflineandOnlineDataStoreRepository,reftext='Figure 6-3']
+*Figure 6-3. Use of CDB as an Off-line and On-line Data Store Repository*
 
 The CDB standard associated Best Practices specify formats and conventions related to synthetic environments for use in simulation. However, many additional benefits can be garnered if a CDB structured data store is also used as an online data store repository. This is particularly true when one considers the effort expended in the deployment of the synthetic environment to the training and/or mission rehearsal facilities.
 
-When used as an online data store repository, there is no need to store and maintain off-line published versions of the data store for each client-device (as illustrated in Figure 1-3). As a result, the storage and computing demands on the data store generation facility are significantly lowered. This is especially true of data store generation facilities whose mandate involves the generation of complex synthetic environments for use by several training facilities.
+When used as an online data store repository, there is no need to store and maintain off-line published versions of the data store for each client-device (as illustrated in <<#img_UseofCDBasanOfflineandOnlineDataStoreRepository>>). As a result, the storage and computing demands on the data store generation facility are significantly lowered. This is especially true of data store generation facilities whose mandate involves the generation of complex synthetic environments for use by several training facilities.
 
-Figure 1-4: SE Workflow with CDB as Combined Off-line/Runtime Data Store Repository, illustrates the simplified database generation workflow resulting from a data store that is used as both an offline and a runtime SE repository.
+<<#img_SEWorkflowwithCDBasCombinedOfflineRuntimeDataStoreRepository>>: SE Workflow with CDB as Combined Off-line/Runtime Data Store Repository, illustrates the simplified database generation workflow resulting from a data store that is used as both an offline and a runtime SE repository.
 
-image::images/image4.jpeg[untitled1,width=663,height=437]
+image::images/image64.jpeg[untitled1,width=663,height=437]
 
-[#img_SEWorkflowwithCDBasCombinedOfflineRuntimeDataStoreRepository,reftext='Figure 1-4']
-*Figure 1-4. SE Workflow with CDB as Combined Off-line/Runtime Data Store Repository*
+[#img_SEWorkflowwithCDBasCombinedOfflineRuntimeDataStoreRepository,reftext='Figure 6-4']
+*Figure 6-4. SE Workflow with CDB as Combined Off-line/Runtime Data Store Repository*
 
 This approach permits the CDB representation of the synthetic environment to be “dissociated” from the resolution, fidelity, precision, structure and format imposed by the internals of client-devices. Compliancy to the CDB standard can be achieved either by modification of the client-device internal software to make it CDB-native or by inserting a runtime publishing process that transforms the CDB structured data into the client-device’s legacy native runtime format. In the later case, this process is done in real-time, on a demand-basis, as the simulator “flies” within the synthetic environment. Note that since the simulated own ship footnote:[Own ship is the object you are on. Target ship is the object you are watching.] moves at speeds that are bounded by the capabilities of the simulated vehicle, it is not necessary to instantly publish the entire synthetic environment before undertaking a training exercise; the runtime publishers need only respond to the demands of the client-devices. When the simulated own-ship’s position is static, runtime publishers go idle. As the own ship starts advancing, client-devices start demanding for new regions, and runtime publishers resume the publishing process. Publishing workload peaks at high-speed over highly resolved areas of the synthetic environment.
 
 Note that virtually all simulation client-devices in existence today natively ingest proprietary native runtime formats. As a result, a runtime publisher is required to transform the CDB structured data into legacy client device’s native runtime format. The runtime publishing process is performed when the CDB conformant database is paged-in from the CDB storage device. Volume 7, OGC CDB Data Model Guidance provides a set of guidelines regarding the implementation of Runtime Publishers.
 
-=== Example Implementation of a CDB Structured Data Store on a Simulator footnote:[Legacy simulator client-devices can be readily retrofitted for compatibility with the CDB Standard by inserting a runtime publisher in their SE paging pipeline.]
+=== Example Implementation of a CDB Structured Data Store on a Simulator
 
 This section illustrates a possible implementation architecture of the CDB Standard on a flight simulator. The standard does not mandate particular simulator architecture or the use of specific computer platforms. The selected implementation varies with the required level of fidelity and performance of the simulator and its client-devices.
 
-As shown in Figure 1-5: _Typical CDB Implementation on a Suite of Simulators_, a typical implementation of a CDB compliant system consists of the following main components.
+As shown in <<#img_TypicalCDBImplementationonaSuiteofSimulators>>: _Typical CDB Implementation on a Suite of Simulators_, a typical implementation of a CDB compliant system consists of the following main components.
 
 1.  Data Store Generation Facility (DBGF) and CDB Master Store: A geographically co-located group of workstation(s), computer platforms, input devices (digitizing tablets, etc.), output devices (stereo viewers, etc.), modeling software, visualization software, database server, off-line publishing software and any other associated software and hardware used for the development/modification of the data store. The CDB Master Store consists of a mass storage system (typically a storage array) and its associated network. It is connected to a dedicated DBGF Server.
-2.  Update Manager (UM): The Update Manager software consists of both client and server software. The Update Manager Server (UMS) software is located at the DBGF. It manages the data store updates (versions) and runs in the same platform as the DBGF Server. The Update Manager Client (UMC) software is located at the Simulator Facility and runs on the Update Manager Platform shown in Figure 1-5: _Typical CDB Implementation on a Suite of Simulators_. The UMC communicates with the UMS to transfer the data store (partial or complete copy) and its updates.
+2.  Update Manager (UM): The Update Manager software consists of both client and server software. The Update Manager Server (UMS) software is located at the DBGF. It manages the data store updates (versions) and runs in the same platform as the DBGF Server. The Update Manager Client (UMC) software is located at the Simulator Facility and runs on the Update Manager Platform shown in <<#img_TypicalCDBImplementationonaSuiteofSimulators>>: _Typical CDB Implementation on a Suite of Simulators_. The UMC communicates with the UMS to transfer the data store (partial or complete copy) and its updates.
 3.  Simulator Facility CDB Data Store Repository: The simulator repository consists of a mass storage system (typically a storage array) and its associated network infrastructure. It is connected to the UMC (primarily for update purposes) and the servers (for simulator client-device runtime access).
 4.  CDB servers: An optional footnote:[Optionally needed for a large-scale CDB repository whose storage system is based on a Storage Area Network (SAN).] gateway to mass storage and applicable infrastructure. The CDB servers access, filter and distribute data in response to requests from the simulator runtime publishers.
 5.  Runtime publishers: A term used to describe the computer platforms, and the software that translates and optimizes, at runtime, CDB synthetic environment data store to a client-device specific legacy runtime format. Data is pulled from the CDB server and in turn published in response to requests from its attached simulator client-device.
 6.  Simulator client-devices: Are simulation subsystems (IGs, radar, weather server, Computer Generated Forces (CGF) terrain server, etc.) that require a complete or partial synthetic representation of the world. CDB runtime clients may require a CDB runtime publisher to convert the CDB into a form they can directly input.
 
-image::images/image5.png[image,width=669,height=399]
+image::images/image65.png[image,width=669,height=399]
 
-[#img_TypicalCDBImplementationonaSuiteofSimulators,reftext='Figure 1-5']
-*Figure 1-5. Typical CDB Implementation on a Suite of Simulators*
+[#img_TypicalCDBImplementationonaSuiteofSimulators,reftext='Figure 6-5']
+*Figure 6-5. Typical CDB Implementation on a Suite of Simulators*
 
 
 ==== Data Store Generation Facility (DBGF)
@@ -229,22 +226,22 @@ The DBGF is used for the purpose of CDB structured database creation and updates
 The CDB Model considerably simplifies the data store generation process, particularly all aspects of data store generation that deal with data store layering, formatting, structure and level-of-detail.
 
 
-image::images/image6.png[image,width=614,height=371]
+image::images/image66.png[image,width=614,height=371]
 
-[#img_TypicalDBGenerationCDBUsedasaDBRepository,reftext='Figure 1-6']
-*Figure 1-6. Typical DB Generation - CDB Used as a DB Repository*
+[#img_TypicalDBGenerationCDBUsedasaDBRepository,reftext='Figure 6-6']
+*Figure 6-6. Typical DB Generation - CDB Used as a DB Repository*
 
-Figure 1-6: _Typical DB Generation - CDB Used as DB Repository_ and Figure 1-7: _Typical DB Generation Flow - CDB Used as DB & Sim Repository_ illustrate a typical database generation workflow with the database used as a DB workstation repository and the database used as a Repository for the DB workstation and the simulator. Both approaches share the same steps, namely…
+<<#img_TypicalDBGenerationCDBUsedasaDBRepository>>: _Typical DB Generation - CDB Used as DB Repository_ and <<#img_TypicalDBGenerationFlowCDBUsedasDBandSimRepository>>: _Typical DB Generation Flow - CDB Used as DB & Sim Repository_ illustrate a typical database generation workflow with the database used as a DB workstation repository and the database used as a Repository for the DB workstation and the simulator. Both approaches share the same steps, namely…
 
 1.  _Source data collection and preparation:_ This step usually involves the loading of raw (usually) uncorrected data and the conversion to formats native to the data store toolset.
 2.  _Source data preparation:_ This step usually involves the detection/correction of errors, the harmonization of the data and the correction of errors. In this context, errors signify all instances where the data fails to meet prescribed criteria. For instance, errors can be as straightforward as corrupted digital data. More subtle forms of errors could be textures that fail to meet various brightness, contrast, chrominance, and distortion criteria. Harmonizing data requires that data sources be coherent with each other. An example of non-harmonized dataset is a terrain imagery mosaic built from pictures taken in different seasons, with different illumination conditions, with/without clouds, etc.
 3.  _3D modeling of features:_ This step involves the creation of 3D representations for culture features (buildings, trees, vehicles, etc.), the creation and mapping of texture patterns/imagery to the geometrical representation, the generation of the model LOD, and the generation of appropriate attribution data so that the simulator can control the model and have it respond to the simulated environment.
 4.  _Data Store automation:_ Modern data processing and validation tools offer an increasing level-of-automation to the modelers, thereby improving the DB generation timeline (for example, a forest tool that controls the placement of individual trees correlated to the underlying terrain imagery). Over the past few years, tool vendors have introduced a broad set of tools aimed at eliminating highly repetitive modeling tasks. This includes tools for runway generation (including the positioning of stripes, lights, signs, markings, etc.), road/railroad generation, cultural feature extraction from stereo pairs, cultural feature footprint extraction from image classification processes, terrain grid generation from stereo pairs, terrain surface material classification, etc.
 
-image::images/image7.png[image,width=636,height=503]
+image::images/image67.png[image,width=636,height=503]
 
-[#img_TypicalDBGenerationFlowCDBUsedasDBandSimRepository,reftext='Figure 1-7']
-*Figure 1-7. Typical DB Generation Flow - CDB Used as DB and Sim Repository*
+[#img_TypicalDBGenerationFlowCDBUsedasDBandSimRepository,reftext='Figure 6-7']
+*Figure 6-7. Typical DB Generation Flow - CDB Used as DB and Sim Repository*
 
 The result of the above steps yields a group of independent, layered and correlated datasets, (i.e., datasets that are geographically aligned in latitude/longitude (but not always elevation)), all sharing compatible projections, with all of the necessary attribution.
 
@@ -396,34 +393,34 @@ NAV uses time invariant information held in CDB such as:
 
 ===== Sensor Simulation and Base Materials linkage
 
-Sensor simulation typically requires a simulation of the device itself supplemented by a complete simulation of the synthetic environment over the portion of the electromagnetic spectrum that is relevant to this device.  The former simulation is referred to as the Sensor Simulation Model (SSM) while the latter is called the Sensor Environmental Model (SEM).  Most SEMs in existence today rely heavily on environmental database whose content is designed to match the functionality, fidelity, structure and format requirements of the SEM.  The level of realism possible by the SEM depends heavily on the quality, quantity and completeness of the data available.  This makes the environmental database highly device-specific.
+Sensor simulation typically requires a simulation of the device itself supplemented by a complete simulation of the synthetic environment over the portion of the electromagnetic spectrum that is relevant to this device. The former simulation is referred to as the Sensor Simulation Model (SSM) while the latter is called the Sensor Environmental Model (SEM). Most SEMs in existence today rely heavily on environmental database whose content is designed to match the functionality, fidelity, structure and format requirements of the SEM. The level of realism possible by the SEM depends heavily on the quality, quantity and completeness of the data available. This makes the environmental database highly device-specific.
 
 The association of material properties to features in the CDB requires two distinct steps.
 
-1.  The first step consists in establishing a correspondence between all of the Base Materials in the CDB data store and the Base Materials directly supported by the SEM of the client-device.  This is a manual task performed by the SEM specialist(s). The specialist must ensure that his SEM has a corresponding Base Material for each of the CDB Base Materials.  In cases where the SEM is simple, it is possible for two or more CDB Base Materials to point to the same SEM Base Material.  Alternately the SEM specialist may choose to create new SEM Base Materials that correspond more closely to the CDB’s Base Materials.  The result of this process is a SEM look-up.
-2.  The second step is typically undertaken during the CDB data store initialization by the client-device running the SEM.  During this initialization phase, the SEM reads the content of the global Base Material Table and the SEM look-up provided by the SEM specialist.  This look-up establishes an indirect link between the Base Materials in the CDB data store and the material properties of the client-device’s SEM Base Materials.  In fact, the indirect link (i.e., the look-up table) can be eliminated if the client device internally builds a Materials Properties Table that uses the CDB material keys directly (as illustrated in Figure 2 11: SEM Base Material Properties Table).
+1.  The first step consists in establishing a correspondence between all of the Base Materials in the CDB data store and the Base Materials directly supported by the SEM of the client-device. This is a manual task performed by the SEM specialist(s). The specialist must ensure that his SEM has a corresponding Base Material for each of the CDB Base Materials. In cases where the SEM is simple, it is possible for two or more CDB Base Materials to point to the same SEM Base Material. Alternately the SEM specialist may choose to create new SEM Base Materials that correspond more closely to the CDB’s Base Materials. The result of this process is a SEM look-up.
+2.  The second step is typically undertaken during the CDB data store initialization by the client-device running the SEM. During this initialization phase, the SEM reads the content of the global Base Material Table and the SEM look-up provided by the SEM specialist. This look-up establishes an indirect link between the Base Materials in the CDB data store and the material properties of the client-device’s SEM Base Materials. In fact, the indirect link (i.e., the look-up table) can be eliminated if the client device internally builds a Materials Properties Table that uses the CDB material keys directly (as illustrated in Figure 2 11: SEM Base Material Properties Table).
 
 
 
-image::images/image8.jpeg[width=524,height=362]
+image::images/image68.jpeg[width=524,height=362]
 
-image::images/image9.png[Core Figure 2.11.png,width=528,height=216]
+image::images/image69.png[Core Figure 2.11.png,width=528,height=216]
 
-[#img_SEMBaseMaterialPropertiesTable,reftext='Figure 1-8']
-*Figure 1-8. SEM Base Material Properties Table*
+[#img_SEMBaseMaterialPropertiesTable,reftext='Figure 6-8']
+*Figure 6-8. SEM Base Material Properties Table*
 
 ==== SEM – Materials example
 
-We have a Composite Material consisting of four Base Materials.  For the purpose of this example, we will associate hypothetical keys to these materials:
+We have a Composite Material consisting of four Base Materials. For the purpose of this example, we will associate hypothetical keys to these materials:
 
 
-water (key3 = "BM_WATER-FRESH",  BMT's index 0)
+water (key3 = "BM_WATER-FRESH", BMT's index 0)
 
-vegetation (key21 = " BM_LAND-LOW_MEADOW",  BMT's index 2)
+vegetation (key21 = " BM_LAND-LOW_MEADOW", BMT's index 2)
 
-soil (key7 = " BM_SOIL ",  BMT's index 4)
+soil (key7 = " BM_SOIL ", BMT's index 4)
 
-sand (key4 = " BM_SAND ",  BMT's index 9)
+sand (key4 = " BM_SAND ", BMT's index 9)
 
 
 The SEM specialist establishes the following correspondence between the CDB Base Materials and his materials (step 1):
@@ -431,9 +428,9 @@ The SEM specialist establishes the following correspondence between the CDB Base
 
 key3 to material 8 ("Lake", SEM list's index 8)
 
-key21 to material 3 ("Uncultivated Land",  SEM list's index 3)
+key21 to material 3 ("Uncultivated Land", SEM list's index 3)
 
-key7 to material 7  ("Soil", SEM list's index 7)
+key7 to material 7 ("Soil", SEM list's index 7)
 
 key4 to material 12 ("Sand", SEM list's index 12)
 
@@ -441,29 +438,29 @@ key4 to material 12 ("Sand", SEM list's index 12)
 During the CDB initialization process (step 2), a look-up table is built as follows:
 
 
-BMT’s  index 0 is associated  to SEM list's index 8
+BMT’s index 0 is associated to SEM list's index 8
 
-BMT’s  index 2 is associated  to SEM list's index 3
+BMT’s index 2 is associated to SEM list's index 3
 
-BMT’s  index 4 is associated  to SEM list's index 7
+BMT’s index 4 is associated to SEM list's index 7
 
-BMT’s  index 9 is associated  to SEM list's index 12
+BMT’s index 9 is associated to SEM list's index 12
 
 
 ===== Geospecific viz Geotypical guidance
 
-In most cases, the decision to invoke a modeled representation of a feature as either geotypical or geospecific is clear.  When it comes to real-world recognizable cultural features, the representation of these features is clearly a geospecific model because it is encountered once in the entire CDB and it is unique in its shape, texture, etc.  At the end of the spectrum, many simulation applications use a generic modeled representation for each feature type and then instance that modeled representation throughout the synthetic environment.  For this case, the choice is clearly geotypical.
+In most cases, the decision to invoke a modeled representation of a feature as either geotypical or geospecific is clear. When it comes to real-world recognizable cultural features, the representation of these features is clearly a geospecific model because it is encountered once in the entire CDB and it is unique in its shape, texture, etc. At the end of the spectrum, many simulation applications use a generic modeled representation for each feature type and then instance that modeled representation throughout the synthetic environment. For this case, the choice is clearly geotypical.
 
-There are cases however, where the decision to represent features as either geotypical or geospecific is not as clear-cut.  For instance, a modeler may not be satisfied with a single modeled representation for all the hospital features (FeatureCode-FSC = AL015-006); accordingly, he may wish to model two or more variants of hospitals in the CDB.  While each of these modeled representation may not be real-world specific, they are nonetheless variants of hospitals (say by size or by region or country for example).  Usually, the primary motivation for such variations is one of esthetics and realism; it is not necessarily motivated by the need to accurately reflect real-world features.
+There are cases however, where the decision to represent features as either geotypical or geospecific is not as clear-cut. For instance, a modeler may not be satisfied with a single modeled representation for all the hospital features (FeatureCode-FSC = AL015-006); accordingly, he may wish to model two or more variants of hospitals in the CDB. While each of these modeled representation may not be real-world specific, they are nonetheless variants of hospitals (say by size or by region or country for example). Usually, the primary motivation for such variations is one of esthetics and realism; it is not necessarily motivated by the need to accurately reflect real-world features.
 
 In making his decision, the modeler should factor-in the following trade-offs:
 
-1.  _CDB Storage Size:_ The size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models.  This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile – instead, the model appears once in the GTModel library dataset directory.  Clearly, a geotypical model is the preferred choice if the modeler wishes to assign and re-use the same modeled representation for a given feature type.
-2.  _Client-device Memory Footprint:_   By assigning a geotypical model to a feature, the modeler provides a valuable “clue” to the client-device that the feature will be instanced throughout the CDB with the same modeled representation.  As a result, client-device should dedicate physical memory for the storage of the geotypical models for later use.
-3.  _GTModel Library Management:_  The CDB’s Feature Data Dictionary (FDD) is based on the DIGEST, DGIWG, SEDRIS and UHRB geomatics standards.  These standards are commonly used for the attribution of source vector data in a broad range of simulation applications.  The CDB Feature Data Dictionary acts much like what an English dictionary is to a collection of novels.  As a result, it is possible to develop a universal GTModel Library which is totally independent of the CDB content (just like a dictionary is independent of books).  This universal GTModel Library can be simply copied into the \CDB\GTModel directory.  The structure of the GTModel Library is organized in accordance to the CDB’s FDD – in other words, the models are indexed using the CDB Feature Code.  The indexing approach greatly simplifies the management of the model library since every model has a pre-established location in the library.
-4.  _CDB Generation and Update:_ As mentioned earlier, the size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models.  This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile – instead, the model appears once in the GTModel library dataset directory.  This reduces the amount of time required by the tools to generate and store the CDB onto the disk storage system.  The second benefit of geotypical models comes in the case where a modeler wishes to change the modeled representation of one or more geotypical features type across the entire CDB.  Changes to the modeled representation of a feature type can easily be performed by simply overwriting the desired model in model library.  From then on, all features of that type now reference the updated model – no other changes to the CBD are required.
+1.  _CDB Storage Size:_ The size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. Clearly, a geotypical model is the preferred choice if the modeler wishes to assign and re-use the same modeled representation for a given feature type.
+2.  _Client-device Memory Footprint:_ By assigning a geotypical model to a feature, the modeler provides a valuable “clue” to the client-device that the feature will be instanced throughout the CDB with the same modeled representation. As a result, client-device should dedicate physical memory for the storage of the geotypical models for later use.
+3.  _GTModel Library Management:_ The CDB's Feature Data Dictionary (FDD) is based on the DIGEST, DGIWG, SEDRIS and UHRB geomatics standards. These standards are commonly used for the attribution of source vector data in a broad range of simulation applications. The CDB Feature Data Dictionary acts much like what an English dictionary is to a collection of novels. As a result, it is possible to develop a universal GTModel Library which is totally independent of the CDB content (just like a dictionary is independent of books). This universal GTModel Library can be simply copied into the \CDB\GTModel directory. The structure of the GTModel Library is organized in accordance to the CDB's FDD - in other words, the models are indexed using the CDB Feature Code. The indexing approach greatly simplifies the management of the model library since every model has a pre-established location in the library.
+4.  _CDB Generation and Update:_ As mentioned earlier, the size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. This reduces the amount of time required by the tools to generate and store the CDB onto the disk storage system. The second benefit of geotypical models comes in the case where a modeler wishes to change the modeled representation of one or more geotypical features type across the entire CDB. Changes to the modeled representation of a feature type can easily be performed by simply overwriting the desired model in model library. From then on, all features of that type now reference the updated model - no other changes to the CBD are required.
 
-Note that since the size of the GTModel library is likely to exceed the client-device’s model memory, the client-device must implement a caching scheme which intelligently discards models or portions of models that are deemed less important, used infrequently or not used at all.  It is up to the client-device to accommodate for the disparity between the size of client-device’s model memory and the size of the GTModel library.  Clearly when the disparity is large, the caching algorithm is solicited more frequently and there is more “trashing” of the cache’s content.  The key to a successful implementation of a caching scheme resides in an approach which discards information not actively or currently used by the client-device.  The CDB standards offers a rich repertoire of attribution information so that client-devices can accomplish this task optimally.  Consequently, the client-devices can smartly discard model data that is not in use (e.g., models and/or, textures) during the course of a simulation.  Note that in more demanding cases, client-devices may have to resort to a greater level of sophistication and determine which levels-of-detail of the model geometry and/or model texture are in use in order to accommodate cache memory constraints.  It is clearly in the modeler’s interest to avoid widespread usage of model variants within the GTModel Library.   In doing so, the modeler overly relies on the client-devices abilities to smartly manage its model cache.  As a result, run-time performance may suffer.
+Note that since the size of the GTModel library is likely to exceed the client-device's model memory, the client-device must implement a caching scheme which intelligently discards models or portions of models that are deemed less important, used infrequently or not used at all. It is up to the client-device to accommodate for the disparity between the size of client-device's model memory and the size of the GTModel library. Clearly when the disparity is large, the caching algorithm is solicited more frequently and there is more “trashing” of the cache's content. The key to a successful implementation of a caching scheme resides in an approach which discards information not actively or currently used by the client-device. The CDB standards offers a rich repertoire of attribution information so that client-devices can accomplish this task optimally. Consequently, the client-devices can smartly discard model data that is not in use (e.g., models and/or, textures) during the course of a simulation. Note that in more demanding cases, client-devices may have to resort to a greater level of sophistication and determine which levels-of-detail of the model geometry and/or model texture are in use in order to accommodate cache memory constraints. It is clearly in the modeler's interest to avoid widespread usage of model variants within the GTModel Library. In doing so, the modeler overly relies on the client-devices abilities to smartly manage its model cache. As a result, run-time performance may suffer.
 
 As mentioned earlier, the modeled representation of a geotypical model is not duplicated within each tile – instead, the model appears once in the GTModel library dataset directory. As a result, once the model is loaded into memory, it can be referenced without inducing a paging event to the CDB storage system.  Clearly, the paging requirements associated with geotypical features are negligible.  As a result, paging performance is improved because of the reduced IO requirements on the CDB storage system.
 
@@ -471,87 +468,84 @@ As mentioned earlier, the modeled representation of a geotypical model is not du
 
 _Note: Was A.13 in Volume 2 in original submission_
 
-The purpose of the MinElevation and MaxElevation components is to provide the CDB data store with the necessary data and structure to achieve the required level of determinism in the computation line-of-sight calculations with the terrain.  The values of each component are with respect to mean sea level.  Since both the MinElevation and the MaxElevation values are specified in this standard, any line-of-sight algorithm can rapidly assess an intersection status of the line-of-sight vector with the terrain.
+The purpose of the MinElevation and MaxElevation components is to provide the CDB data store with the necessary data and structure to achieve the required level of determinism in the computation line-of-sight calculations with the terrain. The values of each component are with respect to mean sea level. Since both the MinElevation and the MaxElevation values are specified in this standard, any line-of-sight algorithm can rapidly assess an intersection status of the line-of-sight vector with the terrain.
 
 There are three cases to consider:
 
-*CASE 1* *– No intersection:*  If all of the LOS Bounding Boxes are above the MinMax Bounding Boxes, then there is no intersection between the line-of-sight vector and the terrain.  No further testing is required.  (Refer to Figure A-16: Case 1 – No Intersection.)
+*CASE 1* *- No intersection:* If all of the LOS Bounding Boxes are above the MinMax Bounding Boxes, then there is no intersection between the line-of-sight vector and the terrain. No further testing is required. (Refer to <<#img_Case1-NoIntersection>>. Case 1 - No Intersection.)
 
-image::images/image10.jpeg[untitled1,width=575,height=205]
-*Figure A-16: Case 1 – No Intersection*
+image::images/image610.jpeg[width=575,height=205]
+[#img_Case1-NoIntersection,reftext='Figure 6-10']
+*Figure 6-10. Case 1 - No Intersection*
 
-*CASE 2* *– Potential intersection:*  If one or more of the LOS Bounding Boxes overlap with a MinMax Bounding Box, then there is a potential intersection between the line-of-sight vector and the terrain.  This step must be repeated with progressively finer level-of-detail versions of the MinElevation and MaxElevation values until Case 1 or Case 3 is encountered.  If the finest level-of-detail is reached and the LOS result still yields a potential intersection status (Case 2), then the LOS algorithm must perform a LOS intersection with the finest LOD of the Primary Terrain Elevation component using the prescribed CDB meshing convention.  (Refer to Figure A-17: Case 2 – Potential Intersection.)
+*CASE 2* *- Potential intersection:* If one or more of the LOS Bounding Boxes overlap with a MinMax Bounding Box, then there is a potential intersection between the line-of-sight vector and the terrain. This step must be repeated with progressively finer level-of-detail versions of the MinElevation and MaxElevation values until Case 1 or Case 3 is encountered. If the finest level-of-detail is reached and the LOS result still yields a potential intersection status (Case 2), then the LOS algorithm must perform a LOS intersection with the finest LOD of the Primary Terrain Elevation component using the prescribed CDB meshing convention. (Refer to <<#img_Case2-PotentialIntersection>>. Case 2 - Potential Intersection.)
 
-image::images/image11.jpeg[untitled2,width=578,height=202]
-*Figure A-17: Case 2 – Potential Intersection*
+image::images/image611.jpeg[width=578,height=202]
+[#img_Case2-PotentialIntersection,reftext='Figure 6-11']
+*Figure 6-11. Case 2 - Potential Intersection*
 
-*CASE 3 – Intersection:*  If one or more of the LOS Bounding Boxes are below the MinMax Bounding Boxes, then there is an intersection between the line-of-sight vector and the terrain.  No further testing is required to determine whether there is intersection or not.  (Refer to Figure A-18: Case 3 – Guaranteed Intersection.)  However, to determine the intersection point, the LOS algorithm must perform the following additional steps.  If (starting with the LOS point-of-origin) one or more of the LOS Bounding Boxes overlap with a MinMax Bounding Boxes, then there is a potential intersection between the line-of-sight vector and the terrain for that MinMax Bounding Box.  This step must be repeated with progressively finer level-of-detail versions of the MinElevation and MaxElevation values until Case 1 or Case 3 is encountered.  If the finest level-of-detail is reached and the LOS result still yields a potential intersection status (Case 2), then the LOS algorithm must perform a LOS intersection with the finest LOD of the Primary Terrain Elevation component using the prescribed CDB meshing convention.
+*CASE 3 - Intersection:* If one or more of the LOS Bounding Boxes are below the MinMax Bounding Boxes, then there is an intersection between the line-of-sight vector and the terrain. No further testing is required to determine whether there is intersection or not. (Refer to <<#img_Case3-GuaranteedIntersection>>. Case 3 - Guaranteed Intersection.) However, to determine the intersection point, the LOS algorithm must perform the following additional steps. If (starting with the LOS point-of-origin) one or more of the LOS Bounding Boxes overlap with a MinMax Bounding Boxes, then there is a potential intersection between the line-of-sight vector and the terrain for that MinMax Bounding Box. This step must be repeated with progressively finer level-of-detail versions of the MinElevation and MaxElevation values until Case 1 or Case 3 is encountered. If the finest level-of-detail is reached and the LOS result still yields a potential intersection status (Case 2), then the LOS algorithm must perform a LOS intersection with the finest LOD of the Primary Terrain Elevation component using the prescribed CDB meshing convention.
 
-image::images/image12.jpeg[untitled3,width=580,height=199]
-*Figure A-18: Case 3 – Guaranteed Intersection*
+image::images/image612.jpeg[width=580,height=199]
+[#img_Case3-GuaranteedIntersection,reftext='Figure 6-12']
+*Figure 6-12. Case 3 - Guaranteed Intersection*
 
 === Gamma Tutorial (Was Annex G, Volume 2)
 
 ==== Introduction
 
-There is nominally no gamma correction done to the stored samples of CDB imagery files.  As a result, a gamma of 1/2.2 should be applied to imagery data when viewing it through a (sRGB-calibrated) monitor with gamma of 2.2.  The CDB Standard recommends the sRGB IEC 61966-2 standard when performing the calibration of displays (at DBGF or a simulator).  The sRGB standard provides the necessary guidelines for the handling of gamma, and of color (in a device-independent fashion) under specified viewing conditions.
+There is nominally no gamma correction done to the stored samples of CDB imagery files. As a result, a gamma of 1/2.2 should be applied to imagery data when viewing it through a (sRGB-calibrated) monitor with gamma of 2.2. The CDB Standard recommends the sRGB IEC 61966-2 standard when performing the calibration of displays (at DBGF or a simulator). The sRGB standard provides the necessary guidelines for the handling of gamma, and of color (in a device-independent fashion) under specified viewing conditions.
 
-It would be convenient for graphics programmers if all of the components of an imaging system were linear.  The voltage coming from an electronic camera would be directly proportional to the intensity (power) of light in the scene; the light emitted by a CRT would be directly proportional to its input voltage, and so on.  However, real-world devices do not behave in this way.
+It would be convenient for graphics programmers if all of the components of an imaging system were linear. The voltage coming from an electronic camera would be directly proportional to the intensity (power) of light in the scene; the light emitted by a CRT would be directly proportional to its input voltage, and so on. However, real-world devices do not behave in this way.
 
-Real imaging systems will have several components, and more than one of these can be nonlinear.  If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function.  The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system.  Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function.  So a linear transfer function is just a special case of a power function, with a gamma of 1.0.  Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system.  This is indeed the case with most real imaging systems.
+Real imaging systems will have several components, and more than one of these can be nonlinear. If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function. The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system. Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function. So a linear transfer function is just a special case of a power function, with a gamma of 1.0. Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.
 
-If the overall gamma of an imaging system is 1.0, its output is linearly proportional to its input.  This means that the ratio between the intensities of any two areas in the reproduced image will be the same as it was in the original scene.  It might seem that this should always be the goal of an imaging system: to accurately reproduce the tones of the original scene.  Alas, that is not the case.
+If the overall gamma of an imaging system is 1.0, its output is linearly proportional to its input. This means that the ratio between the intensities of any two areas in the reproduced image will be the same as it was in the original scene. It might seem that this should always be the goal of an imaging system: to accurately reproduce the tones of the original scene. Alas, that is not the case.
 
-When the reproduced image is to be viewed in “bright surround” conditions, where other white objects nearby in the room have about the same brightness as white in the image, then an overall gamma of 1.0 does indeed give real-looking reproduction of a natural scene.  Photographic prints viewed under room light and computer displays in bright room light are typical “bright surround” viewing conditions.
+When the reproduced image is to be viewed in “bright surround” conditions, where other white objects nearby in the room have about the same brightness as white in the image, then an overall gamma of 1.0 does indeed give real-looking reproduction of a natural scene. Photographic prints viewed under room light and computer displays in bright room light are typical “bright surround” viewing conditions.
 
-However, sometimes images are intended to be viewed in “dark surround” conditions, where the room is substantially black except for the image.  This is typical of the way movies and slides (transparencies) are viewed by projection.  Under these circumstances, an accurate reproduction of the original scene results in an image that human viewers judge as “flat” and lacking in contrast.  It turns out that the projected image needs to have a gamma of about 1.5 relative to the original scene for viewers to judge it “natural”.  Thus, slide film is designed to have a gamma of about 1.5, not 1.0.
+However, sometimes images are intended to be viewed in “dark surround” conditions, where the room is substantially black except for the image. This is typical of the way movies and slides (transparencies) are viewed by projection. Under these circumstances, an accurate reproduction of the original scene results in an image that human viewers judge as “flat” and lacking in contrast. It turns out that the projected image needs to have a gamma of about 1.5 relative to the original scene for viewers to judge it “natural”. Thus, slide film is designed to have a gamma of about 1.5, not 1.0.
 
-There is also an intermediate condition called “dim surround”, where the rest of the room is still visible to the viewer, but is noticeably darker than the reproduced image itself.  This is typical of television viewing, at least in the evening, as well as subdued-light computer work areas.  In dim surround conditions, the reproduced image needs to have a gamma of about 1.25 relative to the original scene in order to look natural.
+There is also an intermediate condition called “dim surround”, where the rest of the room is still visible to the viewer, but is noticeably darker than the reproduced image itself. This is typical of television viewing, at least in the evening, as well as subdued-light computer work areas. In dim surround conditions, the reproduced image needs to have a gamma of about 1.25 relative to the original scene in order to look natural.
 
-The requirement for boosted contrast (gamma) in dark surround conditions is due to the way the human visual system works, and applies equally well to computer monitors.  Thus, a modeler trying to achieve the maximum realism for the images it displays really needs to know what the room lighting conditions are, and adjust the gamma of the displayed image accordingly.
+The requirement for boosted contrast (gamma) in dark surround conditions is due to the way the human visual system works, and applies equally well to computer monitors. Thus, a modeler trying to achieve the maximum realism for the images it displays really needs to know what the room lighting conditions are, and adjust the gamma of the displayed image accordingly.
 
-If asking the user about room lighting conditions is inappropriate or too difficult, it is reasonable to assume that the overall gamma (viewing_gamma as defined below) is somewhere between 1.0 and 1.25.  That's all that most systems that implement gamma correction do.
+If asking the user about room lighting conditions is inappropriate or too difficult, it is reasonable to assume that the overall gamma (viewing_gamma as defined below) is somewhere between 1.0 and 1.25. That's all that most systems that implement gamma correction do.
 
-According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Gamma Tutorial,
+According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Gamma Tutorial, (http://www.w3.org/TR/PNG-GammaAppendix):
 
-
-(http://www.w3.org/TR/PNG-GammaAppendix[_http://www.w3.org/TR/PNG-GammaAppendix_] ):
-
-
-“All display systems, almost all photographic film, and many electronic cameras have nonlinear signal-to-light-intensity or intensity-to-signal characteristics.  Fortunately, all of these nonlinear devices have a transfer function that is approximated fairly well by a single type of mathematical function: a power function.  This power function has the general equation
-
+“All display systems, almost all photographic film, and many electronic cameras have nonlinear signal-to-light-intensity or intensity-to-signal characteristics. Fortunately, all of these nonlinear devices have a transfer function that is approximated fairly well by a single type of mathematical function: a power function. This power function has the general equation
 
 output = input ^ gamma
 
-
 where ^ denotes exponentiation, and “gamma” (often printed using the Greek letter gamma, thus the name) is simply the exponent of the power function.
 
-By convention, “input” and “output” are both scaled to the range [0..1], with 0 representing black and 1 representing maximum white.  Normalized in this way, the power function is completely described by a single number, the exponent “gamma.”
+By convention, “input” and “output” are both scaled to the range [0..1], with 0 representing black and 1 representing maximum white. Normalized in this way, the power function is completely described by a single number, the exponent “gamma.”
 
-So, given a particular device, we can measure its output as a function of its input, fit a power function to this measured transfer function, extract the exponent, and call it gamma.  We often say “this device has a gamma of 2.5” as a shorthand for “this device has a power-law response with an exponent of 2.5”.  We can also talk about the gamma of a mathematical transform, or of a lookup table in a frame buffer, so long as the input and output of the thing are related by the power-law expression above.
+So, given a particular device, we can measure its output as a function of its input, fit a power function to this measured transfer function, extract the exponent, and call it gamma. We often say “this device has a gamma of 2.5” as a shorthand for “this device has a power-law response with an exponent of 2.5”. We can also talk about the gamma of a mathematical transform, or of a lookup table in a frame buffer, so long as the input and output of the thing are related by the power-law expression above.
 
-Real imaging systems will have several components, and more than one of these can be nonlinear.  If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function.  The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system.
+Real imaging systems will have several components, and more than one of these can be nonlinear. If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function. The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system.
 
-Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function.  So a linear transfer function is just a special case of a power function, with a gamma of 1.0.
+Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function. So a linear transfer function is just a special case of a power function, with a gamma of 1.0.
 
-Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system.  This is indeed the case with most real imaging systems.”
+Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.”
 
-In an ideal world, sample values would be stored in floating point, there would be lots of precision, and it wouldn't really matter much.  But in reality, we're always trying to store images in as few bits as we can.
+In an ideal world, sample values would be stored in floating point, there would be lots of precision, and it wouldn't really matter much. But in reality, we're always trying to store images in as few bits as we can.
 
-If we decide to use samples that are linearly proportional to intensity, and do the gamma correction in the frame buffer LUT, it turns out that we need to use at least 12-16 bits for each of red, green, and blue to have enough precision in intensity.  With any less than that, we will sometimes see “contour bands” or “Mach bands” in the darker areas of the image, where two adjacent sample values are still far enough apart in intensity for the difference to be visible.
+If we decide to use samples that are linearly proportional to intensity, and do the gamma correction in the frame buffer LUT, it turns out that we need to use at least 12-16 bits for each of red, green, and blue to have enough precision in intensity. With any less than that, we will sometimes see “contour bands” or “Mach bands” in the darker areas of the image, where two adjacent sample values are still far enough apart in intensity for the difference to be visible.
 
-However, through an interesting coincidence, the human eye's subjective perception of brightness is related to the physical stimulation of light intensity in a manner that is very much like the power function used for gamma correction.  If we apply gamma correction to measured (or calculated) light intensity before quantizing to an integer for storage in a frame buffer, we can get away with using many fewer bits to store the image.  In fact, 8 bits per color is almost always sufficient to avoid contouring artifacts.  This is because, since gamma correction is so closely related to human perception, we are assigning our 256 available sample codes to intensity values in a manner that approximates how visible those intensity changes are to the eye.  Compared to a linear-sample image, we allocate fewer sample values to brighter parts of the tonal range and more sample values to the darker portions of the tonal range.
+However, through an interesting coincidence, the human eye's subjective perception of brightness is related to the physical stimulation of light intensity in a manner that is very much like the power function used for gamma correction. If we apply gamma correction to measured (or calculated) light intensity before quantizing to an integer for storage in a frame buffer, we can get away with using many fewer bits to store the image. In fact, 8 bits per color is almost always sufficient to avoid contouring artifacts. This is because, since gamma correction is so closely related to human perception, we are assigning our 256 available sample codes to intensity values in a manner that approximates how visible those intensity changes are to the eye. Compared to a linear-sample image, we allocate fewer sample values to brighter parts of the tonal range and more sample values to the darker portions of the tonal range.
 
 Thus, for the same apparent image quality, images using gamma-encoded sample values need only about two-thirds as many bits of storage as images using linear samples.
 
-If we consider a pipeline that involves capturing (or calculating) an image, storing it in an image file, reading the file, and displaying the image on some sort of display screen, there are at least 5 places in the pipeline that could have nonlinear transfer functions.  Let's give each a specific name for their characteristic gamma:
+If we consider a pipeline that involves capturing (or calculating) an image, storing it in an image file, reading the file, and displaying the image on some sort of display screen, there are at least 5 places in the pipeline that could have nonlinear transfer functions. Let's give each a specific name for their characteristic gamma:
 
 1.  Camera_gamma (γ~_c_~ ):The characteristic of the image sensor.
 2.  Encoding_gamma (γ~_e_~ ): The gamma of any transformation performed by the software writing the image file.
 3.  Decoding_gamma (γ~_d_~ ): The gamma of any transformation performed by any software reading the image file.
 4.  LUT_gamma (γ~_lut_~ ): The gamma of the frame buffer LUT, if present.
 
- In addition, let's add a few other names:
+In addition, let's add a few other names:
 
 1.  File_gamma (γ~_f_~): The gamma of the image in the file, relative to the original scene, i.e.
 +
@@ -571,10 +565,6 @@ When displaying an image file on the simulator, the image-decoding software is r
 |==========
 a|
 
-
-
-
-
 ifndef::backend-pdf[]
 \[\gamma _c \gamma _d \gamma _{DS} = \gamma _v \]
 
@@ -586,9 +576,8 @@ ifdef::backend-pdf[]
 image::math/g1.png[]
 endif::[]
 
-|(eq. G-1)
+|(eq. 6-1)
 |==========
-
 
 In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g., camera or satellite) right through to the simulator’s display device. His objective is to ensure that product of all gammas match the viewing gamma of the simulator.
 
@@ -606,7 +595,7 @@ Given the above assumptions, and our objective of ensuring that the product of a
 
 ==== Harmonization of Gamma at DBGF with Gamma of Simulator Visual System
 
-Both the modelers and the visual system architects should be keenly aware of the handling of gamma at the Data Store Generation Facility and at the simulator. Figure G‑1: Typical Handling of Gamma at DBGF and Simulator, illustrates the typical handling of gamma in both of these cases.
+Both the modelers and the visual system architects should be keenly aware of the handling of gamma at the Data Store Generation Facility and at the simulator. <<#img_TypicalHandlingofGammaatDBGFandSimulator>>. Typical Handling of Gamma at DBGF and Simulator, illustrates the typical handling of gamma in both of these cases.
 
 The top portion of the illustration shows the path taken by source data as a modeler is viewing it at this workstation via the application software. In this example, we will assume the following:
 
@@ -615,9 +604,9 @@ The top portion of the illustration shows the path taken by source data as a mod
 3.  The measure gamma of the DBGF workstation monitor is γ~_crt_~ = 2.2
 4.  The DBGF workstation is located in a dimly lit room, so the viewing gamma is in effect γ~_v_~ = 1.25
 
-
-image::images/image36.jpeg[untitled1,width=544,height=364]
-*Figure G‑1: Typical Handling of Gamma at DBGF and Simulator*
+image::images/image613.jpeg[width=544,height=364]
+[#img_TypicalHandlingofGammaatDBGFandSimulator,reftext='Figure 6-13']
+*Figure 6-13. Typical Handling of Gamma at DBGF and Simulator*
 
 === Handling of Color
 
@@ -634,8 +623,8 @@ The CDB standard encoded RGB color tri-stimulus values assume the following:
 3.  Display model Offset (R, G and B): 0.055
 4.  Display Gun/Phosphor Gamma (R, G, and B): 2.2
 
-[#table_cie,reftext='Table G-1']
-*Table G-1. CIE Chromaticity for CDB Reference Primaries & CIE Standard Illuminant*
+[#table_cie,reftext='Table 6-1']
+.CIE Chromaticity for CDB Reference Primaries & CIE Standard Illuminant
 
 [cols=",,,,",]
 |=======================================
@@ -645,11 +634,9 @@ The CDB standard encoded RGB color tri-stimulus values assume the following:
 |Z |0.0300 |0.1000 |0.7900 |0.3583
 |=======================================
 
-According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Color Tutorial,
+According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Color Tutorial, (http://www.w3.org/TR/PNG-GammaAppendix):
 
-(http://www.w3.org/TR/PNG-GammaAppendix):
-
-“The color of an object depends not only on the precise spectrum of light emitted or reflected from it, but also on the observer, their species, what else they can see at the same time, even what they have recently looked at. Furthermore, two very different spectra can produce exactly the same color sensation. Color is not an objective property of real-world objects; it is a subjective, biological sensation. However, by making some simplifying assumptions (such as: we are talking about _human_ vision) it is possible to produce a mathematical model of color and thereby obtain good color accuracy."
+“The color of an object depends not only on the precise spectrum of light emitted or reflected from it, but also on the observer, their species, what else they can see at the same time, even what they have recently looked at. Furthermore, two very different spectra can produce exactly the same color sensation. Color is not an objective property of real-world objects; it is a subjective, biological sensation. However, by making some simplifying assumptions (such as: we are talking about _human_ vision) it is possible to produce a mathematical model of color and thereby obtain good color accuracy.”
 
 ==== Device-dependent Color
 
@@ -683,7 +670,6 @@ Chromaticity is an objective measurement of the color of an object, leaving asid
 |==========
 a|
 
-
 ifndef::backend-pdf[]
 \[x = X / (X + Y + Z) \]
 
@@ -693,7 +679,7 @@ ifdef::backend-pdf[]
 image::math/g3.png[]
 endif::[]
 
-|(eq. G-3)
+|(eq. 6-2)
 |==========
 
 XYZ colors having the same chromaticity values will appear to have the same hue but can vary in absolute brightness. Notice that x,y are dimensionless ratios, so they have the same values no matter what units we've used for X,Y,Z.
@@ -732,7 +718,7 @@ ifdef::backend-pdf[]
 image::math/g4.png[]
 endif::[]
 
-|(eq. G-4)
+|(eq. 6-3)
 |===========
 
 
@@ -766,7 +752,7 @@ ifdef::backend-pdf[]
 image::math/g5.png[]
 endif::[]
 
-|(eq. G-5)
+|(eq. 6-4)
 |===========
 
 
@@ -807,7 +793,7 @@ ifdef::backend-pdf[]
 image::math/g6.png[]
 endif::[]
 
-|(eq. G-6)
+|(eq. 6-5)
 |===========
 
 
@@ -816,9 +802,7 @@ Where __M__^-1^= The inverse of the matrix _M_ used to go from XYZ-1931 color sp
 
 In the RGB encoding process, negative sRGB tri-stimulus values, and sRGB tri-stimulus values greater than 1,00 are not retained. When encoding software cannot support this extended range, the luminance dynamic range and color gamut of RGB is limited to the tri-stimulus values between 0,0 and 1,0 by simple clipping.
 
-According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Color Tutorial,
-
-(http://www.w3.org/TR/PNG-GammaAppendix):
+According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Color Tutorial, (http://www.w3.org/TR/PNG-GammaAppendix):
 
 “The gamut of a device is the subset of visible colors that the device can display. (Note that this has nothing to do with gamma.) The gamut of an RGB device can be visualized as a polyhedron in XYZ space; the vertices correspond to the device's black, blue, red, green, magenta, cyan, yellow, and white.
 

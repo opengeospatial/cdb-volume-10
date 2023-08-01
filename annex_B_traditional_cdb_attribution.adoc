@@ -5,7 +5,7 @@
 
 This table outlines the CDB vector attributes that are exclusively designed for the OGC CDB Standard and cannot be mapped to other schemas, such as NAS.
 
-*Table 1: Traditional OGC CDB V1.3 attributes extracted from CDB_Attributes.xml file*
+.Traditional OGC CDB V1.3 attributes extracted from CDB_Attributes.xml file
 
 |===
 |*CDB Attribute Name*|*Semantic Definition*
@@ -39,7 +39,7 @@ This table outlines the CDB vector attributes that are exclusively designed for 
 *Note:*  +
 Some geometry attributes in the CDB attribution list (_e.g._,  WGP, HGT, DEP) are used by almost all CDB clients. However, some clients might not use them for rendering. The concept of those attributes are mentioned in the following table.
 
-*Table D-2: CDB Geometry Attributes*
+.CDB Geometry Attributes
 |===
 |*Application Schema Geometry Attributes*|
 

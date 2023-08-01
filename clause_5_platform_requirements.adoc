@@ -16,7 +16,7 @@ b.  Number of files or directories per directory (except root): 2048 entries or 
 c.  Depth of directory hierarchy: 9 or more (assuming at least 256 entries per directory level).
 d.  Directory size: 128 KB or more (assuming 64 bytes per directory entry).
 3.  File Size: 64 MB or more.
-4.  Number of files per volume: 41,600 files or more (assuming 650 MB CD with 16 KB files.
+4.  Number of files per volume: 41,600 files or more (assuming 650 MB CD with 16 KB files).
 5.  Support for removable media.
 6.  Support for bootable/non-bootable volume.
 
