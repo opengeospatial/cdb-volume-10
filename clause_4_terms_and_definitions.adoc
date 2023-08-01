@@ -10,6 +10,8 @@ For the purposes of this document, the following abbreviations apply. All other 
 
 *DFDD*  Digital Geospatial Information Working Group Feature Data Dictionary
 
+*DIGEST*  Digital Geographic Information Exchange Standard
+
 *ENC*  Electronic Navigational Chart
 
 *GGDM*  Ground-warfighter Geospatial Data Model
@@ -33,6 +35,8 @@ For the purposes of this document, the following abbreviations apply. All other 
 *RTP* Run-Time Publishers
 
 *SE* Synthetic Environment
+
+*SEDRIS*  Synthetic Environment Data Representation and Interchange Specification
 
 *SWG* Standard Working Group
 
