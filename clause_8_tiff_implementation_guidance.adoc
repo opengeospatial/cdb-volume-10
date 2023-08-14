@@ -7,13 +7,13 @@ The conventions define how TIFF files are interpreted by a CDB-compliant TIFF re
 [cols=",",options="",]
 |=============================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 |Section 2 TIFF Structure |CDB-compliant TIFF readers do not consider TIFF image and DEM data in big-endian byte order.
-|Multiple Images per TIFF File (16) |_TIFF/CDB Readers:_  The CDB Standard does not take advantage of multiple images per TIFF file.
+|Multiple Images per TIFF File (16) |_TIFF/CDB Readers:_ The CDB Standard does not take advantage of multiple images per TIFF file.
 |Section 3: Bi-level images (17) |CDB-compliant TIFF readers do not consider bi-level image data.
 |Color (17) |CDB-compliant TIFF readers do not consider WhiteIsZero image data
 |Compression (17) |CDB-compliant TIFF readers do not consider compressed TIFF image.
 |Rows and Columns (18) |The CDB standard recommends that the product of ImageLength and ImageWidth be less than 4,194,304 (2K x 2K).
-| |CDB-compliant TIFF readers require this field to be a power of 2.  ImageLength need not be equal to ImageWidth
-| |CDB-compliant TIFF readers require this field to be a power of 2.  ImageWidth need not be equal to ImageLength
+| |CDB-compliant TIFF readers require this field to be a power of 2. ImageLength need not be equal to ImageWidth
+| |CDB-compliant TIFF readers require this field to be a power of 2. ImageWidth need not be equal to ImageLength
 |ResolutionUnit (18) |CDB-compliant TIFF readers do not consider this TIFF tag
 |XResolution (19) |CDB-compliant TIFF readers do not consider this TIFF tag.
 |YResolution (19) |CDB-compliant TIFF readers do not consider this TIFF tag.
@@ -26,7 +26,7 @@ i.e. PhotometricInterpretation = 3 (Palette Color)
 |ColorMap (23) |CDB-compliant TIFF readers do not consider palette-color images; as a result, this tag is ignored.
 |General Requirements (26) |CDB-compliant TIFF readers consider only type ‘II’, (little-endian) byte ordered data.
 | |The CDB standard does not take advantage of multiple images per file.
-|Notes on Required Fields (28) |CDB-compliant TIFF readers require ImageWidth and ImageLength fields to be a power of 2.  ImageWidth need not be the same as ImageLength.  CDB-compliant TIFF readers do not consider data that does not conform to this requirement.
+|Notes on Required Fields (28) |CDB-compliant TIFF readers require ImageWidth and ImageLength fields to be a power of 2. ImageWidth need not be the same as ImageLength. CDB-compliant TIFF readers do not consider data that does not conform to this requirement.
 | |CDB-compliant TIFF readers do not consider the XResolution and YResolution TIFF tags.
 | |CDB-compliant TIFF readers do not consider the ResolutionUnit TIFF tag.
 |Artist Tag (29) |CDB-compliant TIFF readers do not consider the Artist TIFF tag.
@@ -38,7 +38,7 @@ The length of the dithering or halftoning matrix used to create a dithered or ha
 |CellWidth (29) |CDB-compliant TIFF readers do not consider the CellWidth TIFF tag
 |ColorMap (29) |CDB-compliant TIFF readers do not consider the ColorMap TIFF tag
 |Compression (30) |CDB-compliant TIFF readers do not consider compressed TIFF image
-|Copyright Tag (31 |CDB-compliant TIFF readers do not consider the Copyright TIFF tag
+|Copyright Tag (31) |CDB-compliant TIFF readers do not consider the Copyright TIFF tag
 |DateTime Tag (31) |CDB-compliant TIFF readers do not consider the DateTime TIFF tag
 |Unassociated alpha data (32) |CDB-compliant TIFF readers do not consider unassociated alpha data.
 |FreeByteCounts Tag (33) |CDB-compliant TIFF readers do not consider the FreeByteCounts TIFF tag
@@ -47,36 +47,36 @@ The length of the dithering or halftoning matrix used to create a dithered or ha
 |GreyResponseUnit (33) |The CDB standard assumes that the gray response curve of TIFF image files to be linear. As a result, CDB-compliant TIFF readers do not consider the GrayResponseUnit Tag data.
 |HostComputer Tag (34) |CDB-compliant TIFF readers do not consider the HostComputer TIFF tag
 |Image Description Tag (34) |CDB-compliant TIFF readers do not consider the HostComputer TIFF tag
-|ImageLength (34) |CDB-compliant TIFF readers require ImageWidth and ImageLength fields to be a power of 2.  ImageLength need not be the same as ImageWidth.  CDB-compliant TIFF readers do not consider image that does not conform to this requirement.
+|ImageLength (34) |CDB-compliant TIFF readers require ImageWidth and ImageLength fields to be a power of 2. ImageLength need not be the same as ImageWidth. CDB-compliant TIFF readers do not consider image that does not conform to this requirement.
 |Make Tag (35) |CDB-compliant Tiff readers do not consider the Make TIFF tag.
-|MaxSampleValue Tag (35) |The CDB standard establishes that the MaxSampleValue to be always equal to the maximum value that can be represented by the number format representation.  As a result, CDB-compliant TIFF readers do not consider the MaxSample TIFF tag
-|MinSampleValue (35) |The CDB standard establishes that the MinSampleValue to be always equal to 0 for image data and to minimum value that can be represented by the number format representation.  As a result, CDB-compliant TIFF readers do not consider the MinSample TIFF tag.
+|MaxSampleValue Tag (35) |The CDB standard establishes that the MaxSampleValue to be always equal to the maximum value that can be represented by the number format representation. As a result, CDB-compliant TIFF readers do not consider the MaxSample TIFF tag
+|MinSampleValue (35) |The CDB standard establishes that the MinSampleValue to be always equal to 0 for image data and to minimum value that can be represented by the number format representation. As a result, CDB-compliant TIFF readers do not consider the MinSample TIFF tag.
 |Model (35) |CDB-compliant TIFF readers do not consider the Model TIFF tag.
-|NewSubfileType (36) |The CDB standard assumes that the data is full or reduced resolution only.  As a result, CDB-compliant TIFF readers only consider images and DEMs data whose PhotometricInterpretation Tag value is 1 or 2.
-|Orientation (36) |The CDB standard assumes that the data is organized such that the 0th row represents the visual top of the grid data (or image), and the 0th column represents the visual left-hand side.  As a result, CDB-compliant TIFF readers do not consider image and DEM data whose Orientation Tag value is not 1
+|NewSubfileType (36) |The CDB standard assumes that the data is full or reduced resolution only. As a result, CDB-compliant TIFF readers only consider images and DEMs data whose PhotometricInterpretation Tag value is 1 or 2.
+|Orientation (36) |The CDB standard assumes that the data is organized such that the 0th row represents the visual top of the grid data (or image), and the 0th column represents the visual left-hand side. As a result, CDB-compliant TIFF readers do not consider image and DEM data whose Orientation Tag value is not 1
 |Photometric Interpretation (37) |CDB-compliant TIFF readers only consider images whose PhotometricInterpretation Tag value is 1 or 2.
 | |CDB-compliant TIFF readers do not consider WhiteIsZero images
 | |CDB-compliant TIFF readers do not consider palette-color images, i.e. PhotometricInterpretation = 3 (Palette Color).
 | |CDB-compliant simulator TIFF readers do not consider transparency mask imagery data, i.e. PhotometricInterpretation = 4 (Transparency Mask).
-|ResolutionUnit Tag (38) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files.  As a result, CDB-compliant TIFF readers do not consider the ResolutionUnit TIFF tag.
+|ResolutionUnit Tag (38) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files. As a result, CDB-compliant TIFF readers do not consider the ResolutionUnit TIFF tag.
 |Software Tag (39) |CDB-compliant TIFF readers do not consider the Software TIFF tag.
 |SubFileType Tag (41) |CDB-compliant TIFF readers do not consider image whose Subfile type = 3.
 |Thresholding Tag (41) |CDB-compliant TIFF readers do not consider image data whose Thresholding TIFF tag is not equal 1
-|XResolution Tag (41) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files.  As a result, CDB-compliant TIFF readers do not consider this TIFF tag
-|YResolution Tag (41) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files.  As a result, CDB-compliant TIFF readers do not consider this TIFF tag.
-|Section 9: Packbits (42) |CDB-compliant TIFF readers do not consider PackBits compressed TIFF data.  As a result, section 9 is not applicable to CDB-compliant TIFF readers.
-|Section 10: Huffman Compression (43) |CDB-compliant TIFF readers do not consider Modified Huffman compressed TIFF data.  As a result, section 10 is not applicable to CDB-compliant TIFF readers.
-|Section 11 CCIT Bilvel Encodings (49) |CDB-compliant TIFF readers do not consider CCITT Bi-level encoded TIFF data.  As a result, section 11 is not applicable to CDB-compliant TIFF readers.
+|XResolution Tag (41) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files. As a result, CDB-compliant TIFF readers do not consider this TIFF tag
+|YResolution Tag (41) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files. As a result, CDB-compliant TIFF readers do not consider this TIFF tag.
+|Section 9: Packbits (42) |CDB-compliant TIFF readers do not consider PackBits compressed TIFF data. As a result, section 9 is not applicable to CDB-compliant TIFF readers.
+|Section 10: Huffman Compression (43) |CDB-compliant TIFF readers do not consider Modified Huffman compressed TIFF data. As a result, section 10 is not applicable to CDB-compliant TIFF readers.
+|Section 11 CCIT Bilvel Encodings (49) |CDB-compliant TIFF readers do not consider CCITT Bi-level encoded TIFF data. As a result, section 11 is not applicable to CDB-compliant TIFF readers.
 |Section 12: Document Storage and Retrieval (55) |CDB-compliant TIFF readers do not consider all TIFF tags related to document storage and retrieval. As a result, section 12 is not applicable to CDB-compliant TIFF readers.
-|Section 14: Differencing Predictor (64) |CDB-compliant Tiff readers do not consider Differencing Predictor compressed TIFF data.  As a result, section 14 is not applicable to CDB-compliant TIFF readers.
-|Section 16: CMYK Images (69) |CDB-compliant TIFF readers do not consider CMYK encoded color image TIFF image data.  As a result, section 16 is not applicable to CDB-compliant TIFF readers.
-|Section 17: Halftone hints (72) |CDB-compliant TIFF readers do not consider any of the TIFF tags related to halftone hints.  As a result, section 17 is not applicable to CDB-compliant TIFF readers.
+|Section 14: Differencing Predictor (64) |CDB-compliant Tiff readers do not consider Differencing Predictor compressed TIFF data. As a result, section 14 is not applicable to CDB-compliant TIFF readers.
+|Section 16: CMYK Images (69) |CDB-compliant TIFF readers do not consider CMYK encoded color image TIFF image data. As a result, section 16 is not applicable to CDB-compliant TIFF readers.
+|Section 17: Halftone hints (72) |CDB-compliant TIFF readers do not consider any of the TIFF tags related to halftone hints. As a result, section 17 is not applicable to CDB-compliant TIFF readers.
 |Unassociated Alpha and Transparency masks (78) |CDB-compliant TIFF readers do not consider unassociated alpha image data.
-|Section 19: Sample Data format (80) |The CDB standard establishes the conventions that govern the SampleFormat of TIFF image and DEM data.  As a result, CDB-compliant TIFF readers do not consider image and DEM data when the value of the SampleFormat tag does not conform to CDB conventions. While the above-mentioned sample data formats are possible, CDB clients expect image and DEM data to be in the format as specified in the CDB conventions and constraints.
+|Section 19: Sample Data format (80) |The CDB standard establishes the conventions that govern the SampleFormat of TIFF image and DEM data. As a result, CDB-compliant TIFF readers do not consider image and DEM data when the value of the SampleFormat tag does not conform to CDB conventions. While the above-mentioned sample data formats are possible, CDB clients expect image and DEM data to be in the format as specified in the CDB conventions and constraints.
 |SMinSampleValue Tag (80) |CDB-compliant TIFF readers do not consider the SMinSampleValue TIFF tag.
 |SMazSampleValue (81) |CDB-compliant TIFF readers do not consider the SMaxSampleValue TIFF tag.
 |Section 20: RGB Image Colorimetry (82) |CDB-compliant TIFF readers do not consider any of the TIFF tags describes in this section.
-|Section 21 YC-C Images (89) |CDB-compliant TIFF readers do not consider YC~b~C~r~ color encoded TIFF image data.  As a result, section 21 is not applicable to CDB-compliant TIFF readers.
-|Section 22: JPEG Compression (95) |CDB-compliant TIFF readers do not consider JPEG color encoded TIFF image data.  As a result, section 22 is not applicable to CDB-compliant TIFF readers.
-|Section 23: CIE Lab Images (110) |CDB-compliant TIFF readers do not consider CIE L*a*b* color encoded TIFF image data.  As a result, section 23 is not applicable to CDB-compliant TIFF readers.
+|Section 21 YC-C Images (89) |CDB-compliant TIFF readers do not consider YC~b~C~r~ color encoded TIFF image data. As a result, section 21 is not applicable to CDB-compliant TIFF readers.
+|Section 22: JPEG Compression (95) |CDB-compliant TIFF readers do not consider JPEG color encoded TIFF image data. As a result, section 22 is not applicable to CDB-compliant TIFF readers.
+|Section 23: CIE Lab Images (110) |CDB-compliant TIFF readers do not consider CIE L*a*b* color encoded TIFF image data. As a result, section 23 is not applicable to CDB-compliant TIFF readers.
 |=============================================================================================================================================================================================================================================================================================================================================================================================================================================================================
