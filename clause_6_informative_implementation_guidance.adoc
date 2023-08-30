@@ -2,37 +2,37 @@
 
 === Clarification: Publisher Considerations
 
-The CDB Standard does not provide guidelines regarding its implementation within specific vendor SE toolsets and vendor simulation architectures. This clearly falls outside of the scope of the CDB Standard. The CDB Standard is focused a physical and logical storage structure and guidance on storage formats for information (i.e., it merely describes data) for use in simulation.
+The CDB Standard does not provide guidelines regarding its implementation within specific vendor SE toolsets and vendor simulation architectures. This clearly falls outside of the scope of the CDB Standard. The CDB Standard is focused on a physical and logical storage structure and guidance on storage formats for information (i.e., it merely describes data) for use in simulation.
 
-The CDB model lends itself to a real-time implementation within simulation architectures. This capability requires that the vendor’s client-device be adapted with a Run-Time publishing (RTP) software function which transforms the CDB structured data into the client-device’s internal legacy/proprietary format. This is a new concept for the simulation industry and consequently there is considerable confusion regarding the implementation of Off-line and Run-Time Publishers (RTPs). While much of the attention has focused on RTPs, a similar set of considerations apply to the implementation of an off-line CDB capability (CDB is used as a Refined Source Data Repository). In this latter case, the capability requires that the vendor develop an off-line CDB import function which ingests the CDB into their Synthetic Environment Creation toolset. Once imported, the vendor toolset could produce the vendor’s proprietary data format through an off-line compilation function.
+The CDB model lends itself to a real-time implementation within simulation architectures. This capability requires that the vendor’s client-device be adapted with a Run-Time publishing (RTP) software function which transforms the CDB structured data into the client-device’s internal legacy/proprietary format. While much of the attention has focused on RTPs, a similar set of considerations apply to the implementation of an off-line CDB data store capability (CDB is used as a Refined Source Data Repository). In this latter case, the capability requires that the vendor develop an off-line CDB content import function which ingests the CDB content into their Synthetic Environment Creation toolset. Once imported, the vendor toolset could produce the vendor’s proprietary data format through an off-line compilation function.
 
-By definition, the function of an RTP is to bridge the “gap” (or adapt) between CDB data schema and the client-device’s internal (proprietary) data schema. Since this gap is unknown, it is impossible in this addendum to provide hard-and-fast rules and detailed estimates for the implementation of an RTP (or a CDB import function).
+By definition, the function of an RTP is to bridge the “gap” (or adapt) between CDB data schema and the client-device’s internal (proprietary) data schema. Since this gap is unknown, it is impossible in this Best Practice to provide hard-and-fast rules and detailed estimates for the implementation of an RTP (or a CDB content import function).
 
-Note that there are many alternatives open to a vendor when considering the level of compliancy he wishes to achieve. The level-of-effort is essentially a function of the level of compliancy the vendor wishes to achieve, and the size of the intrinsic “gap” between the CDB data schema and his device’s internal schema.
+Note that there are many alternatives open to a vendor when considering the level of compliancy they wish to achieve. The level-of-effort is essentially a function of the level of compliancy the vendor wishes to achieve, and the size of the intrinsic “gap” between the CDB data schema and the vendor's device internal schema.
 
-Nonetheless, this section highlights aspects of the CDB that are particularly significant when considering such implementations. These aspects dominate the level-of-effort required to achieve ideal CDB compliancy.
+Nonetheless, this section highlights aspects of the CDB Standard that are particularly significant when considering such implementations. These aspects dominate the level-of-effort required to achieve ideal CDB compliancy.
 
-The CDB Standard limits itself to a description of a data schema for Synthetic Environmental information (i.e., it merely describes data) for use in simulation. The CDB Best Practices provide rigorous guidance of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats. This ensures that the all CDB data is understood, interpreted and efficiently accessed in the same way by each client-device. The CDB standard does not include detailed guidelines regarding off-line database compliers or runtime publisher implementations, since this would be tantamount to dictating internal vendor formats which are by their very nature proprietary.
+The CDB Standard limits itself to a description of a data schema for Synthetic Environmental information (i.e., it merely describes data) for use in simulation. This CDB Best Practices provide rigorous guidance of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats. This ensures that the all CDB data is understood, interpreted, and efficiently accessed in the same way by each client-device. The CDB Standard does not include detailed guidelines regarding off-line database compliers or runtime publisher implementations, since this would be tantamount to dictating internal vendor formats which are by their very nature proprietary.
 
 The CDB Standard DOES NOT specify:
 
-* The implementation details of an off-line CDB import function that can then be used to compile the imported Synthetic Environmental data into one or more types of proprietary runtime databases (only the client-device vendor has this knowledge and control);
+* The implementation details of an off-line CDB content import function that can then be used to compile the imported Synthetic Environmental data into one or more types of proprietary runtime databases (only the client-device vendor has this knowledge and control);
 
 * The implementation details or algorithms of runtime publishers attached to specific client-device (only the client-device vendor has this knowledge and control); or
 
 * The implementation details or algorithms of client-devices that use CDB data (only the client-device vendor has this knowledge and control).
 
 
-While the CDB standard does not govern the actual implementation of client-devices, it is expected that the CDB standard will have a “unifying” effect on the implementation of each vendor’s client-device by virtue of the fact that they will share the exact same Synthetic Environmental data. It is expected that side-by-side comparisons will be easier to undertake due to the fact that devices will run off the exact same runtime data. Prior to the advent of the CDB standard, side-by-side comparisons were considerably more difficult to undertake due to the fact the entire SE creation chain starting from raw source was implicated in such evaluations.
+While the CDB Standard does not govern the actual implementation of client-devices, it is expected that the CDB standard will have a “unifying” effect on the implementation of each vendor’s client-device by virtue of the fact that they will share the exact same Synthetic Environmental data. It is expected that side-by-side comparisons will be easier to undertake due to the fact that devices will run off the exact same runtime data. Prior to the advent of the CDB Standard, side-by-side comparisons were considerably more difficult to undertake due to the fact the entire SE creation chain starting from raw source was required in such evaluations.
 
-If we set aside legacy considerations, the simplest approach to adopting the CDB would require that client-devices ingest the CDB natively, i.e., client-devices would handle all of the CDB data schema/semantics without any off-line or run-time intermediary.
+Setting aside legacy considerations, the simplest approach to adopting the CDB Standard requires that client-devices ingest the CDB structured content natively: Client-devices would handle all of the CDB data schema/semantics without any off-line or run-time intermediary.
 
 In practice however, most vendors have extensive legacy SE assets and cannot afford to obsolesce these. As a result, most client-devices must continue to support their own proprietary legacy runtime databases. Given these considerations, two solutions are possible.
 
-1.  No change to the Client-device: In this approach, vendors have chosen to achieve an off-line CDB capability (CDB is used as a Refined Source Data Repository). This capability requires that the vendor develops an off-line CDB import function which ingests the CDB into his Synthetic Environment Creation toolset; once imported, the toolset produces (as always) the vendor’s proprietary data format through an off-line compilation function.
-2.  Level-of-Effort of a Publisher Implementation
+1.  No change to the Client-device: In this approach, vendors have chosen to achieve an off-line CDB data store capability (CDB is used as a Refined Source Data Repository). This capability requires that the vendor develops an off-line CDB import function which ingests the CDB structured content into the Synthetic Environment Creation toolset. Once imported, the toolset produces (as always) the vendor’s proprietary data format through an off-line compilation function.
+2.  Level-of-Effort of a Publisher Implementation.
 
-The following discussion attempts to qualify the level-of-effort to achieve CDB compliancy. The discussion applies equally to both paradigms, i.e., the CDB Runtime Publishing paradigm and the CDB import-then-compile paradigm.
+The following discussion attempts to qualify the level-of-effort to achieve compliancy with the CDB Standard. The discussion applies equally to both paradigms: The CDB Runtime Publishing paradigm and the CDB import-then-compile paradigm.
 
 In the case where a client-device already supports most of data schema and semantics concepts of the CDB, then the RTP (or import-then-compile) software is proportionally less complex. For instance, if an IG already supports the concepts of tiles, of levels-of-detail, of layers and understands the concepts of datasets such as terrain texture, gridded terrain elevation, gridded terrain materials, etc. then there is a modest amount of work to be performed by an RTP.
 
@@ -400,8 +400,6 @@ The association of material properties to features in the CDB requires two disti
 1.  The first step consists in establishing a correspondence between all of the Base Materials in the CDB data store and the Base Materials directly supported by the SEM of the client-device. This is a manual task performed by the SEM specialist(s). The specialist must ensure that his SEM has a corresponding Base Material for each of the CDB Base Materials. In cases where the SEM is simple, it is possible for two or more CDB Base Materials to point to the same SEM Base Material. Alternately the SEM specialist may choose to create new SEM Base Materials that correspond more closely to the CDB’s Base Materials. The result of this process is a SEM look-up.
 2.  The second step is typically undertaken during the CDB data store initialization by the client-device running the SEM. During this initialization phase, the SEM reads the content of the global Base Material Table and the SEM look-up provided by the SEM specialist. This look-up establishes an indirect link between the Base Materials in the CDB data store and the material properties of the client-device’s SEM Base Materials. In fact, the indirect link (i.e., the look-up table) can be eliminated if the client device internally builds a Materials Properties Table that uses the CDB material keys directly (as illustrated in Figure 2 11: SEM Base Material Properties Table).
 
-
-
 image::images/image68.jpeg[width=524,height=362]
 
 image::images/image69.png[Core Figure 2.11.png,width=528,height=216]
@@ -455,18 +453,16 @@ There are cases however, where the decision to represent features as either geot
 
 In making his decision, the modeler should factor-in the following trade-offs:
 
-1.  _CDB Storage Size:_ The size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. Clearly, a geotypical model is the preferred choice if the modeler wishes to assign and re-use the same modeled representation for a given feature type.
-2.  _Client-device Memory Footprint:_ By assigning a geotypical model to a feature, the modeler provides a valuable “clue” to the client-device that the feature will be instanced throughout the CDB with the same modeled representation. As a result, client-device should dedicate physical memory for the storage of the geotypical models for later use.
-3.  _GTModel Library Management:_ The CDB's Feature Data Dictionary (FDD) is based on the DIGEST, DGIWG, SEDRIS and UHRB geomatics standards. These standards are commonly used for the attribution of source vector data in a broad range of simulation applications. The CDB Feature Data Dictionary acts much like what an English dictionary is to a collection of novels. As a result, it is possible to develop a universal GTModel Library which is totally independent of the CDB content (just like a dictionary is independent of books). This universal GTModel Library can be simply copied into the \CDB\GTModel directory. The structure of the GTModel Library is organized in accordance to the CDB's FDD - in other words, the models are indexed using the CDB Feature Code. The indexing approach greatly simplifies the management of the model library since every model has a pre-established location in the library.
-4.  _CDB Generation and Update:_ As mentioned earlier, the size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. This reduces the amount of time required by the tools to generate and store the CDB onto the disk storage system. The second benefit of geotypical models comes in the case where a modeler wishes to change the modeled representation of one or more geotypical features type across the entire CDB. Changes to the modeled representation of a feature type can easily be performed by simply overwriting the desired model in model library. From then on, all features of that type now reference the updated model - no other changes to the CBD are required.
+1.  _CDB Storage Size:_ The size of the CDB data store is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. Clearly, a geotypical model is the preferred choice if the modeler wishes to assign and re-use the same modeled representation for a given feature type.
+2.  _Client-device Memory Footprint:_ By assigning a geotypical model to a feature, the modeler provides a valuable “clue” to the client-device that the feature will be instanced throughout the CDB data store with the same modeled representation. As a result, client-device should dedicate physical memory for the storage of the geotypical models for later use.
+3.  _GTModel Library Management:_ The CDB's Feature Data Dictionary (FDD) is based on the NAS, DIGEST, DGIWG, SEDRIS and/or the UHRB geomatics standards. These standards are commonly used for the attribution of source vector data in a broad range of simulation applications. The CDB Feature Data Dictionary acts much like what an English dictionary is to a collection of novels. As a result, it is possible to develop a universal GTModel Library which is totally independent of the CDB content (just like a dictionary is independent of books). This universal GTModel Library can be simply copied into the \CDB\GTModel directory. The structure of the GTModel Library is organized in accordance to the CDB's FDD - in other words, the models are indexed using the CDB Feature Code. The indexing approach greatly simplifies the management of the model library since every model has a pre-established location in the library.
+4.  _CDB Generation and Update:_ As mentioned earlier, the size of the CDB data store is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile. Instead, the model appears once in the GTModel library dataset directory. This reduces the amount of time required by the tools to generate and store a CDB data store onto the disk storage system. The second benefit of geotypical models comes in the case where a modeler wishes to change the modeled representation of one or more geotypical features type across the entire CDB. Changes to the modeled representation of a feature type can easily be performed by simply overwriting the desired model in model library. From then on, all features of that type now reference the updated model - no other changes to the CBD data store are required.
 
 Note that since the size of the GTModel library is likely to exceed the client-device's model memory, the client-device must implement a caching scheme which intelligently discards models or portions of models that are deemed less important, used infrequently or not used at all. It is up to the client-device to accommodate for the disparity between the size of client-device's model memory and the size of the GTModel library. Clearly when the disparity is large, the caching algorithm is solicited more frequently and there is more “trashing” of the cache's content. The key to a successful implementation of a caching scheme resides in an approach which discards information not actively or currently used by the client-device. The CDB standards offers a rich repertoire of attribution information so that client-devices can accomplish this task optimally. Consequently, the client-devices can smartly discard model data that is not in use (e.g., models and/or, textures) during the course of a simulation. Note that in more demanding cases, client-devices may have to resort to a greater level of sophistication and determine which levels-of-detail of the model geometry and/or model texture are in use in order to accommodate cache memory constraints. It is clearly in the modeler's interest to avoid widespread usage of model variants within the GTModel Library. In doing so, the modeler overly relies on the client-devices abilities to smartly manage its model cache. As a result, run-time performance may suffer.
 
 As mentioned earlier, the modeled representation of a geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. As a result, once the model is loaded into memory, it can be referenced without inducing a paging event to the CDB storage system. Clearly, the paging requirements associated with geotypical features are negligible. As a result, paging performance is improved because of the reduced IO requirements on the CDB storage system.
 
 === Primer: Line-of-Sight (LOS) Algorithms Using MinElevation and MaxElevation Components
-
-_Note: Was A.13 in Volume 2 in original submission_
 
 The purpose of the MinElevation and MaxElevation components is to provide the CDB data store with the necessary data and structure to achieve the required level of determinism in the computation line-of-sight calculations with the terrain. The values of each component are with respect to mean sea level. Since both the MinElevation and the MaxElevation values are specified in this standard, any line-of-sight algorithm can rapidly assess an intersection status of the line-of-sight vector with the terrain.
 
@@ -500,7 +496,7 @@ It would be convenient for graphics programmers if all of the components of an i
 
 Real imaging systems will have several components, and more than one of these can be nonlinear. If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function. The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system. Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function. So a linear transfer function is just a special case of a power function, with a gamma of 1.0. Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.
 
-If the overall gamma of an imaging system is 1.0, its output is linearly proportional to its input. This means that the ratio between the intensities of any two areas in the reproduced image will be the same as it was in the original scene. It might seem that this should always be the goal of an imaging system: to accurately reproduce the tones of the original scene. Alas, that is not the case.
+If the overall gamma of an imaging system is 1.0, its output is linearly proportional to its input. This means that the ratio between the intensities of any two areas in the reproduced image will be the same as it was in the original scene. It might seem that this should always be the goal of an imaging system: To accurately reproduce the tones of the original scene. Alas, that is not the case.
 
 When the reproduced image is to be viewed in “bright surround” conditions, where other white objects nearby in the room have about the same brightness as white in the image, then an overall gamma of 1.0 does indeed give real-looking reproduction of a natural scene. Photographic prints viewed under room light and computer displays in bright room light are typical “bright surround” viewing conditions.
 
@@ -530,22 +526,22 @@ Also, stages that are linear pose no problem, since a power function with an exp
 
 Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.”
 
-In an ideal world, sample values would be stored in floating point, there would be lots of precision, and it wouldn't really matter much. But in reality, we're always trying to store images in as few bits as we can.
+In an ideal world, sample values would be stored in floating point, there would be lots of precision, and it would not really matter much. But in reality, we're always trying to store images in as few bits as we can.
 
-If we decide to use samples that are linearly proportional to intensity, and do the gamma correction in the frame buffer LUT, it turns out that we need to use at least 12-16 bits for each of red, green, and blue to have enough precision in intensity. With any less than that, we will sometimes see “contour bands” or “Mach bands” in the darker areas of the image, where two adjacent sample values are still far enough apart in intensity for the difference to be visible.
+If the decision is to use samples that are linearly proportional to intensity, and do the gamma correction in the frame buffer LUT, then using at least 12-16 bits for each of red, green, and blue to have enough precision in intensity is required. With any less than that, then sometimes  “contour bands” or “Mach bands” in the darker areas of the image are observed, where two adjacent sample values are still far enough apart in intensity for the difference to be visible.
 
-However, through an interesting coincidence, the human eye's subjective perception of brightness is related to the physical stimulation of light intensity in a manner that is very much like the power function used for gamma correction. If we apply gamma correction to measured (or calculated) light intensity before quantizing to an integer for storage in a frame buffer, we can get away with using many fewer bits to store the image. In fact, 8 bits per color is almost always sufficient to avoid contouring artifacts. This is because, since gamma correction is so closely related to human perception, we are assigning our 256 available sample codes to intensity values in a manner that approximates how visible those intensity changes are to the eye. Compared to a linear-sample image, we allocate fewer sample values to brighter parts of the tonal range and more sample values to the darker portions of the tonal range.
+However, through an interesting coincidence, the human eye's subjective perception of brightness is related to the physical stimulation of light intensity in a manner that is very much like the power function used for gamma correction. If gamma correction is applied to measured (or calculated) light intensity before quantizing to an integer for storage in a frame buffer, using many fewer bits to store the image is possible. In fact, 8 bits per color is almost always sufficient to avoid contouring artifacts. This is because, since gamma correction is so closely related to human perception, the 256 available sample codes are assigned to intensity values in a manner that approximates how visible those intensity changes are to the eye. Compared to a linear-sample image, fewer sample values are allocated to brighter parts of the tonal range and more sample values to the darker portions of the tonal range.
 
 Thus, for the same apparent image quality, images using gamma-encoded sample values need only about two-thirds as many bits of storage as images using linear samples.
 
-If we consider a pipeline that involves capturing (or calculating) an image, storing it in an image file, reading the file, and displaying the image on some sort of display screen, there are at least 5 places in the pipeline that could have nonlinear transfer functions. Let's give each a specific name for their characteristic gamma:
+Consider a pipeline that involves capturing (or calculating) an image, storing it in an image file, reading the file, and displaying the image on some sort of display screen. There are at least 5 places in the pipeline that could have nonlinear transfer functions. A specific name for each characteristic gamma can be specified:
 
 1.  Camera_gamma (γ~_c_~ ):The characteristic of the image sensor.
 2.  Encoding_gamma (γ~_e_~ ): The gamma of any transformation performed by the software writing the image file.
 3.  Decoding_gamma (γ~_d_~ ): The gamma of any transformation performed by any software reading the image file.
 4.  LUT_gamma (γ~_lut_~ ): The gamma of the frame buffer LUT, if present.
 
-In addition, let's add a few other names:
+In addition, a few other names are defined:
 
 1.  File_gamma (γ~_f_~): The gamma of the image in the file, relative to the original scene, i.e.
 +
@@ -555,11 +551,9 @@ In addition, let's add a few other names:
 γ~_DS_~ = γ~_lut_~ γ~_crt_~
 3.  Viewing_gamma (γ~_v_~): The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
 
-When the file_gamma is not 1.0, we know that some form of gamma correction has been done on the sample values in the file, and we call them “gamma corrected” samples. However, since there can be so many different values of gamma in the image display chain, and some of them are not known at the time the image is written, the samples are not really being “corrected” for a specific display condition. We are really using a power function in the process of encoding an intensity range into a small integer field, and so it is more correct to say “gamma encoded” samples instead of “gamma corrected” samples. The CDB standard does not rely on such gamma encoding in order to achieve smaller integer number representations. Instead, the CDB standard relies on standard compression algorithms to achieve an efficient representation of color imagery. footnote:[The JPEG-2000 standard is based on the _sRGB_ default color space per the IEC 61966-2-1 Standard which calls for a gamma 2.2 under the specified viewing conditions]
+When the file_gamma is not 1.0, some form of gamma correction has been done on the sample values in the file, and these are called “gamma corrected” samples. However, since there can be so many different values of gamma in the image display chain, and some of them are not known at the time the image is written, the samples are not really being “corrected” for a specific display condition. A power function is used in the process of encoding an intensity range into a small integer field, and so it is more correct to say “gamma encoded” samples instead of “gamma corrected” samples. The CDB Standard does not rely on such gamma encoding in order to achieve smaller integer number representations. Instead, the CDB Standard relies on standard compression algorithms to achieve an efficient representation of color imagery. footnote:[The JPEG-2000 standard is based on the _sRGB_ default color space per the IEC 61966-2-1 Standard which calls for a gamma 2.2 under the specified viewing conditions]
 
 When displaying an image file on the simulator, the image-decoding software is responsible for making the overall gamma of the system equal to the desired viewing_gamma, by selecting the decoding_gamma appropriately. If the viewing condition is different from the specification, then the decoding process must compensate. This can be done by modifying the gamma values in equation G-1 below by the appropriate factor. If one does modify the gamma values in equation G-1 below, extreme care must be taken to avoid quantization errors when working with 24 bit images. The display_gamma should be measured (and known) for the display rendering the image (either at the DB generation workstation or the simulator). The correct viewing_gamma depends on lighting conditions, and that will generally have to come from the user. In dimly lit office environments, the generally preferred value for viewing gamma is in the vicinity of 1.125 footnote:[Historically, viewing gammas of 1.5 have been used for viewing projected slides in a dark room and viewing gammas of 1.25 have been used for viewing monitors in a very dim room. This very dim room value of 1.25 has been used extensively in television systems and assumes a ambient luminance level of approximately 15 lux (or 1.4 ft-lb). The current proposal assumes an encoding ambient luminance level of 64 lux (or 5. ft-lb) which is more representative of a dim room in viewing computer generated imagery or a FAA level-D approved flight simulator visual system. Such a system assumes a viewing gamma of 1.125 and is thus consistent with the ITU-R BT.709 standard.]. In many digital video systems, camera_gamma is about 0.5. CRT_gamma is typically 2.2, while encoding_gamma, decoding_gamma, and LUT_gamma are all 1.0. As a result, viewing_gamma ends up being about 1.125. Coincidently, this happens to be the optimal viewing gamma for an ambient luminance level of 64 lux or 5 ft-lbt.
-
-
 
 [cols="3,1",]
 |==========
@@ -579,17 +573,17 @@ endif::[]
 |(eq. 6-1)
 |==========
 
-In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g., camera or satellite) right through to the simulator’s display device. His objective is to ensure that product of all gammas match the viewing gamma of the simulator.
+In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g., camera or satellite) right through to the simulator’s display device. The objective is to ensure that product of all gammas match the viewing gamma of the simulator.
 
-Given the above assumptions, and our objective of ensuring that the product of all gammas in the viewing chain equals the viewing gamma, the modeler will end up (subjectively) adjusting images to an equivalent file gamma of 1.25.
+Given the above assumptions, and the objective of ensuring that the product of all gammas in the viewing chain equals the viewing gamma, the modeler will end up (subjectively) adjusting images to an equivalent file gamma of 1.25.
 
-The bottom portion of the illustration show the path taken by the CDB imagery as it is ingested first by the real-time publisher, then by the IG, the IG color look-up tables and finally through to the visual display system. In this example, we will assume the following:
+The bottom portion of the illustration show the path taken by imagery in a CDB data store as it is ingested first by the real-time publisher, then by the IG, the IG color look-up tables and finally through to the visual display system. In this example, the following is assumed:
 
-1.  The imagery file in the CDB is unmodified (i.e. those produced by the Adobe Photoshop at the DBGF). Note that as a result of viewing gamma of γ~_v_~  = 1.25, the file gamma ended up at γ~_f_~  = 1.25 at the DBGF. As a result, the CDB also has a file gamma of γ~_f_~  = 1.25
-2.  The IG performs all of its internal operations in a linear color space (i.e. the IG_gamma is γ~_IG_~ = 1.00)
-3.  The simulator visual system produces an average scene brightness of approximately 6 ft-lamberts: under these viewing conditions, the viewing gamma is γ~_v_~ = 1.125.
-4.  The measured gamma of the visual display system is γ~_crt_~ = 2.025
-5.  The content of the IG’s color look-up tables is adjusted to compensate for the gamma of the visual display system, i.e. it is loaded with γ~_lut_~ = (1/2.025)
+1.  The imagery file in a CDB data store is unmodified (i.e. those produced by the Adobe Photoshop at the DBGF). Note that as a result of viewing gamma of γ~_v_~  = 1.25, the file gamma ended up at γ~_f_~  = 1.25 at the DBGF. As a result, the CDB data set also has a file gamma of γ~_f_~  = 1.25
+2.  The IG performs all of its internal operations in a linear color space (i.e. the IG_gamma is γ~_IG_~ = 1.00).
+3.  The simulator visual system produces an average scene brightness of approximately 6 ft-lamberts. Under these viewing conditions, the viewing gamma is γ~_v_~ = 1.125.
+4.  The measured gamma of the visual display system is γ~_crt_~ = 2.025.
+5.  The content of the IG’s color look-up tables is adjusted to compensate for the gamma of the visual display system, i.e. it is loaded with γ~_lut_~ = (1/2.025).
 
 Given the above assumptions, and our objective of ensuring that the product of all gammas in the chain equals the viewing gamma of 1.125, the required visual run-time publisher gamma must account for the difference in viewing gamma at the DBGF and at the simulator. As a result, the publisher gamma must be (1.125/1.25).
 
@@ -597,12 +591,12 @@ Given the above assumptions, and our objective of ensuring that the product of a
 
 Both the modelers and the visual system architects should be keenly aware of the handling of gamma at the Data Store Generation Facility and at the simulator. <<#img_TypicalHandlingofGammaatDBGFandSimulator>>. Typical Handling of Gamma at DBGF and Simulator, illustrates the typical handling of gamma in both of these cases.
 
-The top portion of the illustration shows the path taken by source data as a modeler is viewing it at this workstation via the application software. In this example, we will assume the following:
+The top portion of the illustration shows the path taken by source data as a modeler is viewing it at this workstation via the application software. In this example, the following is assumed:
 
-1.  The DBGF imagery application is Adobe Photoshop. The default color space profile used by Adobe Photoshop (i.e. the *.icm file) is the sRGB Color Space Profile which is defined by the sRGB standard to be a gamma of 2.2, therefore the Photoshop uses a  γ~_lut_~ = (1/2.2)
-2.  The DBGF workstation is running Windows (therefore the O/S does not gammatize the imagery before sending it to the display, γ~_lut_~ = 1.25)
-3.  The measure gamma of the DBGF workstation monitor is γ~_crt_~ = 2.2
-4.  The DBGF workstation is located in a dimly lit room, so the viewing gamma is in effect γ~_v_~ = 1.25
+1.  The DBGF imagery application is Adobe Photoshop. The default color space profile used by Adobe Photoshop (i.e. the *.icm file) is the sRGB Color Space Profile which is defined by the sRGB standard to be a gamma of 2.2, therefore the Photoshop uses a  γ~_lut_~ = (1/2.2).
+2.  The DBGF workstation is running Windows (therefore the O/S does not gammatize the imagery before sending it to the display, γ~_lut_~ = 1.25).
+3.  The measure gamma of the DBGF workstation monitor is γ~_crt_~ = 2.2.
+4.  The DBGF workstation is located in a dimly lit room, so the viewing gamma is in effect γ~_v_~ = 1.25.
 
 image::images/image613.jpeg[width=544,height=364]
 [#img_TypicalHandlingofGammaatDBGFandSimulator,reftext='Figure 6-13']
@@ -612,11 +606,11 @@ image::images/image613.jpeg[width=544,height=364]
 
 The default CDB standard color space follows the same convention as the Windows sRGB Color Space Profile. _sRGB_ is the default color space in Windows, based on the IEC 61966-2-1 Standard. A _sRGB_ compliant device does not have to provide a profile or other support for color management to work well.
 
-Nonetheless, whether calibrated or not to the IEC Standard, all variants of RGB are typically close enough that undemanding viewers can get by with simply displaying the data without color correction. By storing calibrated RGB, the CDB standard retains compatibility with existing database tools and software programs that expect RGB data, yet provides enough information for conversion to XYZ in applications that need precise colors. Thus, the CDB standard gets the best of both worlds.
+Nonetheless, whether calibrated or not to the IEC Standard, all variants of RGB are typically close enough that undemanding viewers can get by with simply displaying the data without color correction. By storing calibrated RGB, the CDB Standard retains compatibility with existing database tools and software programs that expect RGB data, yet provides enough information for conversion to XYZ in applications that need precise colors. Thus, the CDB Standard gets the best of both worlds.
 
-Full compliance to the CDB standard requires adherence to the color space described in this section. However, in virtually all cases, direct use of un-calibrated RGB is sufficient. The builders of Synthetic Environment Databases and the users of Visual Systems should be aware of these color space conventions; significant deviation from the underlying IEC assumptions may yield significant color differences.
+Full compliance to the CDB Standard requires adherence to the color space described in this section. However, in virtually all cases, direct use of un-calibrated RGB is sufficient. The builders of Synthetic Environment Databases and the users of Visual Systems should be aware of these color space conventions; significant deviation from the underlying IEC assumptions may yield significant color differences.
 
-The CDB standard encoded RGB color tri-stimulus values assume the following:
+The CDB Standard encoded RGB color tri-stimulus values assume the following:
 
 1.  Display luminance level: 80 cd/m2
 2.  Display white point x = 0.3127, y = 0.3291 (D65)
@@ -648,18 +642,18 @@ A full physical description of a color would require specifying the exact spectr
 
 In XYZ, X is the sum of a weighted power distribution over the whole visible spectrum. So are Y and Z, each with different weights. Thus any arbitrary spectral power distribution is condensed down to just three floating-point numbers. The weights were derived from color matching experiments done on human subjects in the 1920s. CIE XYZ has been an International Standard since 1931, and it has a number of useful properties:
 
-1.  Two colors with the same XYZ values will look the same to humans
-2.  Two colors with different XYZ values will not look the same
-3.  The Y value represents all the brightness information (luminance)
-4.  The XYZ color of any object can be objectively measured
+1.  Two colors with the same XYZ values will look the same to humans.
+2.  Two colors with different XYZ values will not look the same.
+3.  The Y value represents all the brightness information (luminance).
+4.  The XYZ color of any object can be objectively measured.
 
-Color models based on XYZ have been used for many years by people who need accurate control of color i.e., lighting engineers for film and TV, paint and dyestuffs manufacturers, and so on. They are thus proven in industrial use. Accurate, device-independent color started to spread from high-end, specialized areas into the mainstream during the late 1980s and early 1990s, and CDB takes notice of that trend.
+Color models based on XYZ have been used for many years by people who need accurate control of color such as lighting engineers for film and TV, paint and dyestuffs manufacturers, and so on. They are thus proven in industrial use. Accurate, device-independent color started to spread from high-end, specialized areas into the mainstream during the late 1980s and early 1990s, and CDB takes notice of that trend.
 
 ==== Calibrated, Device-Dependent Color
 
 Traditionally, image file formats have used uncalibrated, device-dependent color. If the precise details of the original display device are known, it becomes possible to convert the device-dependent colors of a particular image to device-independent ones. Making simplifying assumptions, such as working with CRTs (which are much easier than printers), all we need to know are the XYZ values of each primary color and the CRT exponent.
 
-So why does not the CDB standard store images in XYZ instead of RGB? Well, two reasons. First, storing images in XYZ would require more bits of precision, which would make the files bigger. Second, all programs would have to convert the image data before viewing it. But more importantly, whether calibrated or not, all variants of RGB are close enough that undemanding viewers can get by with simply displaying the data without color correction. By storing calibrated RGB, the CDB standard retains compatibility with existing database tools and software programs that expect RGB data, yet provides enough information for conversion to XYZ in applications that need precise colors. Thus, we get the best of both worlds.
+So why does not the CDB Standard store images in XYZ instead of RGB? Well, two reasons. First, storing images in XYZ would require more bits of precision, which would make the files bigger. Second, all programs would have to convert the image data before viewing it. But more importantly, whether calibrated or not, all variants of RGB are close enough that undemanding viewers can get by with simply displaying the data without color correction. By storing calibrated RGB, the CDB standard retains compatibility with existing database tools and software programs that expect RGB data, yet provides enough information for conversion to XYZ in applications that need precise colors. 
 
 === What are chromaticity and luminance?
 
@@ -696,9 +690,9 @@ It's customary to specify CRT monitor colors by giving the chromaticities of the
 
 === How do I convert from source_RGB to XYZ
 
-Make a few simplifying assumptions first, like the monitor really is jet black with no input and the guns don't interfere with one another. Then, given that you know the
+Make a few simplifying assumptions first, like the monitor really is jet black with no input and the guns don't interfere with one another. Then, given that 
 
-CIE XYZ values for each of red, green, and blue for a particular monitor, you put them into a matrix M:
+the CIE XYZ values for each of red, green, and blue for a particular monitor are known, these values are placed into a matrix M:
 
 [cols="4,1",]
 |===========
@@ -720,9 +714,6 @@ endif::[]
 
 |(eq. 6-3)
 |===========
-
-
-
 
 RGB intensity samples normalized to the range zero to one can be converted to XYZ by matrix multiplication.
 
