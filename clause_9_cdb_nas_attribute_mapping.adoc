@@ -22,18 +22,18 @@ In the CDB Standard, schema mapping involves defining mappings between data elem
 This chapter summarizes the steps to make the CDB V1.3 attribute schema as adaptable as possible to support a range of data dictionaries, specifically NAS V8.0, that comply with https://www.iso.org/obp/ui/#iso:std:iso:19109:ed-2:v1:en[ISO 19109:2015]. Modernization of attributes is important because it enables the CDB community to keep up with the ever-evolving technological and user requirements and to enhance the customer experience.
 
 === CDB Attribution Schema for Vector Features
-In the OGC CDB V1.x standards, each vector feature is characterized by a set of attributes.
-Attribution schemas are the method to handle these different types of attributes.
+In the OGC CDB V1.x standards, each vector feature is characterized by a set of attributes. 
+Attribution schemas are the method to handle different types of attributes. 
 CDB attribution schemas files are encoded using the Extensible Markup Language (XML) format.
 
 The vector attributes schema can be found in the '_Vector_Attributes.xsd_' file stored in the schema folder of a CDB datastore
 (`\CDB\Metadata\Schema\Vector_Attributes.xsd`) and accessible from the
-http://schemas.opengis.net/cdb/1.3/Vector_Attributes.xsd[official [yellow-background]#schema# file for vector attributes].
+http://schemas.opengis.net/cdb/1.3/Vector_Attributes.xsd[official OGC CDB [yellow-background]#schema# file for vector attributes].
 // ??update the link after the official schema published!!!
 
 The list of CDB attributes is described in the '_CDB_Attributes.xml_' file stored in the metadata folder of a CDB datastore
 (`\CDB\Metadata\CDB_Attributes.xml`) and accessible from the
-https://schemas.opengis.net/cdb/1.3/Metadata/CDB_Attributes.xml[official [yellow-background]#CDB attributes# file].
+https://schemas.opengis.net/cdb/1.3/Metadata/CDB_Attributes.xml[official OGC CDB [yellow-background]#CDB attributes# file].
 // ??update the link after the official schema published!!!
 
 ==== CDB Vector Data Model
