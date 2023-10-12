@@ -23,7 +23,7 @@ A-2- Recommendation 2: Core Specification Data Model (DM) Agnostic
 |===
 |Recommendation 2 and design goal:
 
-|The CDB core conceptual model should not mandate any particular data dictionary or content, but rather provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum extent practical. There should be no technical reason why one could not develop an extension profile for CDB for any particular data dictionary that complies with ISO 19109.
+|The CDB core conceptual model should not mandate any particular data dictionary or content, but rather provide the conceptual and logical metamodel for describing any ISO 19109 compliant application schema to the maximum extent practical. There should be no technical reason why one could not develop an extension profile for CDB for any data dictionary that complies with ISO 19109.
 |===
 
 A-2-1- CR DM-1: Create Separate Volume for Traditional CDB 1.0 Attribution
@@ -45,12 +45,12 @@ A-2-2- CR DM-2: Add Origin to All Controlled Vocabulary Definitions
 * Dependencies: None
 * References: DIGEST FACC 2.1, ISO EDCS, NAS, GGDM
 * Summary: Currently CDB V1.2 specifies the <Origin> property on feature types that documents the originating standard of the definition. When working with NAS-based schemas such as GGDM, this will be increasingly important for configuration management of the specification. This <Origin> property should be added in the XML schemas and all relevant conceptual models and requirements for every controlled vocabulary definition, specifically attributes, enumerates (as defined in CR E-1), datasets, and so on. A list of standardized origins should be included in the specification for each Attribute volume, starting with the CDB 1.0 Traditional Attribute volume defined in CR DM-1.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
 * CR ‘reduction’ actions not specific to any document
 
 |===
 |
-If mixing and matching multiple attribution definitions - such as combining a NAS profile with a detailed vegetation model and a separate BIM model - is required then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
+If mixing and matching multiple attribution definitions (such as combining a NAS profile with a detailed vegetation model and a separate BIM model) is required, then tracking the individual origins of particular definitions helps to deconflict overlaps and maintain the standard itself.
 
 |===
 
@@ -59,7 +59,7 @@ A-2-3- CR DM-3: Create Separate Volume for CDB V1.3 NAS Topographic Attribution
 * Dependencies: DM-1, DM-2
 * References: GGDM 3.0, NSG Application Schema 7.0
 * Summary: Create a Volume for defining the normative way of applying NAS-compliant topographic feature types and attributes to valid CDB V1.3 databases. Ideally this should use definitions from GGDM 3.0 where possible for broadest compatibility, but NAS definitions outside of the GGDM are also in scope.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store.
 * CR ‘reduction’ actions not specific to any document
 
 |===
@@ -73,12 +73,12 @@ A-2-4- CR DM-4: Create Separate Volume for CDB V1.3 NAS Maritime Attribution
 * Dependencies: DM-1, DM-2
 * References: NSG Application Schema 7.0, 8.0, and X-3
 * Summary: Create a Volume for defining the normative way of applying NAS-compatible maritime feature types and attribution to a valid CDB V1.3 database.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store.
 * CR ‘reduction’ actions not specific to any document
 
 |===
 |
-One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset, however NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> metahistory is implemented.
+One decision would be whether to target the version of NAS used in GGDM (NAS 7.0), the latest normative NAS version (NAS 8.0), or the latest experimental NAS version (NAS X-3). NAS 7.0 is the easiest to maintain as a GGDM superset. However NAS 8.0 and NAS X-3 add substantial definitions in the maritime and aeronautics domains that may be necessary for CDB. It may also be possible to define a hybrid of NAS 7.0 with extensions from NAS X-3 on a selected basis, especially if definition <Origin> meta-history is implemented.
 
 |===
 
@@ -86,8 +86,8 @@ A-2-5- CR DM-5: Create Separate Volume for CDB V1.3 NAS Aeronautics Attribution
 
 * Dependencies: DM-1, DM-2
 * References: NSG Application Schema 7.0, 8.0, and X-3
-* Summary: Create a Volume for defining the normative way of applying NAS-compatible aeronautics feature types and attribution to a valid CDB V1.3 database.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* Summary: Create a Volume for defining the normative way of applying NAS-compatible aeronautics feature types and attribution to a valid CDB V1.3 datastore.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store.
 * CR ‘reduction’ actions not specific to any document
 
 |===
@@ -101,7 +101,7 @@ A-2-6- CR DM-6: Create Separate Volume for CDB V1.3 BIM Attribution
 * Dependencies: DM-1, DM-2
 * References: OGC CityGML, OGC IndoorGML, Apple IMDF
 * Summary: Create a Volume for defining the normative way of applying building information modeling (interior and exterior) feature types and attribution to a valid CDB V1.3 database. This should supersede the traditional “UHRB” definitions and, to the maximum extent possible, cite OGC standards such as CityGML, IndoorGML, and IMDF.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store.
 * CR ‘reduction’ actions not specific to any document
 
 |===
@@ -128,7 +128,7 @@ A-4- Recommendation 4: Delegate entity and attribute physical encoding choices t
 |Implications:
 |===
 
-A-5- Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution
+A-5- Recommendation 5: Define backward-compatible extensions in CDB V1.3 to add constructs necessary to move toward NAS-compliant attribution.
 
 |===
 |Recommendation 5:
@@ -151,12 +151,12 @@ A-6-1- CR A-1: Deprecate Extended Attributes
 * Dependencies: None
 * External References: None
 * Summary of Changes: Deprecate the specifications, schemas, and usage of Extended Attributes to be removed in CDB X as a (theoretically) breaking change. Based on discussion during the CDB Tech Sprint, it appears these were not widely used and encountered substantial efficiency issues while introducing additional complexity into the standard for all conformant readers. Newer, more flexible, encodings such as GeoPackage should remove the primary motivation for extended attributes since they can easily store any attributes, and other recommendations should address multi-valued attributes and other complications.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9:Schemas and Vol 11: Conceptual Model.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
 * CR ‘reduction’ actions not specific to any document
 
 |===
 |
-We would need to do a follow up survey to determine if Extended Attributes are in fact used in any substantive way and define a migration path if so.
+A follow up survey is needed to determine if Extended Attributes are in fact used in any substantive way and define a migration path if so.
 
 |===
 
@@ -174,16 +174,16 @@ A-8- Recommendation 8: Enumerated (E) / Listed Values
 |===
 |Recommendation 8:
 
-|Version 1.3 Recommendation - Attribute Terms The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/31[Capture Attribute Terms (Enumerates) in Metadata #31]. Attributes describing qualitative values are present in CDB V1.2 and the list of valid values for each attribute are documented in the human-readable specification with both the vocabulary term name and its integer numeric value (index). However, the machine-readable XML metadata does not contain any of this information and treats these attribute types as raw integers with only a minimum and maximum value constraint. It may make sense as a transition path to update CDB V1.3 to define additional XML elements in a backward compatible way to capture these definitions from the existing specification into the machine-readable XML metadata. The conceptual model in the CDB V1.2 specification does align with how GGDM treats such attributes, so there is no fundamental incompatibility, and the proposed CDB X dictionary design accounts for properly tracking the terms for qualitative attributes in a machine-readable way in SQLite.
+|Version 1.3 Recommendation - Attribute Terms The subgroup discussion on this topic is titled: https://github.com/sofwerx/cdb2-concept/issues/31[Capture Attribute Terms (Enumerates) in Metadata #31]. Attributes describing qualitative values are present in CDB V1.2 and the list of valid values for each attribute are documented in the human-readable specification with both the vocabulary term name and its integer numeric value (index). However, the machine-readable XML metadata does not contain any of this information and treats these attribute types as raw integers with only a minimum and maximum value constraint. It may make sense as a transition path to update CDB V1.3 to define additional XML elements in a backward compatible way to capture these definitions from the existing specification into the machine-readable XML metadata. The conceptual model in the CDB V1.2 Standard does align with how GGDM treats such attributes, so there is no fundamental incompatibility, and the proposed CDB X dictionary design accounts for properly tracking the terms for qualitative attributes in a machine-readable way in SQLite.
 |===
 
-A-8-1- CR E-1: Create CDB V1.x XML schema for Enumerations
+A-8-1- CR E-1: Create CDB V1.x XML schema for Enumerations.
 
 * References
 * Dependencies: None
 * External References: NSG Core Vocabulary 2.0
-* Summary of Changes: Capture the definitions of controlled vocabularies for qualitative attribute values, also known as enumerations, into the XML metadata schema and in all relevant places in the standard specification such as terms and definitions and conceptual model. This should include defining two levels of hierarchy for describing enumerations: the higher level enumeration group which defines a collection of controlled vocabulary terms, and its contained listed values (also known as enumerates) describing the valid vocabulary terms for the enumeration. Both enumerations and listed values should define properties for name and description. Listed values should also define an integer code value. The definitions should be consistent with the NSG Core Vocabulary 2.0 conceptual model. Enumerations should be standalone definitions and not tied to any specific feature type or attribute.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 3: Terms and Definitions, Vol 9: Schemas and Vol 11: Conceptual Model.
+* Summary of Changes: Capture the definitions of controlled vocabularies for qualitative attribute values, also known as enumerations, into the XML metadata schema and in all relevant places in the standard such as terms and definitions and conceptual model. This should include defining two levels of hierarchy for describing enumerations: the higher-level enumeration group which defines a collection of controlled vocabulary terms, and its contained listed values (also known as enumerates) describing the valid vocabulary terms for the enumeration. Both enumerations and listed values should define properties for name and description. Listed values should also define an integer code value. The definitions should be consistent with the NSG Core Vocabulary 2.0 conceptual model. Enumerations should be standalone definitions and not tied to any specific feature type or attribute.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store, Vol 3: Terms and Definitions, Vol 9: Schemas and Vol 11: Conceptual Model.
 * CR ‘reduction’ actions not specific to any document
 
 |===
@@ -198,7 +198,7 @@ A-8-2- CR E-2: Create CDB V1.x XML Schema for Associating Enumerations to Attrib
 * Dependencies: CR E-1
 * External References: None
 * Summary of Changes: Augment the CDB Feature Attribute schema and all descriptions, specifications, and references such as in the conceptual model to allow attaching an enumeration definition by name from the Enumerations dictionary defined by CR E-1 to a particular attribute <Value>. For backwards compatibility this should be a new element inside the <Value> element and the existing <Value> description should retain <Format> of Integer and the range should specify the valid range of listed value codes as currently done.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
 * CR ‘reduction’ actions not specific to any document
 
 |===
@@ -213,12 +213,12 @@ A-8-3- CR E-3: Capture CDB V1.2 Enumerations into XML Metadata and Specification
 * Dependencies: CR E-2
 * External References: None
 * Summary of Changes: Capture the enumeration definitions and attribute associations currently present in CDB V1.2 Volume 1 Section 10.7.1.3 as human readable text into sample XML Metadata in accordance with the XML schema. Update Volume 1 to specify the valid set of Enumerations for traditional (FACC) CDB V1.2 attribution in accordance with the conceptual model updates in CR E-1. Update Volume 1 to hyperlink enumerated attributes to the enumeration definitions in accordance with the conceptual model defined in CR E-2.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store.
 * CR ‘reduction’ actions not specific to any document
 
 |===
 |
-Volume 1 Section 10.7.1.3 should have a separate section definition enumerations, and then the enumerations should be referenced (either as hyperlinks or embedded inline) in a consistent and standard way  for each attribute. Currently attributes in this specification section use a very freeform approach to documenting enumerations and other constraints.
+Volume 1 Section 10.7.1.3 should have a separate section defining enumerations. The enumerations should then be referenced (either as hyperlinks or embedded inline) in a consistent and standard way for each attribute. Currently attributes in this specification section use a very freeform approach to documenting enumerations and other constraints.
 
 |===
 
@@ -228,7 +228,7 @@ A-8-4- CR E-4: Provide Mechanism for Externally-Specified Codelists
 * Dependencies: CR E-1
 * External References: None
 * Summary of Changes: Augment the definition of Enumerations as created by CR E-1 to add to the XML schema and associated requirements the ability to define “codelists” which are enumerations that reference existing external standards for the allowable controlled vocabulary definitions. This is primarily useful for using items such as security classifications, ISO country codes, DIS codes, and other types of vocabularies that are primarily maintained by external standards that may be updated more frequently than CDB itself.
-* Documents affected: CDB V1.3 Documents: Vol 1:Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
+* Documents affected: CDB V1.3 Documents: Vol 1: Core Standard Model and Data Store, Vol 9: Schemas and Vol 11: Conceptual Model.
 * CR ‘reduction’ actions not specific to any document
 
 |===
