@@ -94,15 +94,15 @@ More information on CDB vector data model is provided in [yellow-background]#Sec
 
 The https://nsgreg.nga.mil/nas/[National System for Geospatial Intelligence (NSG) Application Schema (NAS)] specifies a platform independent model for geospatial data. The geospatial semantics are specified in the NSG Entity Catalog (NEC) and NSG Feature Data Dictionary (NFDD). The NAS conforms to https://www.iso.org/obp/ui/#iso:std:iso:19109:ed-2:v1:en[ISO 19109:2005 Rules for Application Schema] as well as conceptual schemas specified by other ISO 19100-series standards. The NAS includes entity modeling for modeling features, events, names and coverages (_e.g._, grids, rasters, and TINs).
 
-NAS is an example of recent modern feature data models that include geospatial data semantics, supports net-centric geospatial services, and is capable of achieving geospatial data interoperability.
+NAS is an example of recent modern feature data models that include geospatial data semantics, supports net-centric geospatial services, and can achieve geospatial data interoperability.
 
-As the NAS specifies an NSG-wide model for geospatial data that supports a wide variety of domains and applications, defining subsets of the NAS that meet specific requirements for specific domains is advantageous. In these cases mapping between a specific profile of the NAS with other schemas is possible.
+As the NAS specifies an NSG-wide model for geospatial data that supports a wide variety of domains and applications, defining subsets of the NAS that meet specific requirements for specific domains is advantageous. In these cases, mapping between a specific profile of the NAS with other schemas is possible.
 
 ==== NAS Data Model
 
 The NSG Application Schema (NAS) - Part 1 - specifies an NSG-wide logical model for geospatial data that is technology neutral. The NAS - Part 1 conforms to https://www.iso.org/obp/ui/#iso:std:iso:19109:ed-2:v1:en[ISO 19109:2015], Geographic information - Rules for application schema, and its conceptual schema. The NAS - Part 1 integrates conceptual schemas from multiple ISO 19100-series standards for geospatial information modeling, such as those for features, events, names and coverages (_e.g._, grids, rasters, and Triangulated Irregular Networks (TINs)).
 
-The NAS - Part 1 ensures that there is a clear, complete, and internally-consistent NSG logical geospatial data model that may be used to derive system-specific implementation models/schemas in a rigorous manner - NAS data model ensures that data integrity is preserved when geospatial data is exchanged between different system implementations within the NSG. It also reduces the cost of evolving system-specific implementations to meet evolving system, mission and customer requirements while promoting data agility.
+The NAS - Part 1 ensures that there is a clear, complete, and internally consistent NSG logical geospatial data model that may be used to derive system-specific implementation models/schemas in a rigorous manner. The NAS data model ensures that data integrity is preserved when geospatial data is exchanged between different system implementations within the NSG. The model also reduces the cost of evolving system-specific implementations to meet evolving system, mission and customer requirements while promoting data agility.
 
 The NAS - Part 1 leverages and integrates geospatial information modeling practices from multiple community models
 (_e.g._, Multinational Geospatial Co-Production Program (MGCP),
@@ -114,13 +114,13 @@ Electronic Navigational Chart (ENC),
 NATO Additional Military Layers (AML), and others)
 whose data are used and exchanged by NSG component systems. The NAS entities are organized into logical subject matter https://nsgreg.nga.mil/as/view?i=132013[Views and View Groups] for better searching and discovery capabilities by subject matter experts.
 
-NAS data model register provides the following services:
+The NAS data model register provides the following services:
 
 * https://nsgreg.nga.mil/registries/browse/index.jsp?registryType=as&register=NAS[Browse] or https://nsgreg.nga.mil/registries/search/index.jsp?registryType=as&register=NAS[Search] an entire list or subset of:
 ** Entity Types (_e.g._, bridge, forest, highway, railway yard)
 ** Entity Inheritance Relations (_e.g._, bridge is a subclass of feature entity)
 ** Entity Attributes (_e.g._, color, composition, height, name)
-** Datatypes [with Datatype Listed Values] (_e.g._, Boolean, Colour Code [red, yellow, green], Real, Text)
+** Datatypes [with Datatype Listed Values] (_e.g._, Boolean, Color Code [red, yellow, green], Real, Text)
 ** Datatype Inheritance Relations (_e.g._, Boolean with metadata is a subclass of Datatype with metadata)
 ** Entity Associations [with Association Roles] (_e.g._, bridge country [bridge-located country, location country of bridge])
 ** Constraints (_e.g._, runways may be represented only as curves or surfaces)
@@ -150,7 +150,7 @@ When comparing two schemas, it is important to consider their underlying structu
 |Interoperability relies on simplicity and customization.|Interoperability through standardization _e.g._, https://www.iso.org/obp/ui/#iso:std:iso:19109:ed-2:v1:en[ISO 19109:2015].
 |===
 
-This chapter exclusively covers the mapping from CDB to NAS, while the reverse mapping is not included. Nonetheless, it is possible that in the future, the reverse mapping between various NAS and CDB profiles may be examined. The first step for mapping from CDB V1.3 to NAS V8.0 is to upgrade the CDB V1.3 Attribute schema to include additional attributes for implementing the mapping. Section <<#CDB_Attribution_Roadmap, CDB Attribution Roadmap>> describes those upgrades. The second step was the manual mapping from the CDB attributes to NAS attributes and entities which is covered in section <<#Mapping_CDB_Vector_Attributes_to_NAS, Mapping CDB Vector Attributes to NAS>>.
+This chapter exclusively covers the mapping from CDB attribute schemas to NAS. The reverse mapping is not included. Nonetheless, it is possible that in the future, the reverse mapping between various NAS and CDB profiles may be examined. The first step for mapping from CDB V1.3 attribute schemas to NAS V8.0 is to upgrade the CDB V1.3 Attribute schema to include additional attributes for implementing the mapping. Section <<#CDB_Attribution_Roadmap, CDB Attribution Roadmap>> describes those upgrades. The second step was the manual mapping from the CDB attributes to NAS attributes and entities which is covered in section <<#Mapping_CDB_Vector_Attributes_to_NAS, Mapping CDB Vector Attributes to NAS>>.
 
 === CDB Attribution Roadmap (SOFWERX Sprint)
 [#CDB_Attribution_Roadmap]
