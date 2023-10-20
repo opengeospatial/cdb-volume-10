@@ -2,25 +2,13 @@
 
 For the purposes of this document, the following abbreviations apply. All other terms and definitions are contained in Volume 3: OGC CDB Terms and Definitions (http://www.opengeospatial.org/standards/cdb).
 
-*AIXM*  Aeronautical Information Exchange Model
-
-*AML*  Additional Military Layers
-
 *CR* Change Request
 
-*DFDD*  Digital Geospatial Information Working Group Feature Data Dictionary
-
 *DIGEST*  Digital Geographic Information Exchange Standard
-
-*ENC*  Electronic Navigational Chart
 
 *GGDM*  Ground-warfighter Geospatial Data Model
 
 *ISO*  International Organization for Standardization
-
-*MGCP*  Multinational Geospatial Co-Production Program
-
-*MIDB*  Modernized Integrated Database
 
 *NAS*  NSG Application Schema
 
