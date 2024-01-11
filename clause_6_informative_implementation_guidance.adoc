@@ -1,3 +1,4 @@
+:stem:
 == Informative Implementation Guidance
 
 === Clarification: Publisher Considerations
@@ -494,11 +495,33 @@ image::images/image612.jpeg[width=580,height=199]
 
 ==== Introduction
 
-There is nominally no gamma correction done to the stored samples of CDB imagery files. As a result, a gamma of 1/2.2 should be applied to imagery data when viewing it through a (sRGB-calibrated) monitor with gamma of 2.2. The CDB Standard recommends the sRGB IEC 61966-2 standard when performing the calibration of displays (at DBGF or a simulator). The sRGB standard provides the necessary guidelines for the handling of gamma, and of color (in a device-independent fashion) under specified viewing conditions.
+There is nominally no gamma correction done to the CDB imagery files. As a result, a gamma of 1/2.2 should be applied to imagery data when viewing it through a (sRGB-calibrated) monitor with gamma of 2.2. The CDB Standard recommends the sRGB IEC 61966-2 standard when performing the calibration of displays (at DBGF or a simulator). The sRGB standard provides the necessary guidelines for the handling of gamma, and of color (in a device-independent fashion) under specified viewing conditions.
 
+According to *PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Gamma Tutorial*, (http://www.w3.org/TR/PNG-GammaAppendix):
+
+[quote, Gamma Tutorial]
+----
 It would be convenient for graphics programmers if all of the components of an imaging system were linear. The voltage coming from an electronic camera would be directly proportional to the intensity (power) of light in the scene; the light emitted by a CRT would be directly proportional to its input voltage, and so on. However, real-world devices do not behave in this way.
 
-Real imaging systems will have several components, and more than one of these can be nonlinear. If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function. The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system. Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function. So a linear transfer function is just a special case of a power function, with a gamma of 1.0. Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.
+Fortunately, all of these nonlinear devices have a transfer function that is approximated fairly well by a single type of mathematical function: a power function. This power function has the general equation
+
+output = input ^ gamma
+
+where ^ denotes exponentiation, and “gamma” (often printed using the Greek letter gamma, thus the name) is simply the exponent of the power function.
+
+By convention, “input” and “output” are both scaled to the range [0..1], with 0 representing black and 1 representing maximum white. Normalized in this way, the power function is completely described by a single number, the exponent “gamma.”
+
+So, given a particular device, we can measure its output as a function of its input, fit a power function to this measured transfer function, extract the exponent, and call it gamma. We often say “this device has a gamma of 2.5” as a shorthand for “this device has a power-law response with an exponent of 2.5”. We can also talk about the gamma of a mathematical transform, or of a lookup table in a frame buffer, so long as the input and output of the thing are related by the power-law expression above.
+----
+
+===== How do gammas combine?
+
+----
+Real imaging systems will have several components, and more than one of these can be nonlinear. If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function. The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system.
+
+Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function. So a linear transfer function is just a special case of a power function, with a gamma of 1.0.
+
+Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.
 
 If the overall gamma of an imaging system is 1.0, its output is linearly proportional to its input. This means that the ratio between the intensities of any two areas in the reproduced image will be the same as it was in the original scene. It might seem that this should always be the goal of an imaging system: to accurately reproduce the tones of the original scene. Alas, that is not the case.
 
@@ -512,72 +535,72 @@ The requirement for boosted contrast (gamma) in dark surround conditions is due 
 
 If asking the user about room lighting conditions is inappropriate or too difficult, it is reasonable to assume that the overall gamma (viewing_gamma as defined below) is somewhere between 1.0 and 1.25. That's all that most systems that implement gamma correction do.
 
-According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Gamma Tutorial, (http://www.w3.org/TR/PNG-GammaAppendix):
+...
+----
 
-“All display systems, almost all photographic film, and many electronic cameras have nonlinear signal-to-light-intensity or intensity-to-signal characteristics. Fortunately, all of these nonlinear devices have a transfer function that is approximated fairly well by a single type of mathematical function: a power function. This power function has the general equation
+===== Gamma-encoded samples are good
 
-output = input ^ gamma
-
-where ^ denotes exponentiation, and “gamma” (often printed using the Greek letter gamma, thus the name) is simply the exponent of the power function.
-
-By convention, “input” and “output” are both scaled to the range [0..1], with 0 representing black and 1 representing maximum white. Normalized in this way, the power function is completely described by a single number, the exponent “gamma.”
-
-So, given a particular device, we can measure its output as a function of its input, fit a power function to this measured transfer function, extract the exponent, and call it gamma. We often say “this device has a gamma of 2.5” as a shorthand for “this device has a power-law response with an exponent of 2.5”. We can also talk about the gamma of a mathematical transform, or of a lookup table in a frame buffer, so long as the input and output of the thing are related by the power-law expression above.
-
-Real imaging systems will have several components, and more than one of these can be nonlinear. If all of the components have transfer characteristics that are power functions, then the transfer function of the entire system is also a power function. The exponent (gamma) of the whole system's transfer function is just the product of all of the individual exponents (gammas) of the separate stages in the system.
-
-Also, stages that are linear pose no problem, since a power function with an exponent of 1.0 is really a linear function. So a linear transfer function is just a special case of a power function, with a gamma of 1.0.
-
-Thus, as long as our imaging system contains only stages with linear and power-law transfer functions, we can meaningfully talk about the gamma of the entire system. This is indeed the case with most real imaging systems.”
-
+----
 In an ideal world, sample values would be stored in floating point, there would be lots of precision, and it wouldn't really matter much. But in reality, we're always trying to store images in as few bits as we can.
 
 If we decide to use samples that are linearly proportional to intensity, and do the gamma correction in the frame buffer LUT, it turns out that we need to use at least 12-16 bits for each of red, green, and blue to have enough precision in intensity. With any less than that, we will sometimes see “contour bands” or “Mach bands” in the darker areas of the image, where two adjacent sample values are still far enough apart in intensity for the difference to be visible.
 
 However, through an interesting coincidence, the human eye's subjective perception of brightness is related to the physical stimulation of light intensity in a manner that is very much like the power function used for gamma correction. If we apply gamma correction to measured (or calculated) light intensity before quantizing to an integer for storage in a frame buffer, we can get away with using many fewer bits to store the image. In fact, 8 bits per color is almost always sufficient to avoid contouring artifacts. This is because, since gamma correction is so closely related to human perception, we are assigning our 256 available sample codes to intensity values in a manner that approximates how visible those intensity changes are to the eye. Compared to a linear-sample image, we allocate fewer sample values to brighter parts of the tonal range and more sample values to the darker portions of the tonal range.
 
+
 Thus, for the same apparent image quality, images using gamma-encoded sample values need only about two-thirds as many bits of storage as images using linear samples.
+----
 
+===== General Gamma Handling
+
+----
 If we consider a pipeline that involves capturing (or calculating) an image, storing it in an image file, reading the file, and displaying the image on some sort of display screen, there are at least 5 places in the pipeline that could have nonlinear transfer functions. Let's give each a specific name for their characteristic gamma:
+----
 
-1.  Camera_gamma (γ~_c_~ ):The characteristic of the image sensor.
-2.  Encoding_gamma (γ~_e_~ ): The gamma of any transformation performed by the software writing the image file.
-3.  Decoding_gamma (γ~_d_~ ): The gamma of any transformation performed by any software reading the image file.
-4.  LUT_gamma (γ~_lut_~ ): The gamma of the frame buffer LUT, if present.
+[cols="1"]
+|===
+Camera_gamma (stem:[\gamma _c]) : The characteristic of the image sensor.
+
+Encoding_gamma (stem:[\gamma _e]) : The gamma of any transformation performed by the software writing the image file.
+
+Decoding_gamma (stem:[\gamma _d]) : The gamma of any transformation performed by any software reading the image file.
+
+LUT_gamma (stem:[\gamma _{lut}]) : The gamma of the frame buffer LUT, if present.
+
 
 In addition, let's add a few other names:
 
-1.  File_gamma (γ~_f_~): The gamma of the image in the file, relative to the original scene, i.e.
-+
-γ~_f_~ = γ~_c_~ γ~_e_~
-2.  DS_gamma (γ~_DS_~): The gamma of the “display system” downstream of the frame buffer. In this context, the term display system encompasses everything after the frame buffer, that is
-+
-γ~_DS_~ = γ~_lut_~ γ~_crt_~
-3.  Viewing_gamma (γ~_v_~): The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
+File_gamma (stem:[\gamma _f]) : The gamma of the image in the file, relative to the original scene. This is:
 
-When the file_gamma is not 1.0, we know that some form of gamma correction has been done on the sample values in the file, and we call them “gamma corrected” samples. However, since there can be so many different values of gamma in the image display chain, and some of them are not known at the time the image is written, the samples are not really being “corrected” for a specific display condition. We are really using a power function in the process of encoding an intensity range into a small integer field, and so it is more correct to say “gamma encoded” samples instead of “gamma corrected” samples. The CDB standard does not rely on such gamma encoding in order to achieve smaller integer number representations. Instead, the CDB standard relies on standard compression algorithms to achieve an efficient representation of color imagery. footnote:[The JPEG-2000 standard is based on the _sRGB_ default color space per the IEC 61966-2-1 Standard which calls for a gamma 2.2 under the specified viewing conditions]
+stem:[\gamma _f = \gamma _c * \gamma _e]
 
-When displaying an image file on the simulator, the image-decoding software is responsible for making the overall gamma of the system equal to the desired viewing_gamma, by selecting the decoding_gamma appropriately. If the viewing condition is different from the specification, then the decoding process must compensate. This can be done by modifying the gamma values in equation G-1 below by the appropriate factor. If one does modify the gamma values in equation G-1 below, extreme care must be taken to avoid quantization errors when working with 24 bit images. The display_gamma should be measured (and known) for the display rendering the image (either at the DB generation workstation or the simulator). The correct viewing_gamma depends on lighting conditions, and that will generally have to come from the user. In dimly lit office environments, the generally preferred value for viewing gamma is in the vicinity of 1.125 footnote:[Historically, viewing gammas of 1.5 have been used for viewing projected slides in a dark room and viewing gammas of 1.25 have been used for viewing monitors in a very dim room. This very dim room value of 1.25 has been used extensively in television systems and assumes a ambient luminance level of approximately 15 lux (or 1.4 ft-lb). The current proposal assumes an encoding ambient luminance level of 64 lux (or 5. ft-lb) which is more representative of a dim room in viewing computer generated imagery or a FAA level-D approved flight simulator visual system. Such a system assumes a viewing gamma of 1.125 and is thus consistent with the ITU-R BT.709 standard.]. In many digital video systems, camera_gamma is about 0.5. CRT_gamma is typically 2.2, while encoding_gamma, decoding_gamma, and LUT_gamma are all 1.0. As a result, viewing_gamma ends up being about 1.125. Coincidently, this happens to be the optimal viewing gamma for an ambient luminance level of 64 lux or 5 ft-lbt.
+Display_gamma (stem:[\gamma _{DS}}]) : The gamma of the “display system” downstream of the frame buffer. This is:
 
+        display_gamma = LUT_gamma * CRT_gamma
 
+stem:[\gamma _{dg} = \gamma _g * \gamma _{crt}]
 
-[cols="3,1",]
-|==========
-a|
+Viewing_gamma (stem:[\gamma _v]) : The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
+|===
 
-ifndef::backend-pdf[]
-\[\gamma _c \gamma _d \gamma _{DS} = \gamma _v \]
+----
+If file_gamma is not 1.0, we know that gamma correction has been done on the sample values in the file, and we call them “gamma corrected” samples. However, since there can be so many different values of gamma in the image display chain, and some of them are not known at the time the image is written, the samples are not really being “corrected” for a specific display condition. We are really using a power function in the process of encoding an intensity range into a small integer field, and so it is more correct to say “gamma encoded” samples instead of “gamma corrected” samples.
 
-\[\gamma _c \gamma _d \gamma _{lut} \gamma _{crt} = \gamma _v \]
+When displaying an image file, the image decoding software is responsible for making the overall gamma of the system equal to the desired viewing_gamma, by selecting the decoding_gamma appropriately. 
+----
+
+The CDB standard does not rely on such gamma encoding in order to achieve smaller integer number representations. Instead, the CDB standard relies on standard compression algorithms to achieve an efficient representation of color imagery. footnote:[The JPEG-2000 standard is based on the _sRGB_ default color space per the IEC 61966-2-1 Standard which calls for a gamma 2.2 under the specified viewing conditions]
+
+If the viewing condition is different from the specification, then the decoding process must compensate. This can be done by modifying the gamma values in the equation below by the appropriate factor. If one does modify the gamma values in the equation below, extreme care must be taken to avoid quantization errors when working with 24 bit images. The display_gamma should be measured (and known) for the display rendering the image (either at the DB generation workstation or the simulator). The correct viewing_gamma depends on lighting conditions, and that will generally have to come from the user. In dimly lit office environments, the generally preferred value for viewing gamma is in the vicinity of 1.125 footnote:[Historically, viewing gammas of 1.5 have been used for viewing projected slides in a dark room and viewing gammas of 1.25 have been used for viewing monitors in a very dim room. This very dim room value of 1.25 has been used extensively in television systems and assumes a ambient luminance level of approximately 15 lux (or 1.4 ft-lb). The current proposal assumes an encoding ambient luminance level of 64 lux (or 5. ft-lb) which is more representative of a dim room in viewing computer generated imagery or a FAA level-D approved flight simulator visual system. Such a system assumes a viewing gamma of 1.125 and is thus consistent with the ITU-R BT.709 standard.]. In many digital video systems, camera_gamma is about 0.5. CRT_gamma is typically 2.2, while encoding_gamma, decoding_gamma, and LUT_gamma are all 1.0. As a result, viewing_gamma ends up being about 1.125. Coincidently, this happens to be the optimal viewing gamma for an ambient luminance level of 64 lux or 5 ft-lbt.
+
+[cols="1"]
+|===
+\[\gamma _c  * \gamma _d * \gamma _{ds} = \gamma _v \]
+
+\[\gamma _c * \gamma _d * \gamma _{lut} * \gamma _{crt} = \gamma _v \]
 
 \[0.511 * 1.0 * 1.0 * 2.2 = 1.125 = \gamma _v \]
-endif::[]
-ifdef::backend-pdf[]
-image::math/g1.png[]
-endif::[]
-
-|(eq. 6-1)
-|==========
+|===
 
 In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g., camera or satellite) right through to the simulator’s display device. His objective is to ensure that product of all gammas match the viewing gamma of the simulator.
 
@@ -802,10 +825,12 @@ Where __M__^-1^= The inverse of the matrix _M_ used to go from XYZ-1931 color sp
 
 In the RGB encoding process, negative sRGB tri-stimulus values, and sRGB tri-stimulus values greater than 1,00 are not retained. When encoding software cannot support this extended range, the luminance dynamic range and color gamut of RGB is limited to the tri-stimulus values between 0,0 and 1,0 by simple clipping.
 
-According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Color Tutorial, (http://www.w3.org/TR/PNG-GammaAppendix):
+According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996 Appendix, Color Tutorial, (https://www.w3.org/TR/PNG-ColorAppendix.html):
 
-“The gamut of a device is the subset of visible colors that the device can display. (Note that this has nothing to do with gamma.) The gamut of an RGB device can be visualized as a polyhedron in XYZ space; the vertices correspond to the device's black, blue, red, green, magenta, cyan, yellow, and white.
+----
+The gamut of a device is the subset of visible colors that the device can display. (Note that this has nothing to do with gamma.) The gamut of an RGB device can be visualized as a polyhedron in XYZ space; the vertices correspond to the device's black, blue, red, green, magenta, cyan, yellow, and white.
 
 Different devices have different gamut (e.g. database generation workstation, simulator display systems). In other words one device may be able to display certain colors (usually highly saturated ones) that another device cannot. The gamut of a particular RGB device can be determined from its R, G, and B chromaticities and white point.
 
 Converting image data from one device to another generally results in gamut mismatches colors that cannot be represented exactly on the destination device. The process of making the colors fit, which can range from a simple clip to elaborate nonlinear scaling transformations, is termed gamut mapping. The aim is to produce a reasonable visual representation of the original image.
+----
