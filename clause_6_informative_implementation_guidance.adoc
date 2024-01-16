@@ -559,28 +559,26 @@ If we consider a pipeline that involves capturing (or calculating) an image, sto
 
 [cols="1"]
 |===
-Camera_gamma (stem:[\gamma _c]) : The characteristic of the image sensor.
+|Camera_gamma (γ~_c_~) : The characteristic of the image sensor.
 
-Encoding_gamma (stem:[\gamma _e]) : The gamma of any transformation performed by the software writing the image file.
+Encoding_gamma (γ~_e_~) : The gamma of any transformation performed by the software writing the image file.
 
-Decoding_gamma (stem:[\gamma _d]) : The gamma of any transformation performed by any software reading the image file.
+Decoding_gamma (γ~_d_~) : The gamma of any transformation performed by any software reading the image file.
 
-LUT_gamma (stem:[\gamma _{lut}]) : The gamma of the frame buffer LUT, if present.
+LUT_gamma (γ~_lut_~) : The gamma of the frame buffer LUT, if present.
 
 
 In addition, let's add a few other names:
 
-File_gamma (stem:[\gamma _f]) : The gamma of the image in the file, relative to the original scene. This is:
+File_gamma (γ~_f_~) : The gamma of the image in the file, relative to the original scene. This is:
 
-stem:[\gamma _f = \gamma _c * \gamma _e]
+γ~_f_~ = γ~_c_~ * γ~_e_~
 
-Display_gamma (stem:[\gamma _{DS}}]) : The gamma of the “display system” downstream of the frame buffer. This is:
+Display_gamma (γ~_ds_~) : The gamma of the “display system” downstream of the frame buffer. This is:
 
-        display_gamma = LUT_gamma * CRT_gamma
+γ~_ds_~ = γ~_lut_~ * γ~_crt_~
 
-stem:[\gamma _{dg} = \gamma _g * \gamma _{crt}]
-
-Viewing_gamma (stem:[\gamma _v]) : The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
+Viewing_gamma (γ~_v_~) : The overall gamma that we want to obtain to produce pleasing images generally 1.0 to 1.25.
 |===
 
 ----
@@ -593,13 +591,16 @@ The CDB standard does not rely on such gamma encoding in order to achieve smalle
 
 If the viewing condition is different from the specification, then the decoding process must compensate. This can be done by modifying the gamma values in the equation below by the appropriate factor. If one does modify the gamma values in the equation below, extreme care must be taken to avoid quantization errors when working with 24 bit images. The display_gamma should be measured (and known) for the display rendering the image (either at the DB generation workstation or the simulator). The correct viewing_gamma depends on lighting conditions, and that will generally have to come from the user. In dimly lit office environments, the generally preferred value for viewing gamma is in the vicinity of 1.125 footnote:[Historically, viewing gammas of 1.5 have been used for viewing projected slides in a dark room and viewing gammas of 1.25 have been used for viewing monitors in a very dim room. This very dim room value of 1.25 has been used extensively in television systems and assumes a ambient luminance level of approximately 15 lux (or 1.4 ft-lb). The current proposal assumes an encoding ambient luminance level of 64 lux (or 5. ft-lb) which is more representative of a dim room in viewing computer generated imagery or a FAA level-D approved flight simulator visual system. Such a system assumes a viewing gamma of 1.125 and is thus consistent with the ITU-R BT.709 standard.]. In many digital video systems, camera_gamma is about 0.5. CRT_gamma is typically 2.2, while encoding_gamma, decoding_gamma, and LUT_gamma are all 1.0. As a result, viewing_gamma ends up being about 1.125. Coincidently, this happens to be the optimal viewing gamma for an ambient luminance level of 64 lux or 5 ft-lbt.
 
-[cols="1"]
+[cols="^3,1"]
 |===
-\[\gamma _c  * \gamma _d * \gamma _{ds} = \gamma _v \]
+a|
+γ~_c_~ * γ~_d_~ * γ~_ds_~ = γ~_v_~
 
-\[\gamma _c * \gamma _d * \gamma _{lut} * \gamma _{crt} = \gamma _v \]
+γ~_c_~ * γ~_d_~ * γ~_lut_~ * γ~_crt_~ = γ~_v_~
 
-\[0.511 * 1.0 * 1.0 * 2.2 = 1.125 = \gamma _v \]
+0.511 * 1.0 * 1.0 * 2.2 = 1.125 = γ~_v_~ 
+
+|(eq. 6-1)
 |===
 
 In a complex system such as a flight simulator, the system architect must be aware of the gamma at every stage of the system, starting from the source of the imagery (e.g., camera or satellite) right through to the simulator’s display device. His objective is to ensure that product of all gammas match the viewing gamma of the simulator.
