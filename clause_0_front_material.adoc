@@ -46,8 +46,6 @@ Organization name(s)
 * SimBlocks LLC
 
 
-
-
 The OGC CDB standard is based on and derived from an industry developed and maintained specification, which has been approved and published as OGC Document 15-003: OGC Common DataBase Volume 1 Main Body. An extensive listing of contributors to the legacy industry-led CDB specification is at Chapter 11, pp 475-476 in that OGC Best Practices Document (https://portal.opengeospatial.org/files/?artifact_id=61935) .
 
 [big]*v.  Comment Submission*
