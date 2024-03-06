@@ -107,7 +107,6 @@ add or remove annexes after "A" as necessary
 ////
 
 include::annex_A_sofwerx_attributions_subgroup.adoc[]
-include::annex_B_traditional_cdb_attribution.adoc[]
 
 <<<
 
