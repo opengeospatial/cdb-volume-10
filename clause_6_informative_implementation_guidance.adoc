@@ -13,7 +13,7 @@ Note that there are many alternatives open to a vendor when considering the leve
 
 Nonetheless, this section highlights aspects of the CDB that are particularly significant when considering such implementations. These aspects dominate the level-of-effort required to achieve ideal CDB compliancy.
 
-The CDB Standard limits itself to a description of a data schema for Synthetic Environmental information (i.e., it merely describes data) for use in simulation. The CDB Best Practices provide rigorous guidance of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats. This ensures that the all CDB data is understood, interpreted and efficiently accessed in the same way by each client-device. The CDB standard does not include detailed guidelines regarding off-line database compliers or runtime publisher implementations, since this would be tantamount to dictating internal vendor formats which are by their very nature proprietary.
+The CDB Standard limits itself to a description of a data schema for Synthetic Environmental information (i.e., it merely describes data) for use in simulation. The CDB Best Practices provide rigorous guidance of the semantic meaning for each dataset, each attribute and establishes the structure/organization of that data as a schema comprised of a folder hierarchy and files with internal (industry-standard) formats. This ensures that the all CDB data is understood, interpreted and efficiently accessed in the same way by each client-device. The CDB standard does not include detailed guidelines regarding off-line database compilers or runtime publisher implementations, since this would be tantamount to dictating internal vendor formats which are by their very nature proprietary.
 
 The CDB Standard DOES NOT specify:
 
@@ -57,7 +57,7 @@ In order to assess the level-of-effort to adopt the CDB model, the vendor must f
 *** Instanced model geometry
 *** Instanced model texture
 *** Non-instanced geospecific models
-** Conforming of features to terrain skin (e.g. height conforming)
+** Conforming of features to terrain skin (e.g.,height conforming)
 ** Topological networks
 ** JPEG-2K compression
 ** Generation of device-specific NVG/FLIR rendering parameters for light-points and materials
@@ -68,7 +68,7 @@ The CDB data model favors modern up-to-date implementations of client-devices. I
 
 A classic example of this was the use of Binary Separation Planes (BSPs) data structures footnote:[Such BSP data structures where required by most IG vendors prior to ~1995 due to the fact that the IGs did not have sub-pixel level Z-buffer capability.] which were required prior to the widespread adoption of Z-buffers by the IG vendors. The CDB standard does not make provisions for this and as such, the RTP for legacy BSP-based IG devices would be burdened with the rather difficult task to generate BSPs in real-time.
 
-Given their tremendous benefit, the concepts of paging (e.g. tiles) and levels-of-details have steadily been adopted by simulation vendors over the past 15-20 years and have been applied to most datasets, notably terrain and imagery datasets. (See Appendices G and F of the Volume 2: OGC CDB Core Model and Physical Structure Annexes for a rationale for Tiles and Levels-of-detail). As a result, it is not expected that the CDB tiles and LOD concepts will be a problem for most vendors. Note however that CDB applies these two concepts to ALL dataset layers including vector features and 3D models.
+Given their tremendous benefit, the concepts of paging (e.g.,tiles) and levels-of-details have steadily been adopted by simulation vendors over the past 15-20 years and have been applied to most datasets, notably terrain and imagery datasets. (See Appendices G and F of the Volume 2: OGC CDB Core Model and Physical Structure Annexes for a rationale for Tiles and Levels-of-detail). As a result, it is not expected that the CDB tiles and LOD concepts will be a problem for most vendors. Note however that CDB applies these two concepts to ALL dataset layers including vector features and 3D models.
 
 ==== Client-Devices
 
@@ -78,18 +78,18 @@ Since it is the client-devices that initiate access to the CDB conformant data s
 
 ==== Typical Functions Performed by a Publisher Implementation
 
-The following discussion provides a typical list of software functions that must be developed in order to achieve CDB compliancy. The discussion applies equally to both paradigms, i.e. the CDB Runtime Publishing paradigm and the CDB import-then-compile paradigm.
+The following discussion provides a typical list of software functions that must be developed in order to achieve CDB compliancy. The discussion applies equally to both paradigms, i.e.,the CDB Runtime Publishing paradigm and the CDB import-then-compile paradigm.
 
 Virtually all simulation client-devices in existence today natively ingest their own proprietary native runtime formats. In order to ingest CDB structured data directly, vendors must adapt the device’s software to natively ingest the currently defined CDB formats footnote:[The number of specified formats will be expanded in future versions of the CDB standard.] (e.g., TIFF, Shape, OpenFlight, etc.) or alternately, they can insert a runtime publisher function that transforms the CDB data formats into legacy client device’s native runtime format. The runtime publishing process is performed when the CDB is paged-in from the CDB storage device.
 
-The runtime publishers are nothing more than well-optimized offline publishers capable of responding to the on-demand compilation of datasets as they are being paged-in by the respective client devices. The function of a runtime publisher is no different than that of a conventional offline database publisher, i.e., it…
+The runtime publishers are nothing more than well-optimized offline publishers capable of responding to the on-demand compilation of datasets as they are being paged-in by the respective client devices. The function of a runtime publisher is no different than that of a conventional offline database publisher, i.e., it:
 
-a.  transforms the assembled data store so that it satisfies the client-device’s internal data structure and format
-b.  transforms the assembled data store so that it satisfies the client-device’s internal naming conventions
-c.  transforms the assembled data store so that it satisfies the client-device’s number precision and number representation
-d.  transforms the assembled data store into parameters compatible with the client device’s internal algorithms (typically light parameters, FLIR/NVG parameters, etc).
-e.  transforms the assembled data store so that it satisfies the client-device’s data fidelity requirements
-f.  transforms the assembled data store so that it satisfies the client-device’s performance and internal memory limitations
+a.  transforms the assembled data store so that it satisfies the client-device’s internal data structure and format;
+b.  transforms the assembled data store so that it satisfies the client-device’s internal naming conventions;
+c.  transforms the assembled data store so that it satisfies the client-device’s number precision and number representation;
+d.  transforms the assembled data store into parameters compatible with the client device’s internal algorithms (typically light parameters, FLIR/NVG parameters, etc.);
+e.  transforms the assembled data store so that it satisfies the client-device’s data fidelity requirements;
+f.  transforms the assembled data store so that it satisfies the client-device’s performance and internal memory limitations; and
 g.  transforms the assembled data store so that it satisfies the client-device’s level of-detail representation requirements.
 
 *Ideally, the scope of an RTP should be purely limited to manipulations of data format and data structure and internal naming conventions (items a-g above). Under such circumstances, it is possible to achieve perfect runtime correlation between client-devices.*
@@ -112,23 +112,23 @@ For instance, a client-device incapable of dealing with levels-of-detail will no
 
 Changes to the modeled representation of features are generally not advisable since it invariably affects the accuracy of the modeled representation. Most image generators in use today can ingest a (one-for-one correspondence) the CDB modeled polygonal representation of 3D features. However, in the case of terrain, there are two dominant approaches in industry, either a regular grid with LODs or alternately, the Terrain Irregular Network (TIN) mesh. The CDB Standard has opted for the former given its greater scalability, determinism and compatibility with tiling schemes. Clearly, implementations where such conversions are not necessary are advantaged and provide more of the above-mentioned CDB benefits.
 
-Furthermore, the CDB is designed to provide both the semantic (e.g. vector data/attribution) and the modeled representation of features. Since the CDB Standard and associated Best Practices provides both, it is not advisable to ignore or replace the modeled representation (if provided) nor is it advisable to synthesize a non-CDB modeled representation if none was supplied within the CDB. While the CDB Standard does not forbid vendors to interpret CDB feature data for the purpose of procedurally synthesizing more detailed feature data or synthesizing modeled data from the feature data, _this practice is not recommended as this would severely compromise correlation and inter-operability_. In the context of correlated synthetic environments, such approaches are viable if and only if all client-devices in a federation are equipped with the exact same procedural algorithms. Currently, this is not possible because there are no industry-standard, open-source procedural algorithms endorsed by all simulation vendors.
+Furthermore, the CDB is designed to provide both the semantic (e.g.,vector data/attribution) and the modeled representation of features. Since the CDB Standard and associated Best Practices provides both, it is not advisable to ignore or replace the modeled representation (if provided) nor is it advisable to synthesize a non-CDB modeled representation if none was supplied within the CDB. While the CDB Standard does not forbid vendors to interpret CDB feature data for the purpose of procedurally synthesizing more detailed feature data or synthesizing modeled data from the feature data, _this practice is not recommended as this would severely compromise correlation and inter-operability_. In the context of correlated synthetic environments, such approaches are viable if and only if all client-devices in a federation are equipped with the exact same procedural algorithms. Currently, this is not possible because there are no industry-standard, open-source procedural algorithms endorsed by all simulation vendors.
 
 In the case of the CDB Runtime Publishing paradigm and the CDB import-then-compile paradigm, it is not advisable to ignore or replace the modeled representation (if provided) nor is it advisable to synthesize a non-CDB modeled representation if none was supplied within the CDB.
 
 === Use of a CDB conformant data store as an Off-line Repository
 
-<<#img_UseofCDBConformantDatabaseasanofflineDatabaseRepository>>: Use of a CDB conformant data store as an Off-line Repository, illustrates the deployment process of a CDB conformant database when it is used solely as an off-line Master repository. This approach follows the SE deployment paradigm commonly used today within the simulation community. The use of a CDB conformant data store as an off-line environmental data repository offers immediate benefits, namely…
+<<#img_UseofCDBConformantDatabaseasanofflineDatabaseRepository>>: Use of a CDB conformant data store as an Off-line Repository, illustrates the deployment process of a CDB conformant database when it is used solely as an off-line Master repository. This approach follows the SE deployment paradigm commonly used today within the simulation community. The use of a CDB conformant data store as an off-line environmental data repository offers immediate benefits, namely the following.
 
 * SE Standardization through a public, open, fully-documented schema that is already supported by several SE authoring tools.
-* SE Plug-and-Play Portability and Interoperability across various vendor SE authoring toolsets
-* SE Correlation through the elimination of source correlation errors through normalization of all data sets (a single representation for each dataset)
-* SE Re-use by eliminating dependencies that are specific to the simulation application, the Data store Generation tool suite, the simulation program, the technology
-* SE Scalability which results in near-infinite SE addressability, spatial resolution and content density in each of the SE datasets
-* 3D Model Library Management through built-in provisions for the cataloging of models
-* SE Versioning Mechanism allowing instant access to prior versions and simplified configuration management
-* Cooperative SE Workflow through an internal SE structure which favors teamwork. The SE workflow can be allocated by specialty (e.g., altimetry, satellite imagery, vector data) or by geographic footprint
-* Straightforward SE Archival and Recovery
+* SE Plug-and-Play Portability and Interoperability across various vendor SE authoring toolsets.
+* SE Correlation through the elimination of source correlation errors through normalization of all data sets (a single representation for each dataset).
+* SE Re-use by eliminating dependencies that are specific to the simulation application, the Data store Generation tool suite, the simulation program, the technology.
+* SE Scalability which results in near-infinite SE addressability, spatial resolution and content density in each of the SE datasets.
+* 3D Model Library Management through built-in provisions for the cataloging of models.
+* SE Versioning Mechanism allowing instant access to prior versions and simplified configuration management.
+* Cooperative SE Workflow through an internal SE structure which favors teamwork. The SE workflow can be allocated by specialty (e.g., altimetry, satellite imagery, vector data) or by geographic footprint.
+* Straightforward SE Archival and Recovery.
 
 Note that the use of the use of CDB conformant data store as an offline repository does not impose any change to the simulation training equipment (i.e., no modifications to client-devices are required footnote:[Or alternately, runtime publishers need not be developed for client-devices]). However, the deployment of the synthetic environment is similar to the conventional approaches used in industry requiring the time-consuming, storage-intensive, off-line compilation of proprietary runtime databases to each client-device. Furthermore, the computing demands on the data store generation facility are significantly greater because the entire data store must be published off-line for each client-device before it can be deployed. These costs rapidly escalate with the complexity and size of the synthetic environment, the number of supported client-devices and the number of supported training facilities. For complex data stores, these costs can far outweigh the costs of the runtime publishers attached to each simulator client-device.
 
@@ -232,7 +232,7 @@ image::images/image66.png[image,width=614,height=371]
 [#img_TypicalDBGenerationCDBUsedasaDBRepository,reftext='Figure 6-6']
 *Figure 6-6. Typical DB Generation - CDB Used as a DB Repository*
 
-<<#img_TypicalDBGenerationCDBUsedasaDBRepository>>: _Typical DB Generation - CDB Used as DB Repository_ and <<#img_TypicalDBGenerationFlowCDBUsedasDBandSimRepository>>: _Typical DB Generation Flow - CDB Used as DB & Sim Repository_ illustrate a typical database generation workflow with the database used as a DB workstation repository and the database used as a Repository for the DB workstation and the simulator. Both approaches share the same steps, namely…
+<<#img_TypicalDBGenerationCDBUsedasaDBRepository>>: _Typical DB Generation - CDB Used as DB Repository_ and <<#img_TypicalDBGenerationFlowCDBUsedasDBandSimRepository>>: _Typical DB Generation Flow - CDB Used as DB & Sim Repository_ illustrate a typical database generation workflow with the database used as a DB workstation repository and the database used as a Repository for the DB workstation and the simulator. Both approaches share the same steps, namely the following.
 
 1.  _Source data collection and preparation:_ This step usually involves the loading of raw (usually) uncorrected data and the conversion to formats native to the data store toolset.
 2.  _Source data preparation:_ This step usually involves the detection/correction of errors, the harmonization of the data and the correction of errors. In this context, errors signify all instances where the data fails to meet prescribed criteria. For instance, errors can be as straightforward as corrupted digital data. More subtle forms of errors could be textures that fail to meet various brightness, contrast, chrominance, and distortion criteria. Harmonizing data requires that data sources be coherent with each other. An example of non-harmonized dataset is a terrain imagery mosaic built from pictures taken in different seasons, with different illumination conditions, with/without clouds, etc.
@@ -313,7 +313,7 @@ Visual subsystems typically provide a set of ownship-centric Mission Functions (
 2.  Own-ship Collision Detection (CD) with terrain, 3D culture and moving models. This may include long thin objects such as power lines.
 3.  Line Of Sight (LOS) and Laser Ranging Function (LRF) originating from the ownship. This function may return the range, the material type and the normal of the nearest encountered element in the database. The maximum length of a requested vector is typically limited to the paged-in database.
 
-The mission functions provided by an IG base their computations on data that has LOD representations equivalent to those used by OTW IGs. Since the visual subsystem scene management mechanisms are essentially slaved to the own-ship’s position, the terrain accuracy (e.g., its LOD), the cultural density/LOD and the texture resolution decrease with distance from the own-ship. As a result, the IG-based mission functions computations are best suited for own-ship functions. In cases where the data store needs to be interrogated randomly anywhere in the gaming area, simulator client-devices such as Computer Generated Forces (via a terrain server) are best suited because their architecture is not own-ship-centric.
+The mission functions provided by an IG base their computations on data that has LOD representations equivalent to those used by OTW IGs. Since the visual subsystem scene management mechanisms are essentially slaved to the own-ship’s position, the terrain accuracy (e.g., its LOD), the cultural density/LOD and the texture resolution decrease with distance from the ownship. As a result, the IG-based mission functions computations are best suited for ownship functions. In cases where the data store needs to be interrogated randomly anywhere in the gaming area, simulator client-devices such as Computer Generated Forces (via a terrain server) are best suited because their architecture is not ownship-centric.
 
 ===== Computer Generated Forces (CGF)
 
@@ -454,7 +454,7 @@ In most cases, the decision to invoke a modeled representation of a feature as e
 
 There are cases however, where the decision to represent features as either geotypical or geospecific is not as clear-cut. For instance, a modeler may not be satisfied with a single modeled representation for all the hospital features (FeatureCode-FSC = AL015-006); accordingly, he may wish to model two or more variants of hospitals in the CDB. While each of these modeled representation may not be real-world specific, they are nonetheless variants of hospitals (say by size or by region or country for example). Usually, the primary motivation for such variations is one of esthetics and realism; it is not necessarily motivated by the need to accurately reflect real-world features.
 
-In making his decision, the modeler should factor-in the following trade-offs:
+In making his decision, the modeler should factor-in the following trade-offs.
 
 1.  _CDB Storage Size:_ The size of the CDB is smaller when the cultural features reference geotypical models rather than geospecific models. This is due to the fact that the modeled representation of geotypical model is not duplicated within each tile - instead, the model appears once in the GTModel library dataset directory. Clearly, a geotypical model is the preferred choice if the modeler wishes to assign and re-use the same modeled representation for a given feature type.
 2.  _Client-device Memory Footprint:_ By assigning a geotypical model to a feature, the modeler provides a valuable “clue” to the client-device that the feature will be instanced throughout the CDB with the same modeled representation. As a result, client-device should dedicate physical memory for the storage of the geotypical models for later use.
@@ -607,13 +607,13 @@ In a complex system such as a flight simulator, the system architect must be awa
 
 Given the above assumptions, and our objective of ensuring that the product of all gammas in the viewing chain equals the viewing gamma, the modeler will end up (subjectively) adjusting images to an equivalent file gamma of 1.25.
 
-The bottom portion of the illustration show the path taken by the CDB imagery as it is ingested first by the real-time publisher, then by the IG, the IG color look-up tables and finally through to the visual display system. In this example, we will assume the following:
+The bottom portion of the illustration show the path taken by the CDB imagery as it is ingested first by the real-time publisher, then by the IG, the IG color look-up tables and finally through to the visual display system. In this example, we will assume the following.
 
-1.  The imagery file in the CDB is unmodified (i.e. those produced by the Adobe Photoshop at the DBGF). Note that as a result of viewing gamma of γ~_v_~  = 1.25, the file gamma ended up at γ~_f_~  = 1.25 at the DBGF. As a result, the CDB also has a file gamma of γ~_f_~  = 1.25
-2.  The IG performs all of its internal operations in a linear color space (i.e. the IG_gamma is γ~_IG_~ = 1.00)
+1.  The imagery file in the CDB is unmodified (i.e.,those produced by the Adobe Photoshop at the DBGF). Note that as a result of viewing gamma of γ~_v_~  = 1.25, the file gamma ended up at γ~_f_~  = 1.25 at the DBGF. As a result, the CDB also has a file gamma of γ~_f_~  = 1.25
+2.  The IG performs all of its internal operations in a linear color space (i.e.,the IG_gamma is γ~_IG_~ = 1.00)
 3.  The simulator visual system produces an average scene brightness of approximately 6 ft-lamberts: under these viewing conditions, the viewing gamma is γ~_v_~ = 1.125.
 4.  The measured gamma of the visual display system is γ~_crt_~ = 2.025
-5.  The content of the IG’s color look-up tables is adjusted to compensate for the gamma of the visual display system, i.e. it is loaded with γ~_lut_~ = (1/2.025)
+5.  The content of the IG’s color look-up tables is adjusted to compensate for the gamma of the visual display system, i.e.,it is loaded with γ~_lut_~ = (1/2.025)
 
 Given the above assumptions, and our objective of ensuring that the product of all gammas in the chain equals the viewing gamma of 1.125, the required visual run-time publisher gamma must account for the difference in viewing gamma at the DBGF and at the simulator. As a result, the publisher gamma must be (1.125/1.25).
 
@@ -623,7 +623,7 @@ Both the modelers and the visual system architects should be keenly aware of the
 
 The top portion of the illustration shows the path taken by source data as a modeler is viewing it at this workstation via the application software. In this example, we will assume the following:
 
-1.  The DBGF imagery application is Adobe Photoshop. The default color space profile used by Adobe Photoshop (i.e. the *.icm file) is the sRGB Color Space Profile which is defined by the sRGB standard to be a gamma of 2.2, therefore the Photoshop uses a  γ~_lut_~ = (1/2.2)
+1.  The DBGF imagery application is Adobe Photoshop. The default color space profile used by Adobe Photoshop (i.e.,the *.icm file) is the sRGB Color Space Profile which is defined by the sRGB standard to be a gamma of 2.2, therefore the Photoshop uses a  γ~_lut_~ = (1/2.2)
 2.  The DBGF workstation is running Windows (therefore the O/S does not gammatize the imagery before sending it to the display, γ~_lut_~ = 1.25)
 3.  The measure gamma of the DBGF workstation monitor is γ~_crt_~ = 2.2
 4.  The DBGF workstation is located in a dimly lit room, so the viewing gamma is in effect γ~_v_~ = 1.25
@@ -831,7 +831,7 @@ According to PNG (Portable Network Graphics) Specification Version 1.0, W3C Reco
 ----
 The gamut of a device is the subset of visible colors that the device can display. (Note that this has nothing to do with gamma.) The gamut of an RGB device can be visualized as a polyhedron in XYZ space; the vertices correspond to the device's black, blue, red, green, magenta, cyan, yellow, and white.
 
-Different devices have different gamut (e.g. database generation workstation, simulator display systems). In other words one device may be able to display certain colors (usually highly saturated ones) that another device cannot. The gamut of a particular RGB device can be determined from its R, G, and B chromaticities and white point.
+Different devices have different gamut (e.g.,database generation workstation, simulator display systems). In other words one device may be able to display certain colors (usually highly saturated ones) that another device cannot. The gamut of a particular RGB device can be determined from its R, G, and B chromaticities and white point.
 
 Converting image data from one device to another generally results in gamut mismatches colors that cannot be represented exactly on the destination device. The process of making the colors fit, which can range from a simple clip to elaborate nonlinear scaling transformations, is termed gamut mapping. The aim is to produce a reasonable visual representation of the original image.
 ----

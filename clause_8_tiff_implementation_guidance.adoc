@@ -21,7 +21,7 @@ The conventions define how TIFF files are interpreted by a CDB-compliant TIFF re
 |Palette Color Images (23) a|
 CDB-compliant TIFF readers do not consider palette-color images,
 
-i.e. PhotometricInterpretation = 3 (Palette Color)
+i.e.,PhotometricInterpretation = 3 (Palette Color)
 
 |ColorMap (23) |CDB-compliant TIFF readers do not consider palette-color images; as a result, this tag is ignored.
 |General Requirements (26) |CDB-compliant TIFF readers consider only type ‘II’, (little-endian) byte ordered data.
@@ -56,8 +56,8 @@ The length of the dithering or halftoning matrix used to create a dithered or ha
 |Orientation (36) |The CDB standard assumes that the data is organized such that the 0th row represents the visual top of the grid data (or image), and the 0th column represents the visual left-hand side. As a result, CDB-compliant TIFF readers do not consider image and DEM data whose Orientation Tag value is not 1
 |Photometric Interpretation (37) |CDB-compliant TIFF readers only consider images whose PhotometricInterpretation Tag value is 1 or 2.
 | |CDB-compliant TIFF readers do not consider WhiteIsZero images
-| |CDB-compliant TIFF readers do not consider palette-color images, i.e. PhotometricInterpretation = 3 (Palette Color).
-| |CDB-compliant simulator TIFF readers do not consider transparency mask imagery data, i.e. PhotometricInterpretation = 4 (Transparency Mask).
+| |CDB-compliant TIFF readers do not consider palette-color images, i.e.,PhotometricInterpretation = 3 (Palette Color).
+| |CDB-compliant simulator TIFF readers do not consider transparency mask imagery data, i.e.,PhotometricInterpretation = 4 (Transparency Mask).
 |ResolutionUnit Tag (38) |The CDB standard establishes a series of conventions that govern the resolution of TIFF files. As a result, CDB-compliant TIFF readers do not consider the ResolutionUnit TIFF tag.
 |Software Tag (39) |CDB-compliant TIFF readers do not consider the Software TIFF tag.
 |SubFileType Tag (41) |CDB-compliant TIFF readers do not consider image whose Subfile type = 3.

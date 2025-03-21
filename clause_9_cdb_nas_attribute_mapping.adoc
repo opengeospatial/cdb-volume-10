@@ -267,7 +267,7 @@ In this step, all attributes with similar characteristics in both CDB and NAS ar
 
 |===
 |*OGC CDB V1.3*||||*NAS V8.0*|||||
-|*Name*|*code*|*symbol*|*Definition*|*Name*|*code*|*DIGEST Attribute/Feature Code*|*Definition*|*Source Item Identifier*|*Type*
+|*Name*|*code*|*symbol*|*Definition*|*Name*|*code*|*DIGEST Attribute/Feature Code*|*Definition*|*Source i.e.,Identifier*|*Type*
 |Directivity|17|DIR|The side or sides of a feature that has the greatest reflectivity potential.|https://nsgreg.nga.mil/as/view?i=101989[Feature Directivity]|directivity|DIR|The sides of a feature that produce the greatest visual significance and/or reflectivity potential.|https://nsgreg.nga.mil/voc/view?i=801704[801704]|Attribute
 |Density Measure (% roof cover)|19|DMR|Percentage of roof coverage within the area delimited by a polygon feature.|https://nsgreg.nga.mil/as/view?i=101991[Roof Cover]|roofCover|DMR|The portion of an area that contains structures having roofs or tops (for example: buildings and storage tanks).|https://nsgreg.nga.mil/voc/view?i=802834[802834]|Attribute
 |Density Measure (structure count)|20|DMS|Number of man-made structures per square kilometer of polygon features.|https://nsgreg.nga.mil/as/view?i=101992[Structure Density]|structureDensity|DMS|The density of structures in an area.|https://nsgreg.nga.mil/voc/view?i=803030[803030]|Attribute
